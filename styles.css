@@ -364,4 +364,11 @@ a:hover {
     }
     
   
+    .bnb-logo-container {
+        text-align: center; /* Centrer le logo dans le conteneur */
+        margin: 20px 0; /* Ajouter de l'espace autour du conteneur du logo */
+    }
     
+    .bnb-logo {
+        height: 100px; /* Ajuster la taille du logo */
+        width: auto; }
