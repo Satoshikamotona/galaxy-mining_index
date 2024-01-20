@@ -399,10 +399,10 @@ a:hover {
 
 
     .connect-btn {
-        background: linear-gradient(45deg, #f0b90b, #f7e0ac); /* Gradient jaune doré */
+        background: linear-gradient(45deg, #f0b90b, #ecb706); /* Gradient jaune doré */
         border: 2px solid #f0b90b; /* Bordure dorée */
         border-radius: 4px; /* Bords légèrement arrondis */
-        color: #1f1f1f; /* Texte en gris foncé pour contraster avec le fond doré */
+        color: #ffffff; /* Texte en gris foncé pour contraster avec le fond doré */
         padding: 12px 25px; /* Espacement intérieur */
         text-transform: uppercase; /* Texte en majuscules */
         font-weight: 600; /* Texte semi-gras */
