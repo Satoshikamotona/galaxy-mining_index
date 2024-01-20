@@ -1,6 +1,6 @@
-// Importation de Web3 (si vous utilisez un module bundler comme Webpack)
-// Sinon, Web3 sera disponible globalement grâce à la balise <script> dans votre HTML
-// import Web3 from "web3"; 
+ 
+const Web3 = require('web3');
+
 
 let web3;
 
