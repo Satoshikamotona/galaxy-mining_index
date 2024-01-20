@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>galaxyMining - Inscription</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <input type="button" id="connectWalletButton" value="Connect Wallet" class="connect-btn">
+
+        <div class="logo-container">
+            <img src="im.png" alt="Logo" class="logo">
+            <h1 class="site-title">GalaxyMining</h1>
+            <!-- Menu Toggle for Mobile -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <!-- Navigation List -->
+            <ul class="nav-list" id="navList">
+                <li><a href="#">Home</a></li>
+
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Documentation</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="container text-center">
+            <h2>Welcome to <span class="highlight-text">galaxy mining</span></h2>
+            <div class="registration-container">
+                <p>Connect your wallet to register</p>
+                <!-- Registration Form -->
+                <form action="inscription.php" method="post">
+                    <label for="parrain">Parrain's Address:</label>
+                    <input type="text" id="parrain" name="parrain" placeholder="Enter your sponsor's address">
+                    <!-- Additional registration fields can be added here -->
+                    <input type="submit" value="Register">
+                </form>
+                <p>Registration requires 0.01 BNB</p>
+            </div>
+            <p>If you are already registered, <a href="login.html">click here</a> to log in.</p>
+        </section>
+
+        <section class="text-center">
+            <h2>Contact</h2>
+            <p>Contact us at email@example.com.</p>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; galaxyMining</p>
+    </footer>
+
+    <script src="web3integration.js"></script>
+  
+</body>
+
+</html>
