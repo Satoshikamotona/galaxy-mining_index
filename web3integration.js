@@ -74,3 +74,54 @@ document.addEventListener('DOMContentLoaded', function () {
 function truncateAddress(address) {
     return address.substr(0, 6) + '...' + address.substr(-4);
 }
+
+const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
+const contractAddress = '0xaC048568bB07cA5C9BC7373c5c9227c3D4492343';
+
+let contract;
+
+function initContract() {
+    contract = new web3.eth.Contract(contractABI, contractAddress);
+}
+
+async function registerUser(parrainAddress) {
+    if (!web3) {
+        console.log("Web3 n'est pas initialisé.");
+        return;
+    }
+
+    try {
+        // Récupère l'adresse de l'utilisateur connecté, qui sera utilisée comme msg.sender
+        const accounts = await web3.eth.getAccounts();
+        const userAddress = accounts[0];
+
+        // Vérifiez si une adresse de parrain est fournie
+        if (!parrainAddress) {
+            console.log("Adresse du parrain non fournie.");
+            return;
+        }
+
+        // Appelle la fonction register du contrat intelligent
+        // L'adresse de l'utilisateur connecté est implicitement utilisée comme msg.sender
+        await contract.methods.register(parrainAddress).send({ from: userAddress });
+
+        console.log("Inscription réussie avec le parrain:", parrainAddress);
+    } catch (error) {
+        console.error("Erreur lors de l'inscription :", error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var registrationForm = document.getElementById('registrationForm');
+
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const parrainAddress = document.getElementById('parrain').value;
+            registerUser(parrainAddress);
+        });
+    }
+});
+
+initContract();
+
