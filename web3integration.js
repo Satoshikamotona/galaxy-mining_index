@@ -7,18 +7,36 @@ let web3;
 async function connect() {
     if (window.ethereum) {
         try {
+
             await window.ethereum.request({ method: "eth_requestAccounts" });
+
+            // Initialise Web3
             web3 = new Web3(window.ethereum);
-            console.log("Connecté au portefeuille Ethereum");
+
+           
+            const accounts = await web3.eth.getAccounts();
+            const networkId = await web3.eth.net.getId();
+            const networkType = await web3.eth.net.getNetworkType();
+
+            // Affiche l'adresse et le réseau
+            showAccountDetails(accounts[0], networkId, networkType);
         } catch (error) {
             console.error("L'utilisateur a refusé d'accorder l'accès", error);
         }
-    } else if (window.web3) {
-        web3 = new Web3(window.web3.currentProvider);
     } else {
         console.log("Non-Ethereum browser detected. You should consider trying MetaMask!");
     }
 }
+
+function showAccountDetails(account, networkId, networkType) {
+    // Affiche l'adresse de l'utilisateur et les détails du réseau sur la page
+    const accountElement = document.getElementById('accountAddress');
+    const networkElement = document.getElementById('networkInfo');
+
+    accountElement.textContent = `Address: ${account}`;
+    networkElement.textContent = `Network ID: ${networkId}, Network Type: ${networkType}`;
+}
+
 
 // Votre code d'initialisation Web3 et la fonction connect() restent les mêmes
 
@@ -32,16 +50,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ... Autre code JavaScript ...
 });
 
-connectButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    console.log("Bouton Connect Wallet cliqué");
-    connect();
-});
-
-document.getElementById('connectWalletButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('Bouton cliqué!');
-});
