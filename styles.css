@@ -1,0 +1,400 @@
+/* BNB Smart Chain Color Scheme */
+:root {
+    --primary-color: #000000; /* Black for backgrounds */
+    --accent-color: #F0B90B; /* Binance yellow for highlights */
+    --secondary-color: #FFFFFF; /* White for secondary elements */
+    --text-light: #FFFFFF; /* White for text */
+    --text-dark: #000000; /* Black for text on light backgrounds */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    background-color: var(--primary-color);
+    background-image: url('9.png'); /* Chemin vers votre image de fond */
+    background-size: cover; /* L'image couvre tout l'espace disponible */
+    background-repeat: no-repeat; /* L'image ne se répète pas */
+    background-position: center; /* L'image est centrée */
+}
+
+
+/* Background Styles */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Modern Binance-Inspired Site Background */
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 30s infinite alternate;
+}
+
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+/* ... le reste de votre CSS ... */
+
+/* Header Styles */
+header {
+    color: var(--text-light);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    background-size: cover;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 6px 0;
+}
+
+header::before {
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Main Section Styles */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Enhanced Registration Container Styles */
+.registration-container {
+    max-width: 400px; /* Largeur maximale pour les petits écrans */
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(240, 185, 11, 0.6);
+    transition: all 0.3s ease;
+}
+
+/* Style pour les écrans d'ordinateur (largeurs plus grandes) */
+@media only screen and (min-width: 769px) {
+    .registration-container {
+        max-width: 500px; /* Largeur maximale ajustée pour les grands écrans */
+        padding: 40px; /* Padding ajusté pour les grands écrans */
+        /* Autres styles spécifiques aux grands écrans si nécessaire */
+    }
+}
+
+/* ... Reste du CSS ... */
+
+
+.registration-container:hover {
+    box-shadow: 0px 0px 25px rgba(240, 185, 11, 0.8); /* Ombre plus prononcée au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 10px; /* Espace augmenté sous chaque label */
+    font-size: 1em; /* Taille de police appropriée pour les labels */
+}
+.registration-container input[type="text"] {
+    width: 100%;
+    padding: 12px 15px; /* Padding confortable pour les champs de texte */
+    margin-bottom: 20px; /* Espace augmenté entre les champs de texte */
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+/* Styling the Register Button */
+input[type="submit"] {
+    background-color: var(--accent-color); /* Couleur d'accent de Binance */
+    color: var(--primary-color); /* Contraste élevé pour la lisibilité */
+    padding: 15px 30px; /* Padding confortable */
+    border: none; /* Pas de bordure pour un look épuré */
+    border-radius: 5px; /* Coins arrondis pour un design moderne */
+    font-size: 1em; /* Taille de police appropriée */
+    font-family: 'Montserrat', sans-serif; /* Police moderne et élégante */
+    font-weight: bold; /* Gras pour attirer l'attention */
+    text-transform: uppercase; /* Texte en majuscules pour un style affirmé */
+    letter-spacing: 1px; /* Espacement des lettres pour une meilleure lisibilité */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile pour un effet 3D */
+    cursor: pointer; /* Change le curseur pour indiquer la possibilité de cliquer */
+    margin-top: 20px; /* Espace augmenté au-dessus du bouton */
+
+}
+
+input[type="submit"]:hover {
+    background-color: #e6b873; /* Couleur plus claire au survol pour l'interaction */
+    box-shadow: 0px 0px 15px rgba(255, 175, 75, 0.8); /* Effet lumineux au survol */
+    transform: translateY(-2px); /* Légère élévation au survol pour un effet dynamique */
+}
+
+input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    /* Ombre extérieure pour un effet de focus */
+    box-shadow: 0 0 8px rgba(240, 185, 11, 0.6);
+}
+
+/* ... Reste du CSS ... */
+
+/* Style du Conteneur de l'Image */
+.image-container {
+    max-width: 400px; /* ou adapté à la taille de votre image */
+    margin: 20px auto;
+    padding: 10px; /* Ajustez selon le besoin */
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Dégradé subtil */
+    border-radius: 15px; /* Coins arrondis */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Ombre élégante */
+    transition: all 0.3s ease;
+}
+
+.image-container:hover {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6); /* Ombre plus prononcée au survol */
+    transform: scale(1.02); /* Légère augmentation de la taille au survol */
+}
+
+.image-container img {
+    width: 100%; /* Assurez-vous que l'image remplit le conteneur */
+    border-radius: 10px; /* Coins arrondis pour l'image */
+    /* Ajoutez d'autres styles si nécessaire */
+}
+
+input[type="submit"] {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+input[type="submit"]:hover {
+    background-color: #e6b873; /* Lighter yellow for hover */
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1em; /* Un peu plus d'espace */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif; /* Police plus moderne */
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-left: 30px; /* Espacement augmenté */
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 18px; /* Taille de police augmentée */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition ajoutée */
+}
+
+.nav-list a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px); /* Effet de léger soulèvement */
+}
+
+
+.menu-toggle {
+    display: none;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #040202; /* Dark gray */
+    color: var(--text-light);
+    text-align: center;
+    padding: 1em;
+}
+
+/* Section Heading and Paragraph Styles */
+section h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-light);
+}
+
+section p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--secondary-color);
+}
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 80%;
+        background-color: var(--accent-color);
+        z-index: 999;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        justify-content: center; 
+    }
+
+    .nav-list a {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-list.show {
+        display: flex;
+    }
+
+    .nav-list::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(229, 190, 16, 0.8), rgba(41, 128, 185, 0.8));
+        border-radius: 5px;
+        z-index: -1;
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        padding: 8px;
+        background-color: var(--accent-color);
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .nav-list li {
+        margin: 0; /* Suppression des marges pour les éléments de liste */
+    }
+}
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-light);
+        margin: 3px 0;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .site-title {
+        margin: 10px 0;
+    }
+
+/* Style Général du Texte */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+/* Titres et Sous-titres */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center; /* Centrage des titres */
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style des Paragraphes */
+p {
+    text-align: center; /* Centrage des paragraphes */
+    margin-bottom: 1em;
+}
+
+/* Alignement et Style des Sections */
+section {
+    text-align: center; /* Centrage du contenu des sections */
+    padding: 20px;
+}
+
+/* Style des Liens */
+a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    /* Ajustements pour les appareils mobiles */
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+}
+
+
+
+
+    h2 {
+        font-size: 1.3em;
+    }
+    /* Autres styles responsives */
+
+
