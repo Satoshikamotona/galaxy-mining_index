@@ -429,19 +429,5 @@ a:hover {
         text-align: center; /* Alignement du texte au centre */
     }
     
-    #accountAddress, #networkInfo {
-        margin: 5px 0; /* Marge pour séparer l'adresse et les infos réseau */
-        font-size: 1em; /* Taille de police appropriée */
-    }
-    
-    #accountAddress:before {
-        content: 'Adresse: ';
-        font-weight: bold; /* Mettre en évidence le mot 'Adresse' */
-    }
-    
-    #networkInfo:before {
-        content: 'Réseau: ';
-        font-weight: bold; /* Mettre en évidence le mot 'Réseau' */
-    }
-    
+  
     

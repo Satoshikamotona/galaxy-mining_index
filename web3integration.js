@@ -7,19 +7,15 @@ let web3;
 async function connect() {
     if (window.ethereum) {
         try {
-
             await window.ethereum.request({ method: "eth_requestAccounts" });
 
-            // Initialise Web3
             web3 = new Web3(window.ethereum);
-
            
             const accounts = await web3.eth.getAccounts();
             const networkId = await web3.eth.net.getId();
-            const networkType = await web3.eth.net.getNetworkType();
 
-            // Affiche l'adresse et le réseau
-            showAccountDetails(accounts[0], networkId, networkType);
+            // Met à jour le texte du bouton avec l'adresse et le réseau
+            updateButtonWithAccountInfo(accounts[0], networkId);
         } catch (error) {
             console.error("L'utilisateur a refusé d'accorder l'accès", error);
         }
@@ -28,17 +24,40 @@ async function connect() {
     }
 }
 
-function showAccountDetails(account, networkId, networkType) {
+function updateButtonWithAccountInfo(account, networkId) {
+    const connectButton = document.getElementById('connectWalletButton');
+    const networkName = getNetworkName(networkId);
+
+    connectButton.value = `${truncateAddress(account)} (${networkName})`;
+}
+function getNetworkName(networkId) {
+    const networkNames = {
+        '1': 'Ethereum Mainnet',
+        '3': 'Ropsten Testnet',
+        '4': 'Rinkeby Testnet',
+        '5': 'Goerli Testnet',
+        '42': 'Kovan Testnet',
+        '56': 'Binance Smart Chain',
+        '97': 'Binance Smart Chain Testnet', 
+        '137': 'Polygon (Matic) Mainnet',
+
+
+        // Ajoutez d'autres réseaux si nécessaire
+    };
+
+    return networkNames[networkId] || `Unknown Network (ID: ${networkId})`;
+}
+
+function showAccountDetails(account, networkId) {
     // Affiche l'adresse de l'utilisateur et les détails du réseau sur la page
     const accountElement = document.getElementById('accountAddress');
     const networkElement = document.getElementById('networkInfo');
 
     accountElement.textContent = `Address: ${account}`;
-    networkElement.textContent = `Network ID: ${networkId}, Network Type: ${networkType}`;
+    networkElement.textContent = `Network: ${getNetworkName(networkId)}`;
 }
 
 
-// Votre code d'initialisation Web3 et la fonction connect() restent les mêmes
 
 // Gestionnaire d'événements pour le bouton Connect Wallet
 document.addEventListener('DOMContentLoaded', function () {
@@ -52,3 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+function truncateAddress(address) {
+    return address.substr(0, 6) + '...' + address.substr(-4);
+}
