@@ -1,5 +1,3 @@
-const Web3 = require('web3');
-
 
 const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
 const contractAddress = '0xaC048568bB07cA5C9BC7373c5c9227c3D4492343';
@@ -40,7 +38,7 @@ async function connectWallet() {
         const networkNames = {
             '1': 'Ethereum Mainnet',
             '56': 'Binance Smart Chain',
-            // Ajoutez d'autres ID de réseau si nécessaire
+         
         };
         return networkNames[networkId] || `Network ID: ${networkId}`;
     }
