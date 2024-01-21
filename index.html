@@ -110,15 +110,17 @@
                 alert("You are not connected to the smart contract.");
                 return;
             }
-
-             try {
+            try {
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0];
-                const registrationFee = web3.utils.toWei('0.0004', 'ether');
+                const registrationFee = web3.utils.toWei('0.01', 'ether'); // Assurez-vous que ce montant est correct pour BNB
 
-               
                 const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress, value: registrationFee });
-                console.log("successful registration:", response);
+                console.log("Registration successful:", response);
+
+                // Afficher un message de succès et recharger la page
+                alert("Registration successful!");
+                window.location.reload();
             } catch (error) {
                 console.error("Error during registration:", error);
                 alert("An error occurred during registration.");
@@ -126,6 +128,7 @@
         });
     }
 });
+
 
     </script>
     
