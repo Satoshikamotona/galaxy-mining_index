@@ -373,24 +373,19 @@ a:hover {
         height: 100px; /* Ajuster la taille du logo */
         width: auto; }
 
-        .contract-status {
-            color: red; /* Par défaut, en rouge pour 'non connecté' */
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Espace entre l'icône et le texte */
+        #contractStatus {
+            display: block; /* Rendre l'élément de type bloc pour appliquer la mise en page */
+            text-align: center; /* Centrer le texte à l'intérieur de l'élément */
+            color: red; /* Couleur rouge pour le texte si non connecté */
+            margin: 10px auto; /* Marge automatique pour centrer horizontalement */
+            padding: 5px; /* Ajouter un peu d'espace interne pour l'esthétique */
+            /* Autres styles que vous souhaitez appliquer */
         }
         
         .connected {
             color: green; /* Vert pour 'connecté' */
         }
         
-        /* Icônes pour les états de connexion */
-        #contractIcon::before {
-            content: '⚠️'; /* Icône de warning par défaut */
-            display: block;
-        }
+     
         
-        .connected #contractIcon::before {
-            content: '✅'; /* Icône de validation pour l'état 'connecté' */
-        }
-        
+    
