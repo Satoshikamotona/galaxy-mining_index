@@ -16,6 +16,8 @@
 
 
 <button id="connectWalletButton">Connect Wallet</button>
+<div id="connectcontract">Not connected to smart contract</div>
+
         <div class="logo-container">
             <img src="im.png" alt="Logo" class="logo">
             <h1 class="site-title">GalaxyMining</h1>
@@ -71,6 +73,25 @@
                 console.log("Navigateur Ethereum non détecté. Essayez d'installer MetaMask!");
             }
         });
+
+        let account
+        const connectcontract = async() => {
+            const ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
+            const Address = "0xaC048568bB07cA5C9BC7373c5c9227c3D4492343";
+            window.web3 = new Web3(window.ethereum);
+
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                account = (await web3.eth.getAccounts())[0];
+
+                window.contract = new web3.eth.Contract(ABI, Address);
+                document.getElementById("connectcontract").innerHTML = "Connected to smart contract";
+            } catch (error) {
+                console.error("Error connecting to contract: ", error);
+            }
+        };
+
+        document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
     </script>
     
     
