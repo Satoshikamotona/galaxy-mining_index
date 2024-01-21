@@ -102,12 +102,12 @@
             const parrainAddress = document.getElementById('parrain').value;
 
             if (!parrainAddress) {
-                alert("Veuillez entrer l'adresse du parrain.");
+                alert("Please enter the upline address.");
                 return;
             }
 
             if (!window.contract) {
-                alert("Le contrat intelligent n'est pas connecté.");
+                alert("You are not connected to the smart contract.");
                 return;
             }
 
@@ -116,12 +116,12 @@
                 const userAddress = accounts[0];
                 const registrationFee = web3.utils.toWei('0.0004', 'ether');
 
-                // Appel de la fonction register du contrat avec les frais
+               
                 const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress, value: registrationFee });
-                console.log("Inscription réussie :", response);
+                console.log("successful registration:", response);
             } catch (error) {
-                console.error("Erreur lors de l'inscription :", error);
-                alert("Une erreur s'est produite lors de l'inscription.");
+                console.error("Error during registration:", error);
+                alert("An error occurred during registration.");
             }
         });
     }
