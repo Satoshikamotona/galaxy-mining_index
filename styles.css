@@ -387,5 +387,14 @@ a:hover {
             color: green; /* Vert lorsque connecté */
         }
      
-        
+
+        /* Icônes pour les états de connexion */
+#contractIcon::before {
+    content: ''; /* Icône de warning par défaut */
+    display: block;
+}
+
+.connected #contractIcon::before {
+    content: ''; /* Icône de validation pour l'état 'connecté' */
+}
     
