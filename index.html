@@ -13,12 +13,9 @@
 
 <body>
     <header>
-        <div id="walletInfo" style="display: none;">
-            <span id="userAddress"></span>
-            <span id="networkInfo"></span>
-        </div>
-        <button id="connectWalletButton">Connect Wallet</button>
-<div id="connectcontract">Not connected to smart contract</div>
+        
+        <button id="connectWalletButton" class="connect-btn">Connect Wallet</button>
+        <div id="connectcontract">Not connected to smart contract</div>
 
         <div class="logo-container">
             <img src="im.png" alt="Logo" class="logo">
@@ -63,21 +60,21 @@
 
     <script>
 
-    document.getElementById('connectWalletButton').addEventListener('click', async event => {
+document.getElementById('connectWalletButton').addEventListener('click', async () => {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
-            const truncatedAddress = account.substr(0, 6) + '...' + account.substr(-4);
             const networkId = await web3.eth.net.getId();
             const networkName = networkId === 56 ? 'BNB Smart Chain' : 'Unknown Network';
 
-            document.getElementById('userAddress').textContent = truncatedAddress;
-            document.getElementById('networkInfo').textContent = networkName;
-            document.getElementById('walletInfo').style.display = 'inline-block';
-            document.getElementById('connectWalletButton').style.display = 'none';
+            const truncatedAddress = account.substr(0, 6) + '...' + account.substr(-4);
+            const buttonText = `${truncatedAddress} (${networkName})`;
 
-            console.log("Compte connecté :", account);
+            const connectButton = document.getElementById('connectWalletButton');
+            connectButton.textContent = buttonText;
+            // Vous pouvez également ajouter des styles supplémentaires ici si nécessaire
+
         } catch (error) {
             console.error("Erreur lors de la connexion au portefeuille :", error);
         }
@@ -85,6 +82,7 @@
         console.log("Navigateur Ethereum non détecté. Essayez d'installer MetaMask!");
     }
 });
+
 
 
         let account
