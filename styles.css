@@ -383,9 +383,8 @@ a:hover {
         }
         
         .connected {
-            color: green; /* Vert pour 'connecté' */
+            color: green; /* Vert lorsque connecté */
         }
-        
      
         
     
