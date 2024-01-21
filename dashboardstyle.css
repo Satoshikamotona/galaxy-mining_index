@@ -294,7 +294,6 @@ a:hover {
  
   
   .dashboard-header {
-    background: var(--primary-color);
     padding: 20px;
     text-align: center;
   }
@@ -306,7 +305,6 @@ a:hover {
   
   .dashboard-header .wallet-address {
     background: var(--accent-color);
-    color: var(--primary-color);
     padding: 5px 10px;
     border-radius: 20px;
     display: inline-block;
@@ -765,4 +763,34 @@ a:hover {
 .arrow {
     /* Assurez-vous que la flèche est alignée avec le texte */
     display: inline-block;
+}
+/* ... autres styles ... */
+
+.card {
+    min-width: 150px; /* Minimum width, can grow if needed */
+    max-width: 500px; /* Maximum width */
+    width: 100%; /* Use a percentage width for flexibility */
+    overflow: hidden; /* Hide overflow */
+}
+
+.card-body {
+    padding: 10px;
+    overflow: auto; /* Scroll inside if content is too big */
+}
+
+.grid {
+    justify-content: flex-start; /* Align grid items to the start */
+    flex-wrap: wrap; /* Wrap items to the next line if not enough space */
+}
+
+/* Use media queries to adjust layout on smaller screens */
+@media (max-width: 768px) {
+    .card {
+        padding: 5px; /* Smaller padding on small screens */
+    }
+
+    .program-name, .program-value {
+        font-size: smaller; /* Smaller font size on small screens */
+    }
+
 }
