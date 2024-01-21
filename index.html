@@ -92,7 +92,7 @@
         };
 
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
-        
+
 
         document.addEventListener('DOMContentLoaded', function () {
     var registrationForm = document.getElementById('registrationForm');
@@ -111,12 +111,13 @@
                 return;
             }
 
-            try {
+             try {
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0];
-                
-                // Appel de la fonction register du contrat
-                const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress });
+                const registrationFee = web3.utils.toWei('0.0004', 'ether');
+
+                // Appel de la fonction register du contrat avec les frais
+                const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress, value: registrationFee });
                 console.log("Inscription réussie :", response);
             } catch (error) {
                 console.error("Erreur lors de l'inscription :", error);
