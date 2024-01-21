@@ -342,6 +342,33 @@ a:hover {
 
   
   }
+
+  .profile-section {
+    /* Styles existants */
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1a1a1a; /* Couleur de fond */
+    color: #f0b90b; /* Couleur de texte */
+    box-shadow: 0 0 10px var(--accent-color); /* Ombre initiale */
+    animation: glowingBorder 2s infinite alternate;
+}
+
+.profile-section:hover {
+    box-shadow: 0 0 20px var(--accent-color); /* Ombre plus grande au survol */
+}
+
+/* Animation pour le contour lumineux */
+@keyframes glowingBorder {
+    0% { box-shadow: 0 0 10px var(--accent-color); }
+    50% { box-shadow: 0 0 20px var(--accent-color); }
+    100% { box-shadow: 0 0 10px var(--accent-color); }
+}
+
+.profile-section:hover {
+    animation: glowingBorder 2s infinite alternate;
+}
+
   
   .profile-section {
     display: flex;
@@ -419,13 +446,7 @@ a:hover {
 .copy-bar:hover {
     background-color: #e6b873; /* Teinte plus claire de la couleur dorée */
 }
-/* Style du conteneur des informations de l'utilisateur */
-.user-profile-container {
-    border: 2px solid #f0b90b; /* contour standard */
-    box-shadow: 0 0 15px #f0b90b; /* ombre extérieure jaune lumineuse */
-    padding: 20px;
-    /* autres styles... */
-}
+
 
 
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
