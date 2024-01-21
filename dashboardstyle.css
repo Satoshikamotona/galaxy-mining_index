@@ -39,6 +39,14 @@ body {
 }
 
 .card {
+    /* Définit la largeur et la hauteur des cartes */
+    width: 200px; /* Remplacez par la largeur souhaitée */
+    height: 100px; /* Remplacez par la hauteur souhaitée */
+
+}
+
+
+.card {
   
 
         flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
