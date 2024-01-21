@@ -392,8 +392,8 @@ a:hover {
 .page-title {
     text-align: center;
     font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
-    font-size: 2.5em; /* Taille de la police */
-    color: var(--accent-color); /* Couleur d'accentuation */
+    font-size: 1.5em; /* Taille de la police */
+    color: white; /* Couleur d'accentuation */
     margin-top: 20px; /* Espace au-dessus du titre */
     margin-bottom: 40px; /* Espace en dessous du titre */
 }
