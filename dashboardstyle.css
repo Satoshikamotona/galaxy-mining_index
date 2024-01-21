@@ -606,4 +606,71 @@ a:hover {
 }
 
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
-  
+  .card {
+    background: #1a1a1a; /* fond noir avec une légère opacité */
+    border-radius: 20px;
+    padding: 20px;
+    color: #ffffff;
+    max-width: 660px; /* ajustez selon votre mise en page */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* pour l'effet de profondeur */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.program-title {
+    color: #F0B90B; /* couleur jaune doré */
+}
+
+.info-button, .info-text {
+    background: #F0B90B; /* couleur jaune doré */
+    border-radius: 50%; /* pour le bouton ? */
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* espace entre l'en-tête et le contenu */
+}
+
+.program-name {
+    font-size: 1.5em;
+}
+
+.program-value {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+
+.block {
+    display: inline-block;
+    width: 20px; /* taille du bloc */
+    height: 20px;
+    background: #F0B90B; /* couleur jaune doré */
+    margin: 2px;
+}
+
+.preview-button {
+    background: #F0B90B; /* couleur jaune doré */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.preview-button:hover {
+    background-color: #e6b873; /* une teinte plus claire au survol */
+}
