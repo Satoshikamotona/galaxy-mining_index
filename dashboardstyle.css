@@ -23,6 +23,30 @@ body {
     background-position: center; /* L'image est centrée */
 }
 
+.profits-row {
+    display: flex;
+    gap: 20px; /* Cela va créer 20px d'espace entre chaque carte */
+}
+
+
+.profits-row {
+    justify-content: space-around; /* Cette propriété va répartir l'espace uniformément autour de chaque carte */
+}
+
+.card {
+    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+    margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
+}
+
+.card {
+  
+
+        flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+        margin: 0 5px; /* Espacement entre chaque carte */
+        margin-right: 10px; /* Espacement à droite de chaque carte */
+
+    
+}
 
 /* Background Styles */
 body::before {
@@ -88,6 +112,7 @@ main {
 section {
     margin-bottom: 20px;
 }
+
 
 
 
