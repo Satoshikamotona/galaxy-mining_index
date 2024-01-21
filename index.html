@@ -94,8 +94,8 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
             const ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
             const Address = "0xaC048568bB07cA5C9BC7373c5c9227c3D4492343";
     window.web3 = new Web3(window.ethereum);
+ 
     const contractStatus = document.getElementById("contractStatus");
-    const contractIconContainer = document.getElementById("connectcontract");
 
     try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -103,14 +103,13 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
         window.contract = new web3.eth.Contract(ABI, Address);
 
         contractStatus.textContent = "Connected to smart contract";
-        contractIconContainer.classList.add("connected");
-    } catch (error) {
-        console.error("Error connecting to contract: ", error);
-        contractStatus.textContent = "Error connecting to smart contract";
-        contractIconContainer.classList.remove("connected");
-    }
-};
-
+    contractStatus.classList.add("connected"); // Ajout de la classe 'connected'
+    console.log("Class 'connected' should be added now");
+} catch (error) {
+    console.error("Error connecting to contract: ", error);
+    contractStatus.textContent = "Error connecting to smart contract";
+    contractStatus.classList.remove("connected");
+}
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
 
 

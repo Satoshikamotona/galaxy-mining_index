@@ -374,27 +374,17 @@ a:hover {
         width: auto; }
 
         #contractStatus {
+            display: block; /* Rendre l'élément de type bloc pour appliquer la mise en page */
             text-align: center; /* Centrer le texte à l'intérieur de l'élément */
-
-            display: flex;
             color: red; /* Couleur rouge pour le texte si non connecté */
             margin: 10px auto; /* Marge automatique pour centrer horizontalement */
             padding: 5px; /* Ajouter un peu d'espace interne pour l'esthétique */
             /* Autres styles que vous souhaitez appliquer */
         }
         
-        .connected {
-            color: green; /* Vert lorsque connecté */
+        #contractStatus.connected {
+            color: green; /* Couleur verte pour le texte si connecté */
+            /* Autres styles pour le statut connecté */
         }
-     
-
-        /* Icônes pour les états de connexion */
-#contractIcon::before {
-    content: ''; /* Icône de warning par défaut */
-    display: block;
-}
-
-.connected #contractIcon::before {
-    content: ''; /* Icône de validation pour l'état 'connecté' */
-}
+        
     
