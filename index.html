@@ -14,19 +14,15 @@
 <body>
     <header>
 
-        
-        <input type="button" id="connectWalletButton" value="Connect Wallet" class="connect-btn">
+
+<button id="connectWalletButton">Connect Wallet</button>
         <div class="logo-container">
             <img src="im.png" alt="Logo" class="logo">
             <h1 class="site-title">GalaxyMining</h1>
             <img src="17.png" alt="Binance Smart Chain Logo" class="bnb-logo">
         </div>
         <h2>Welcome to <span class="highlight-text">galaxy mining</span></h2>
-        
-   
-       
-        
-        
+    
             
          
         </div>
@@ -60,16 +56,23 @@
     </footer>
 
     <script src="web3integration.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var connectButton = document.getElementById('connectWalletButton');
-            if (connectButton) {
-                connectButton.addEventListener('click', function () {
-                    console.log("Bouton Connect Wallet cliqué");
+        document.getElementById('connectWalletButton').addEventListener('click', event => {
+            // Vérifie si l'objet Ethereum est disponible dans window
+            if (window.ethereum) {
+                ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => { 
+                    const account = accounts[0];
+                    console.log("Compte connecté :", account);
+                }).catch(error => {
+                    console.error("Erreur lors de la connexion au portefeuille :", error);
                 });
+            } else {
+                console.log("Navigateur Ethereum non détecté. Essayez d'installer MetaMask!");
             }
         });
     </script>
+    
     
 </body>
 
