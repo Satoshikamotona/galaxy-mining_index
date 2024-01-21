@@ -13,14 +13,17 @@ html, body {
 }
 
 body {
-    flex-direction: column;
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-light);
-    background-color: var(--primary-color);
-    background-image: url('9.png'); /* Chemin vers votre image de fond */
-    background-size: cover; /* L'image couvre tout l'espace disponible */
-    background-repeat: no-repeat; /* L'image ne se répète pas */
-    background-position: center; /* L'image est centrée */
+    background-attachment: fixed;
+
+    background-image: url('9.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media (max-width: 768px) {
+    body {
+        background-size: 100% 100%; /* Ou toute autre propriété adaptée aux écrans plus petits */
+    }
 }
 
 .dividend-container {
@@ -116,6 +119,8 @@ body {
 
 /* Background Styles */
 body::before {
+    display: none;
+
     content: "";
     position: fixed;
     top: 0;
@@ -128,8 +133,16 @@ body::before {
     pointer-events: none;
 }
 
-/* Modern Binance-Inspired Site Background */
 
+
+/* Modern Binance-Inspired Site Background */
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 30s infinite alternate;
+}
 
 @keyframes BackgroundAnimation {
     0% { background-position: top left; }
@@ -278,13 +291,7 @@ a:hover {
 
 
   
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
-  }
+ 
   
   .dashboard-header {
     background: var(--primary-color);
@@ -415,7 +422,6 @@ a:hover {
     margin: 0;
     padding: 0;
     font-family: 'Roboto Mono', monospace; /* Police technologique */
-    background-color: var(--primary-color);
   }
   
   .dashboard-container {
