@@ -92,6 +92,40 @@
         };
 
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
+        
+
+        document.addEventListener('DOMContentLoaded', function () {
+    var registrationForm = document.getElementById('registrationForm');
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const parrainAddress = document.getElementById('parrain').value;
+
+            if (!parrainAddress) {
+                alert("Veuillez entrer l'adresse du parrain.");
+                return;
+            }
+
+            if (!window.contract) {
+                alert("Le contrat intelligent n'est pas connecté.");
+                return;
+            }
+
+            try {
+                const accounts = await web3.eth.getAccounts();
+                const userAddress = accounts[0];
+                
+                // Appel de la fonction register du contrat
+                const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress });
+                console.log("Inscription réussie :", response);
+            } catch (error) {
+                console.error("Erreur lors de l'inscription :", error);
+                alert("Une erreur s'est produite lors de l'inscription.");
+            }
+        });
+    }
+});
+
     </script>
     
     
