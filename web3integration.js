@@ -1,63 +1,50 @@
+var registration = function () {
+    'use strict';
+    const initialiseABI = function () {
+        const contractAddress="0xdF1273A5e3372701B97A1580dD856FeF00deF7EB"
+        const abi=[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
+        var balance_MAIN = "400000000000000";
+        const contract = new web3.eth.Contract(abi, contractAddress)
 
-const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"referrer","type":"address"}],"name":"register","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
-const contractAddress = '0xaC048568bB07cA5C9BC7373c5c9227c3D4492343';
-
-const myContract = new web3.eth.Contract(contractABI, contractAddress);
-
-
-
-
-async function connectWallet() {
-    if (window.ethereum) {
-        try {
-
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-
-            web3 = new Web3(window.ethereum);
-
-            // Récupère les informations du compte et du réseau
-            const accounts = await web3.eth.getAccounts();
-            const networkId = await web3.eth.net.getId();
-            const networkName = getNetworkName(networkId);
-            const truncatedAddress = truncateAddress(accounts[0]);
-
-            // Met à jour le bouton de connexion avec les informations de l'utilisateur
-            updateConnectButton(`${truncatedAddress} (${networkName})`);
-            console.log("Portefeuille connecté:", accounts[0], "Réseau:", networkName);
-        } catch (error) {
-            console.error("L'utilisateur a refusé d'accorder l'accès");
+        return {
+            'address':contractAddress,
+            'abi':abi,
+            'balance_MAIN':balance_MAIN,
+            'contract':contract
         }
-    } else {
-        console.log("Non-Ethereum browser detected. You should consider trying MetaMask!");
-    }
-}
+    };
 
+    const getAccount= async function(){
+        const accounts = await window.web3.eth.getAccounts();
+        return accounts[0];
+    };
+    const initialiseEtheruim = async function () {
+        if (window.ethereum) {
+            window.web3 = new Web3(ethereum);
+            try {
+                /*await ethereum.request({
+                    method: 'eth_requestAccounts'
+                });*/
+                var networkid = await web3.eth.net.getId()
+                if (networkid !== 56) {
+                    alert('Connect to BNB Mainnet Network');
+                } else {
+                    var id_user = $('#id_user_smart').text();
+                }
+        console.log(networkid)
+            } catch (error) {
+                $('#spinner_dashboard').hide()
+                alert('Error: Out of Gas: please reload this page')
+                console.log(error)
+            }
+        } else if (window.web3) {
+            window.web3 = new Web3(web3.currentProvider);
+            web3.eth.sendTransaction({/* ... */});
+        } else {
+            alert('Requires ETH purse to interact smart contract You should consider trying MetaMask!');
 
-    function getNetworkName(networkId) {
-        const networkNames = {
-            '1': 'Ethereum Mainnet',
-            '56': 'Binance Smart Chain',
-         
-        };
-        return networkNames[networkId] || `Network ID: ${networkId}`;
-    }
-
-    function truncateAddress(address) {
-        return address.substr(0, 6) + '...' + address.substr(-4);
-    }
-
-    function updateConnectButton(text) {
-        const connectButton = document.getElementById('connectWalletButton');
-        connectButton.value = text;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var connectButton = document.getElementById('connectWalletButton');
-        if (connectButton) {
-            connectButton.addEventListener('click', connectWallet);
         }
-    });
+    };
 
     document.addEventListener('DOMContentLoaded', function () {
         const registrationForm = document.getElementById('registrationForm');
@@ -68,6 +55,7 @@ async function connectWallet() {
                 await registerUser(parrainAddress);
             });
         }
+        initContract();
     });
     
     async function registerUser(parrainAddress) {
@@ -75,16 +63,13 @@ async function connectWallet() {
             console.log("Web3 n'est pas initialisé.");
             return;
         }
-    
         try {
             const accounts = await web3.eth.getAccounts();
             const userAddress = accounts[0];
-    
             if (!parrainAddress) {
                 console.log("Adresse du parrain non fournie.");
                 return;
             }
-    
             // Envoie une transaction au contrat intelligent
             await myContract.methods.register(parrainAddress).send({ from: userAddress });
             console.log("Inscription réussie avec le parrain:", parrainAddress);
@@ -93,3 +78,20 @@ async function connectWallet() {
         }
     }
     
+    function initContract() {
+        myContract = new web3.eth.Contract(contractABI, contractAddress);
+        console.log("Contrat initialisé", myContract);
+    }
+    
+ 
+jQuery(document).ready(function() {
+    'use strict';
+    registration.init();
+});
+jQuery(window).on('load',function () {
+    'use strict';
+    registration.load();
+});
+
+
+}
