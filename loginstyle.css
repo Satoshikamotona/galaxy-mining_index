@@ -388,4 +388,34 @@ a:hover {
             /* Autres styles pour le statut connecté */
         }
         
-    
+    /* Style pour le titre de la page */
+.page-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
+    font-size: 2.5em; /* Taille de la police */
+    color: var(--accent-color); /* Couleur d'accentuation */
+    margin-top: 20px; /* Espace au-dessus du titre */
+    margin-bottom: 40px; /* Espace en dessous du titre */
+}
+
+/* Style pour l'invitation à s'inscrire */
+.register-invite {
+    text-align: center;
+    margin-top: 40px; /* Espace au-dessus du message */
+}
+
+.register-invite p {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-light); /* Couleur du texte */
+}
+
+.register-invite a {
+    color: var(--accent-color); /* Couleur d'accentuation pour le lien */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.register-invite a:hover {
+    text-decoration: underline; /* Souligner au survol */
+}
+
+/* ... Reste de votre CSS ... */
