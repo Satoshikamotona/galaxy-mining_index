@@ -338,7 +338,7 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    padding: 20px;
+    padding: 50px;
 
   
   }
@@ -367,20 +367,20 @@ a:hover {
   
   .profile-id {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--accent-color);
   }
   
   .profile-invited {
     margin: 5px 0;
-    font-size: 1rem;
+    font-size: 0.7rem;
     color: var(--info-color);
   }
   
   .profile-link {
     color: var(--accent-color);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.5rem;
   }
   
   .profile-link:hover {
@@ -392,19 +392,21 @@ a:hover {
     flex-direction: column; /* Alignement vertical */
     align-items: flex-start; /* Alignement à gauche */
     background-color: var(--secondary-color);
-    padding: 10px;
+    padding: 0px;
     border-radius: 5px;
     margin-top: 10px;
 }
 
 .user-link {
     margin-bottom: 5px; /* Espace entre le lien et la barre de copie */
+    font-size: 0.8rem;
+
 }
 
 .copy-bar {
     background-color: var(--accent-color);
     color: var(--primary-color);
-    padding: 5px 15px;
+    padding: 0px 15px;
     border-radius: 5px;
     font-size: 0.9rem;
     cursor: pointer;
@@ -417,6 +419,14 @@ a:hover {
 .copy-bar:hover {
     background-color: #e6b873; /* Teinte plus claire de la couleur dorée */
 }
+/* Style du conteneur des informations de l'utilisateur */
+.user-profile-container {
+    border: 2px solid #f0b90b; /* contour standard */
+    box-shadow: 0 0 15px #f0b90b; /* ombre extérieure jaune lumineuse */
+    padding: 20px;
+    /* autres styles... */
+}
+
 
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
   
