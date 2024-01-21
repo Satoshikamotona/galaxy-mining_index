@@ -674,3 +674,95 @@ a:hover {
 .preview-button:hover {
     background-color: #e6b873; /* une teinte plus claire au survol */
 }
+
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--primary-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-header h1 {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.info-circle {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.info {
+    display: none; /* Caché par défaut, à afficher au survol si nécessaire */
+}
+
+.card-body {
+    background: rgba(33, 36, 41, 0.85); /* Noir translucide pour voir l'image en arrière-plan */
+    padding: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.program-name {
+    font-size: 2em;
+    color: var(--text-light);
+    margin-bottom: 0.5em;
+}
+
+.program-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1em;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1em;
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+.preview-button {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.preview-button:hover {
+    background-color: #e6b873; /* Couleur plus claire pour l'effet de survol */
+}
+
+.arrow {
+    /* Assurez-vous que la flèche est alignée avec le texte */
+    display: inline-block;
+}
