@@ -23,6 +23,23 @@ body {
     background-position: center; /* L'image est centrée */
 }
 
+.card h3 {
+    font-size: 1em; /* Ajustez cette valeur pour augmenter ou diminuer la taille du texte */
+    font-weight: bold; /* Pour un texte en gras */
+    color: #F0B90B; /* Utilisez la couleur désirée pour le texte */
+    text-align: center; /* Pour centrer le texte dans la carte */
+    margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous du h3 */
+ 
+}
+.card p {
+    font-size: 1em; /* Ajustez cette valeur pour augmenter ou diminuer la taille du texte */
+    font-weight: bold; /* Pour un texte en gras */
+    color: #ffffff; /* Utilisez la couleur désirée pour le texte */
+    text-align: center; /* Pour centrer le texte dans la carte */
+    margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous du h3 */
+ 
+}
+
 .profits-row {
     display: flex;
     gap: 20px; /* Cela va créer 20px d'espace entre chaque carte */
