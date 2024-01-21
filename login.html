@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginstyle.css">
+    <title>GalaxyMining - Login</title>
+</head>
+<body>
+    <header>
+        <button id="connectWalletButton" class="connect-btn">Connect Wallet</button>
+        <div id="connectcontract" class="contract-status">
+            <span id="contractIcon"></span> 
+            <span id="contractStatus">Not connected to smart contract</span>
+        </div>
+    
+    </header>
+    <main>
+        <section class="container text-center">
+            <div class="login-container">
+                <p>Login with your connected wallet</p>
+                <button id="loginButton" class="connect-btn">Login Automatique</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; galaxyMining</p>
+    </footer>
+    <script>
+        document.getElementById('loginButton').addEventListener('click', async () => {
+            if (window.ethereum) {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    // Ici, vous pouvez rediriger l'utilisateur vers son tableau de bord ou afficher ses informations
+                    console.log("Utilisateur connecté :", account);
+                    // Exemple de redirection : window.location.href = 'dashboard.html?address=' + account;
+                } catch (error) {
+                    console.error("Erreur lors de la connexion :", error);
+                }
+            } else {
+                console.log("Navigateur Ethereum non détecté. Essayez d'installer MetaMask!");
+            }
+        });
+    </script>
+</body>
+</html>
