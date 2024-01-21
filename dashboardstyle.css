@@ -539,6 +539,46 @@ a:hover {
 }
 
 
+.dividend-container {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px; /* Bords arrondis pour un look moderne */
+    background: rgba(255, 255, 255, 0.1); /* Transparence pour un effet de superposition */
+    backdrop-filter: blur(10px); /* Flou de l'arrière-plan pour un effet de verre */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Bordure subtile */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre portée pour un effet de profondeur */
+    transform: translateZ(0); /* Prépare l'élément pour les animations 3D */
+    transition: transform 0.3s ease-out; /* Animation douce pour les effets au survol */
+}
+
+.dividend-container:hover {
+    transform: scale(1.05) translateZ(50px); /* Effet de zoom et de soulèvement au survol */
+}
+
+.dividend-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Espace au-dessus de la section d'information */
+}
+
+.binance-logo {
+    width: 50px; /* Taille du logo Binance */
+    margin-right: 10px;
+    transition: transform 0.3s ease-out; /* Animation douce pour l'effet au survol */
+}
+
+.binance-logo:hover {
+    transform: rotateY(360deg); /* Rotation du logo au survol */
+}
+
+#dividend-amount {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f0b90b; /* Couleur jaune de Binance */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur au texte */
+}
 
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
   
