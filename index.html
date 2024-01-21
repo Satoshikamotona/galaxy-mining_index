@@ -43,6 +43,7 @@
                     <input type="submit" value="Register">
                 </form>
                 
+                
                 <p>Registration requires 0.01 BNB</p>
             </div>
             <p>If you are already registered, <a href="login.html">click here</a> to log in.</p>
@@ -59,7 +60,17 @@
     </footer>
 
     <script src="web3integration.js"></script>
-  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var connectButton = document.getElementById('connectWalletButton');
+            if (connectButton) {
+                connectButton.addEventListener('click', function () {
+                    console.log("Bouton Connect Wallet cliqué");
+                });
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
