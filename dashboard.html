@@ -19,9 +19,14 @@
     <div class="profile-section">
         <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
         <div class="profile-info">
-            <p class="profile-id">ID: 1</p>
-            <p class="profile-invited">Invited By: User123</p>
-            <a href="user_link" class="profile-link">https://example.com/user</a>
+            <p class="profile-id">ID: 123</p>
+            <p class="profile-invited">Invited By: User ID 1</p>
+
+            <div class="user-link-container">
+                <a href="#" class="user-link">https://example.com/user-link</a>
+                <div class="copy-bar" onclick="copyToClipboard('.user-link')">Copy</div>
+            </div>
+            
         </div>
     </div>
   
@@ -47,6 +52,19 @@
   </div>
   
 </div>
+
+<script>
+
+function copyToClipboard(selector) {
+    var text = document.querySelector(selector).href;
+    navigator.clipboard.writeText(text).then(function() {
+        alert("Link copied to clipboard!");
+    })
+    .catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+</script>
 
 </body>
 </html>

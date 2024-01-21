@@ -386,6 +386,37 @@ a:hover {
   .profile-link:hover {
     text-decoration: underline;
   }
-  
+  .user-link-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Alignement vertical */
+    align-items: flex-start; /* Alignement à gauche */
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.user-link {
+    margin-bottom: 5px; /* Espace entre le lien et la barre de copie */
+}
+
+.copy-bar {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    align-self: stretch; /* Étendre pour occuper toute la largeur */
+}
+
+.copy-bar:hover {
+    background-color: #e6b873; /* Teinte plus claire de la couleur dorée */
+}
+
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
   
