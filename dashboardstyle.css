@@ -129,13 +129,7 @@ body::before {
 }
 
 /* Modern Binance-Inspired Site Background */
-body {
-   
-    background-size: cover, auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: BackgroundAnimation 30s infinite alternate;
-}
+
 
 @keyframes BackgroundAnimation {
     0% { background-position: top left; }
@@ -578,6 +572,31 @@ a:hover {
     font-weight: bold;
     color: #f0b90b; /* Couleur jaune de Binance */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur au texte */
+}
+.claim-button {
+    padding: 10px 20px;
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    border: none;
+    border-radius: 25px; /* Bouton avec des bords arrondis */
+    background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+    color: #ffffff; /* Texte blanc */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+}
+
+.claim-button:hover {
+    transform: translateY(-3px); /* Soulève légèrement le bouton au survol */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Ombre plus grande pour l'effet au survol */
+}
+
+.claim-button:active {
+    transform: translateY(-1px); /* Donne l'impression que le bouton est enfoncé lors du clic */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Ombre plus petite pour l'effet au clic */
 }
 
   /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
