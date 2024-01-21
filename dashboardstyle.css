@@ -496,3 +496,53 @@ a:hover {
   }
 
   /* Add more styles as needed */
+  .user-profile-container {
+    display: flex;
+    align-items: center;
+    background-color: #000; /* Your desired dark color */
+    padding: 20px;
+    color: #f0b90b; /* Binance golden color */
+  }
+  
+  .user-image-container {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0b90b; /* Golden color */
+    padding: 5px; /* Adjust for the glowing effect size */
+    box-shadow: 0 0 10px #f0b90b; /* Glowing effect */
+    margin-right: 20px; /* Spacing between image and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-image {
+    border-radius: 50%;
+    width: 100%; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-id,
+  .user-invited-by,
+  .user-link {
+    margin: 5px 0; /* Spacing between text elements */
+    font-size: 1rem; /* Adjust as needed */
+    color: #fff; /* White text */
+  }
+  
+  /* If you want to make the link clickable */
+  .user-link {
+    color: #f0b90b; /* Golden color */
+    text-decoration: none; /* Removes underline */
+  }
+  
+  .user-link:hover {
+    text-decoration: underline; /* Adds underline on hover */
+  }
+  
