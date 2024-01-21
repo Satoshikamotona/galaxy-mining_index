@@ -23,6 +23,29 @@ body {
     background-position: center; /* L'image est centrée */
 }
 
+.dividend-container {
+    text-align: center;
+    margin: 20px;
+    /* Ajoutez d'autres styles comme couleur de fond, marges, etc. */
+}
+
+.dividend-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.binance-logo {
+    width: 50px; /* ou la taille que vous souhaitez pour le logo */
+    margin-right: 10px;
+}
+
+#dividend-amount {
+    font-weight: bold;
+    /* Ajoutez d'autres styles pour la taille du texte, la police, etc. */
+}
+
+
 .card h3 {
     font-size: 1em; /* Ajustez cette valeur pour augmenter ou diminuer la taille du texte */
     font-weight: bold; /* Pour un texte en gras */
@@ -31,18 +54,36 @@ body {
     margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous du h3 */
  
 }
+/* Styles par défaut pour mobiles */
 .card p {
-    font-size: 1em; /* Ajustez cette valeur pour augmenter ou diminuer la taille du texte */
-    font-weight: bold; /* Pour un texte en gras */
-    color: #ffffff; /* Utilisez la couleur désirée pour le texte */
-    text-align: center; /* Pour centrer le texte dans la carte */
-    margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous du h3 */
- 
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin: 10px 0;
 }
 
 .profits-row {
     display: flex;
-    gap: 20px; /* Cela va créer 20px d'espace entre chaque carte */
+    gap: 20px;
+}
+
+/* Requête média pour les écrans d'ordinateur */
+@media (min-width: 768px) {
+    .card p {
+        font-size: 1.5em; /* Taille de police plus grande pour ordinateur */
+        /* Autres styles spécifiques pour ordinateur */
+    }
+
+    .profits-row {
+        gap: 40px; /* Plus d'espace entre les cartes sur un grand écran */
+    }
+
+    .card {
+        /* Vous pouvez ajuster la largeur et la hauteur pour les grands écrans */
+        width: calc(25% - 40px); /* Par exemple, pour quatre cartes par ligne */
+        /* Ajoutez d'autres propriétés de mise en page spécifiques aux ordinateurs si nécessaire */
+    }
 }
 
 

@@ -52,12 +52,52 @@
                 <h3>Total Earnings</h3>
                 <p>37.5 BNB </p>
             </div>
+
+            
+        </div>
+
+    
+        <div class="dividend-container">
+            <p>Dividendes Available</p>
+            <div class="dividend-info">
+                <img src="17.png" alt="Binance Smart Chain Logo" class="binance-logo">
+                <span id="dividend-amount">0.00000000</span> BNB
+            </div>
         </div>
     </div>
     
- 
+   
 
 <script>
+const dividendSpeedPerDay = 1; // 1 BNB par jour
+const dividendElement = document.getElementById('dividend-amount');
+
+// Récupère la valeur initiale et le timestamp de départ depuis le localStorage ou les initialise
+let initialValue = parseFloat(localStorage.getItem('initialValue')) || 0;
+let startTime = parseInt(localStorage.getItem('startTime'), 10);
+
+if (!startTime) {
+    startTime = Date.now();
+    localStorage.setItem('startTime', startTime);
+}
+
+// Fonction pour mettre à jour les dividendes
+function updateDividend() {
+    const currentTime = Date.now();
+    // Calcule le temps écoulé en secondes depuis le début
+    const elapsedTime = (currentTime - startTime) / 1000; 
+    // Calcule le montant à ajouter en se basant sur le temps écoulé
+    let increment = (elapsedTime / 86400) * dividendSpeedPerDay;
+    let currentValue = initialValue + increment;
+    dividendElement.textContent = currentValue.toFixed(8); // Affiche la valeur avec 8 décimales
+    // Stocke la valeur actuelle dans le localStorage
+    localStorage.setItem('initialValue', currentValue.toFixed(8));
+}
+
+// Met à jour les dividendes immédiatement et ensuite chaque seconde
+updateDividend();
+setInterval(updateDividend, 1000);
+
 
 function copyToClipboard(selector) {
     var text = document.querySelector(selector).href;
