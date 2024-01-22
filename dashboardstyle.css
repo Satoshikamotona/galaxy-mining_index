@@ -97,14 +97,20 @@ body {
 }
 
 
+
 .profits-row {
     justify-content: space-around; /* Cette propriété va répartir l'espace uniformément autour de chaque carte */
 }
 
-.card {
+.cards {
     flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
     margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
 }
+.cards {
+    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+    margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
+}
+
 
 .card {
     /* Définit la largeur et la hauteur des cartes */
@@ -113,7 +119,12 @@ body {
 
 }
 
+.cards {
+    /* Définit la largeur et la hauteur des cartes */
+    width: 200px; /* Remplacez par la largeur souhaitée */
+    height: 100px; /* Remplacez par la hauteur souhaitée */
 
+}
 .card {
   
 
@@ -124,6 +135,15 @@ body {
     
 }
 
+.cards {
+  
+
+    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+    margin: 0 5px; /* Espacement entre chaque carte */
+    margin-right: 10px; /* Espacement à droite de chaque carte */
+
+
+}
 /* Background Styles */
 body::before {
     display: none;
@@ -361,6 +381,41 @@ a:hover {
     text-decoration: underline;
   }
 
+  .card {
+    background: #1a1a1a;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cards.highlight {
+    border-color: var(--accent-color);
+    background: linear-gradient(45deg, #333333, #1a1a1a);
+  }
+  
+  .cards h3 {
+    color: var(--accent-color);
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .cards p {
+    margin: 5px 0;
+  }
+  
+  .cards a {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .cards a:hover {
+    text-decoration: underline;
+  }
   .user-profile-container {
     display: flex;
     align-items: center;
@@ -622,6 +677,12 @@ a:hover {
     font-weight: bold;
 }
 
+.cards-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
 .program-title {
     color: #F0B90B; /* couleur jaune doré */
 }
@@ -635,6 +696,12 @@ a:hover {
 }
 
 .card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* espace entre l'en-tête et le contenu */
+}
+.cards-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -692,6 +759,22 @@ a:hover {
     margin: 0;
 }
 
+.cards-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--primary-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards-header h1 {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin: 0;
+}
+
 .info-circle {
     width: 25px;
     height: 25px;
@@ -709,6 +792,14 @@ a:hover {
 }
 
 .card-body {
+    background: rgba(33, 36, 41, 0.85); /* Noir translucide pour voir l'image en arrière-plan */
+    padding: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cards-body {
     background: rgba(33, 36, 41, 0.85); /* Noir translucide pour voir l'image en arrière-plan */
     padding: 15px;
     border-bottom-left-radius: 10px;
@@ -774,12 +865,22 @@ a:hover {
     width: 100%; /* Use a percentage width for flexibility */
     overflow: hidden; /* Hide overflow */
 }
+.cards {
+    min-width: 150px; /* Minimum width, can grow if needed */
+    max-width: 500px; /* Maximum width */
+    width: 100%; /* Use a percentage width for flexibility */
+    overflow: hidden; /* Hide overflow */
+}
+
 
 .card-body {
     padding: 10px;
     overflow: auto; /* Scroll inside if content is too big */
 }
-
+.cards-body {
+    padding: 10px;
+    overflow: auto; /* Scroll inside if content is too big */
+}
 .grid {
     justify-content: flex-start; /* Align grid items to the start */
     flex-wrap: wrap; /* Wrap items to the next line if not enough space */
@@ -981,7 +1082,52 @@ a:hover {
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition douce pour les effets au survol */
 }
 
+
 .card:hover {
     transform: perspective(500px) rotateX(0deg); /* Effet de redressement au survol */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75); /* Ombre portée plus prononcée au survol */
+}
+
+/* Base styles for .cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    margin: 10px; /* Space between the cards */
+    flex-basis: calc(50% - 20px); /* Adjustment for two cards per line */
+    max-width: calc(50% - 20px); /* Adjustment for two cards per line */
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7)); /* Gradient background with transparency */
+    color: #f0b90b; /* Text color */
+    border: 1px solid #f0b90b; /* Border for a sharper look */
+}
+
+/* 3D hover effect */
+.cards:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Style adjustments for smaller screens */
+@media (max-width: 768px) {
+    .WORKING {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards {
+        flex-basis: 100%; /* Full width on small screens */
+        max-width: 100%;
+        margin: 10px 0; /* Vertical space on small screens */
+    }
+}
+.cards {
+    /* Vous pouvez ajuster la largeur et la hauteur pour les grands écrans */
+    width: calc(25% - 40px); /* Par exemple, pour quatre cartes par ligne */
+    /* Ajoutez d'autres propriétés de mise en page spécifiques aux ordinateurs si nécessaire */
+
 }

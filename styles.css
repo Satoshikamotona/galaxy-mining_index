@@ -271,7 +271,9 @@ section p {
     font-family: 'Roboto', sans-serif;
     color: var(--secondary-color);
 }
-
+section h4 {
+color:var(--accent-color);; /* Couleur rouge pour le texte si non connecté */
+}
     .logo-container {
         justify-content: center;
     }
@@ -381,7 +383,7 @@ a:hover {
         #contractStatus {
             display: block; /* Rendre l'élément de type bloc pour appliquer la mise en page */
             text-align: center; /* Centrer le texte à l'intérieur de l'élément */
-            color: rgb(255, 255, 255); /* Couleur rouge pour le texte si non connecté */
+            color:var(--accent-color);; /* Couleur rouge pour le texte si non connecté */
             margin: 10px auto; /* Marge automatique pour centrer horizontalement */
             padding: 5px; /* Ajouter un peu d'espace interne pour l'esthétique */
             /* Autres styles que vous souhaitez appliquer */
