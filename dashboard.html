@@ -155,17 +155,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            const userAccount = accounts[0]; // Stockage de l'adresse complète
+            const userAccount = accounts[0];
 
             // Truncate the address for display
             const truncatedAddress = userAccount.substring(0, 6) + '...' + userAccount.substring(userAccount.length - 4);
             document.querySelector('.wallet-address').textContent = truncatedAddress;
 
-            // Utilisation de l'adresse complète pour obtenir l'ID de l'utilisateur
-            const userId = await window.contract.methods.UserID(userAccount).call();
+            const numberOfUsers = await window.contract.methods.NumberOfUsers().call(); // Obtenez le nombre total d'utilisateurs
+            let userId = null;
 
-            // Mise à jour de l'UI avec l'ID de l'utilisateur
-            document.querySelector('.profile-id').textContent = 'ID: ' + userId;
+            for (let i = 1; i <= numberOfUsers; i++) {
+                const address = await window.contract.methods.idToAddress(i).call();
+                if (address.toLowerCase() === userAccount.toLowerCase()) {
+                    userId = i;
+                    break;
+                }
+            }
+
+            if (userId !== null) {
+                document.querySelector('.profile-id').textContent = 'ID: ' + userId;
+            } else {
+                console.error("User ID not found for the connected address");
+            }
         } catch (error) {
             console.error("Error in wallet connection or fetching data:", error);
         }
@@ -173,6 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("Ethereum browser not detected. Try installing MetaMask!");
     }
 });
+
 
 
     
