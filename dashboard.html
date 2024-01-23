@@ -152,23 +152,27 @@
 };
 
       
+const getUserIdByAddress = async function(userAddress) {
+    const numberOfUsers = await window.contract.methods.NumberOfUsers().call();
+    console.log("Nombre total d'utilisateurs:", numberOfUsers);
 
-        const getUserIdByAddress = async function(userAddress) {
-            const numberOfUsers = await window.contract.methods.NumberOfUsers().call();
-
-            for (let userId = 1; userId <= numberOfUsers; userId++) {
-                try {
-                    const address = await window.contract.methods.idToAddress(userId).call();
-                    if (address.toLowerCase() === userAddress.toLowerCase()) {
-                        return userId; // Retourne l'ID lorsque l'adresse correspond
-                    }
-                } catch (error) {
-                    console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
-                }
+    for (let userId = 1; userId <= numberOfUsers; userId++) {
+        try {
+            const address = await window.contract.methods.idToAddress(userId).call();
+            console.log("Adresse pour l'ID", userId, ":", address);
+            if (address.toLowerCase() === userAddress.toLowerCase()) {
+                console.log("ID trouvé:", userId);
+                return userId;
             }
+        } catch (error) {
+            console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+        }
+    }
 
-            return null; // Retourne null si aucun ID correspondant n'est trouvé
-        };
+    console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+    return null;
+};
+
 
         $(document).ready(async () => {
             if (window.ethereum) {
@@ -183,7 +187,7 @@
                     // Obtenir l'ID de l'utilisateur et mettre à jour l'UI avec jQuery
                     const userId = await getUserIdByAddress(userAccount);
                     if (userId !== null) {
-                        $('.profile-id').text('ID: ' + userId);
+                        $('.profile-id').text('ID:0 ' + userId);
                     } else {
                         console.error("User ID not found for the connected address");
                     }
