@@ -164,9 +164,9 @@ $(document).ready(async () => {
      
 const init = async () => {
     try {
-        await connectcontract();
+  
         await calculateTeamProfit();
-        
+
         const directIncomeWei = await contract.methods.directIncome(userAccount).call();
         const directIncomeFrom10Wei = await contract.methods.directIncomefrom10(userAccount).call();
         const level10IncomeWei = await contract.methods.Level10Income(userAccount).call();
