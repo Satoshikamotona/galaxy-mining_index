@@ -163,7 +163,7 @@ $(document).ready(async () => {
         }
         const calculateTeamProfit = async () => {
     try {
-        const directIncomeWei = await contract.methods.DirectIncome(userAccount).call();
+        const directIncomeWei = await contract.methods.directIncome(userAccount).call();
         const directIncomeFrom10Wei = await contract.methods.directIncomefrom10(userAccount).call();
         const level10IncomeWei = await contract.methods.Level10Income(userAccount).call();
 
