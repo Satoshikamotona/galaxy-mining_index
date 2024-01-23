@@ -1,13 +1,44 @@
 /* BNB Smart Chain Color Scheme */
 :root {
-    --primary-color: #000000; /* Black for backgrounds */
+    --primary-color: #0f0e0e; /* Black for backgrounds */
     --accent-color: #F0B90B; /* Binance yellow for highlights */
     --secondary-color: #FFFFFF; /* White for secondary elements */
     --text-light: #FFFFFF; /* White for text */
     --text-dark: #000000; /* Black for text on light backgrounds */
+    --accent-colorS: #f0bb0ba0; /* Binance yellow for highlights */
 }
+.dashboard-header img {
+    width: 50px;
+    vertical-align: middle;
+  }
+  
+  .dashboard-header .wallet-address {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .dashboard-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+.dashboard-header {
+    background: var(--primary-color);
+    padding: 0px;
+    text-align: center;
 
-
+    position: fixed; 
+    width: 100%; /* S'étend sur toute la largeur de la page */
+    top: 0; /* Positionné en haut de la page */
+    left: 0; /* Positionné à gauche de la page */
+    z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
+  }
+  
 /* Modern Binance-Inspired Site Background */
 body {
    
@@ -18,13 +49,7 @@ body {
 }
 
 
-body {
-    background-color: #121212; /* Dark background */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 10px;
-    color: white;
-  }
+
 
   .container {
     max-width: 460px; /* Adjust the width as needed */
@@ -34,10 +59,22 @@ body {
   
 /* Footer Styles */
 footer {
-    background-color: #040202; /* Dark gray */
-    color: var(--text-light);
+ 
+   
     text-align: center;
     padding: 1em;
+}
+body {
+ 
+    padding-top: 50px; /* Ajustez cette valeur pour changer l'espacement avec l'en-tête */
+    height: 100vh;
+
+    background-position: center;
+    background-attachment: fixed;
+
+    justify-content: center;
+    align-items: center;
+
 }
 
 body {
@@ -50,25 +87,7 @@ body {
     background-position: center; /* L'image est centrée */
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
-/* Background Styles */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    
-    opacity: 0.7;
-    pointer-events: none;
-}
 
 /* Modern Binance-Inspired Site Background */
 body {
@@ -93,13 +112,7 @@ main {
 }
 
 
-/* Footer Styles */
-footer {
-    background-color: #040202; /* Dark gray */
-    color: var(--text-light);
-    text-align: center;
-    padding: 1em;
-}
+
 
 .header {
     background-color: var(--accent-color);
@@ -115,28 +128,12 @@ footer {
 
 /* Ajoutez un padding en haut du body pour éviter que le contenu soit caché sous le header */
 body {
-    padding-top: 70px; /* Ajustez cette valeur en fonction de la hauteur de votre en-tête */
-    /* ... autres styles du body ... */
+    padding-top: 50px;
+
 }
 
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh; /* Utilisez vh pour la hauteur de la fenêtre complète */
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-light);
-    background-color: var(--primary-color);
-    background-image: url('9.png'); /* Assurez-vous que le chemin d'accès à l'image est correct */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
 /* ... autres styles ... */
 
 .main-container {
@@ -146,18 +143,28 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrer les cartes verticalement */
-    width: 200px; /* Réduire la taille des badges */
-    height: 200px;
+    width: 150px; /* Réduire la taille des badges */
+    height: 150px;
+
+       
+    align-items: center;
+    backdrop-filter: blur(10px); /* Ajoute un effet de flou à l'arrière-plan */
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée pour un effet 3D */
+
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+    transform: translateZ(0); /* Prépare l'élément pour les animations 3D */
 }
 
 .card {
-    background: rgba(26, 35, 126, 0.8); /* Couleur de fond semi-transparente */
+
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    color: white;
+
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
     width: 80%; /* Pourcentage de la largeur du main-container */
     max-width: 300px; /* Largeur maximale */
     height: auto; /* Hauteur ajustée automatiquement */
@@ -186,6 +193,35 @@ h3 {
 }
 
 
+.card {
 
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Ombre plus profonde pour plus de profondeur */
+    transition: transform 0.3s ease; /* Transition pour l'effet au survol */
+}
 
+.card:hover {
+    transform: scale(1.05); /* Agrandit légèrement la carte au survol */
+}
 
+.badge-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 5px;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
