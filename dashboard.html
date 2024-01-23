@@ -144,6 +144,7 @@ const connectcontract = async () => {
         account = (await web3.eth.getAccounts())[0];
         contract = new web3.eth.Contract(ABI, Address); // Initialisation du contrat
         window.contract = contract; // Stockage dans l'objet window pour un accès global
+        calculateTeamProfit();
 
         console.log("Connected to smart contract");
     } catch (error) {
@@ -161,12 +162,8 @@ $(document).ready(async () => {
             console.error("No Ethereum accounts found.");
             return;
         }
-     
-const init = async () => {
+        const calculateTeamProfit = async () => {
     try {
-  
-        await calculateTeamProfit();
-
         const directIncomeWei = await contract.methods.directIncome(userAccount).call();
         const directIncomeFrom10Wei = await contract.methods.directIncomefrom10(userAccount).call();
         const level10IncomeWei = await contract.methods.Level10Income(userAccount).call();
@@ -180,7 +177,6 @@ const init = async () => {
     }
 };
 
-calculateTeamProfit();
 
 
      const getUserIdByAddress = async function(userAddress) {
