@@ -179,8 +179,8 @@
         }
 
         try {
-            const directIncomeWei = await this.contract.methods.DirectIncome(this.userAccount).call();
-            const directIncomeFrom10Wei = await this.contract.methods.DirectIncomefrom10(this.userAccount).call();
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
             const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
 
             const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
