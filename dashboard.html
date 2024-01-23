@@ -40,7 +40,7 @@
         <div class="profits-row">
             <div class="card">
                 <h3>Team Profit </h3>
-                <p> 0 BNB </p>
+                <p id="teamProfit">0 BNB</p> <!-- Identifiant ajouté ici -->
             </div>
             <div class="card">
                 <h3>Free Income </h3>
@@ -179,19 +179,19 @@
         }
 
         try {
-            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
-            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const directIncomeWei = await this.contract.methods.DirectIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.DirectIncomefrom10(this.userAccount).call();
             const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
 
             const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
             const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
 
-            document.querySelector('.card p').textContent = `${totalIncomeBNB.toString()} BNB`;
+            document.getElementById('teamProfit').textContent = `${totalIncomeBNB.toString()} BNB`;
         } catch (error) {
             console.error("Error in fetching team profit:", error);
         }
     },
-
+    
     init: async function() {
         await this.connectContract();
 
