@@ -1136,4 +1136,24 @@ a:hover {
 }
 
 
+@media (min-width: 768px) {
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr; /* Barre latérale et contenu principal */
+        gap: 20px;
+    }
 
+}
+
+@media (min-width: 768px) {
+    .right-section {
+        display: flex;
+        justify-content: center; /* Centre les éléments */
+    }
+
+    .dividend-container, .galaxy-programs {
+        flex: 0 1 45%; /* Ajuste la flexibilité: n'autorise pas la croissance, autorise la réduction, base de 45% */
+        margin: 0 5px; /* Réduit la marge entre les éléments */
+        /* Autres styles si nécessaire */
+    }
+}

@@ -62,6 +62,17 @@
     <script src="web3integration.js"></script>
 
     <script>
+window.addEventListener('load', async () => {
+    if (window.ethereum) { 
+        try {
+            await window.ethereum.request({ method: 'eth_requestAccounts' }); // Demande de connexion au portefeuille
+        } catch (error) {
+            console.error("cancel by User");
+        }
+    } else {
+        console.log("Please install MetaMask!");
+    }
+});
 
 document.getElementById('connectWalletButton').addEventListener('click', async () => {
     if (window.ethereum) {
