@@ -23,7 +23,7 @@
         <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
         <div class="profile-info">
             <p class="profile-id">ID: 0</p>
-            <p class="profile-invited">Invited By: User ID 1</p>
+            <p class="profile-invited">Parrain : <span id="referrerId">Chargement...</span></p>
 
             <div class="user-link-container">
                 <a href="https://example.com/user-link" class="user-link">https://example.com/user-link</a>
@@ -200,7 +200,34 @@ const getUserIdByAddress = async function(userAddress) {
         });
 
 
-    
+        $(document).ready(async () => {
+    if (window.ethereum) {
+        try {
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const userAccount = accounts[0];
+
+            // Récupérer l'adresse du parrain
+            const referrerAddress = await window.contract.methods.referrers(userAccount).call();
+
+            // Trouver l'ID correspondant à l'adresse du parrain
+            const referrerId = await getUserIdByAddress(referrerAddress);
+
+            if (referrerId !== null) {
+                $('#referrerId').text('User ID ' + referrerId);
+            } else {
+                $('#referrerId').text('Non trouvé');
+            }
+        } catch (error) {
+            console.error("Error in fetching referrer information:", error);
+            $('#referrerId').text('Erreur');
+        }
+    } else {
+        console.log("Ethereum browser not detected. Try installing MetaMask!");
+        $('#referrerId').text('MetaMask non détecté');
+    }
+});
+
+
     
 
 
