@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -150,34 +151,39 @@
     }
 };
 
-        // Fonction pour obtenir l'ID de l'utilisateur à partir de son adresse
+      
+
         const getUserIdByAddress = async function(userAddress) {
             const numberOfUsers = await window.contract.methods.NumberOfUsers().call();
 
             for (let userId = 1; userId <= numberOfUsers; userId++) {
-                const address = await window.contract.methods.idToAddress(userId).call();
-                if (address.toLowerCase() === userAddress.toLowerCase()) {
-                    return userId; // Retourne l'ID lorsque l'adresse correspond
+                try {
+                    const address = await window.contract.methods.idToAddress(userId).call();
+                    if (address.toLowerCase() === userAddress.toLowerCase()) {
+                        return userId; // Retourne l'ID lorsque l'adresse correspond
+                    }
+                } catch (error) {
+                    console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
                 }
             }
 
             return null; // Retourne null si aucun ID correspondant n'est trouvé
         };
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        $(document).ready(async () => {
             if (window.ethereum) {
                 try {
                     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                     const userAccount = accounts[0];
 
-                    // Truncate the address for display
+                    // Truncate the address for display using jQuery
                     const truncatedAddress = userAccount.substring(0, 6) + '...' + userAccount.substring(userAccount.length - 4);
-                    document.querySelector('.wallet-address').textContent = truncatedAddress;
+                    $('.wallet-address').text(truncatedAddress);
 
-                    // Obtenir l'ID de l'utilisateur et mettre à jour l'UI
+                    // Obtenir l'ID de l'utilisateur et mettre à jour l'UI avec jQuery
                     const userId = await getUserIdByAddress(userAccount);
                     if (userId !== null) {
-                        document.querySelector('.profile-id').textContent = 'ID: ' + userId;
+                        $('.profile-id').text('ID: ' + userId);
                     } else {
                         console.error("User ID not found for the connected address");
                     }
@@ -188,8 +194,6 @@
                 console.log("Ethereum browser not detected. Try installing MetaMask!");
             }
         });
-
- 
 
 
     
