@@ -163,20 +163,23 @@ $(document).ready(async () => {
         }
         const calculateTeamProfit = async () => {
     try {
+        const directIncomeWei = await contract.methods.DirectIncome(userAccount).call();
+        const directIncomeFrom10Wei = await contract.methods.directIncomefrom10(userAccount).call();
+        const level10IncomeWei = await contract.methods.Level10Income(userAccount).call();
 
-        const directIncome = await contract.methods.DirectIncome(userAccount).call();
-        const directIncomeFrom10 = await contract.methods.directIncomefrom10(userAccount).call();
-        const level10Income = await contract.methods.Level10Income(userAccount).call();
-
-        const totalIncomeWei = BigInt(directIncome) + BigInt(directIncomeFrom10) + BigInt(level10Income);
+        const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
         const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
 
-        document.querySelector('.card p').textContent = `${totalIncomeBNB} BNB`;
+        document.querySelector('.card p').textContent = `${totalIncomeBNB.toString()} BNB`;
     } catch (error) {
         console.error("Error in fetching team profit:", error);
     }
 };
-        const getUserIdByAddress = async function(userAddress) {
+
+calculateTeamProfit();
+
+
+     const getUserIdByAddress = async function(userAddress) {
     const numberOfUsers = await window.contract.methods.NumberOfUsers().call();
     console.log("Nombre total d'utilisateurs:", numberOfUsers);
 
