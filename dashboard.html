@@ -150,30 +150,6 @@
             console.error("Error connecting to contract: ", error);
         }
     },
-    
-    calculateTeamProfit: async function() {
-        if (!this.userAccount) {
-            console.error("User account is undefined.");
-            return;
-        }
-
-        try {
-            // Récupération des valeurs depuis le contrat
-            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
-            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
-            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
-
-            // Addition des valeurs et conversion de Wei en BNB
-            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
-            const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
-
-            // Mise à jour de l'interface utilisateur
-            document.querySelector('.card p').textContent = `${totalIncomeBNB.toString()} BNB`;
-        } catch (error) {
-            console.error("Error in fetching team profit:", error);
-        }
-    },
-
 
     getUserIdByAddress: async function(userAddress) {
         const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
@@ -196,6 +172,25 @@
         return null;
     },
 
+    calculateTeamProfit: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
+            const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
+
+            document.querySelector('.card p').textContent = `${totalIncomeBNB.toString()} BNB`;
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
 
     init: async function() {
         await this.connectContract();
