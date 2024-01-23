@@ -1,4 +1,8 @@
 /* BNB Smart Chain Color Scheme */
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
 :root {
     --primary-color: #0f0e0e; /* Black for backgrounds */
     --accent-color: #F0B90B; /* Binance yellow for highlights */
@@ -224,4 +228,37 @@ h3 {
 
 h3 {
     font-size: 1.2rem;
+}
+
+.G56 {
+    text-align: left; /* Alignement du texte à gauche */
+    padding-left: 20px; /* Espace à gauche pour aérer le contenu */
+    font-family: Arial, Helvetica, sans-serif ;
+    color: #f0b90b; /* Couleur jaune doré de Binance */
+    margin: 10px 0; /* Espacement autour du texte */
+    font-family: 'Lato', sans-serif;
+
+  
+
+}
+
+.G56 h2, .G56 h3 {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 5px 0; /* Petit espacement vertical pour séparer les lignes */
+ 
+
+}
+
+.G56 h2 {
+    color: #ffffff; /* Couleur blanche pour le sous-titre */
+    text-align: center;
+    font-size: 1em; /* Taille de police plus grande pour le titre */
+    
+}
+
+.G56 h3 {
+    font-size: 1em; /* Taille de police pour le sous-titre */
+    opacity: 0.8; /* Légère transparence pour le sous-titre */
+    color: #f0b90b; /* Couleur jaune doré pour le titre */
+
 }
