@@ -130,21 +130,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
     if (window.ethereum) {
         try {
+            // Request access to the user's Ethereum account
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            account = accounts[0];
+            const userAccount = accounts[0]; // The first account is usually the one used by users
+
+            // Initialize Web3 and the contract
             window.web3 = new Web3(window.ethereum);
             window.contract = new web3.eth.Contract(ABI, Address);
 
-            // Check if the contract is connected
-            console.log("Contract connected:", window.contract);
-
             // Fetch and display the user ID
-            const userId = await window.contract.methods.UserID(account).call();
-            console.log("Fetched User ID:", userId);
+            const userId = await window.contract.methods.UserID(userAccount).call();
+            console.log("Fetched User ID:", userId); // For debugging
             document.querySelector('.profile-id').textContent = 'ID: ' + userId;
 
             // Truncate and display the wallet address
-            const truncatedAddress = account.substring(0, 4) + '...' + account.substring(account.length - 4);
+            const truncatedAddress = userAccount.substring(0, 4) + '...' + userAccount.substring(userAccount.length - 4);
             document.querySelector('.wallet-address').textContent = truncatedAddress;
         } catch (error) {
             console.error("Error:", error);
