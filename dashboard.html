@@ -151,20 +151,20 @@
 };
 
 
-        document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            const account = accounts[0];
+            const userAccount = accounts[0]; // Stockage de l'adresse complète
 
             // Truncate the address for display
-            const truncatedAddress = account.substring(0, 4) + '...' + account.substring(account.length - 4);
+            const truncatedAddress = userAccount.substring(0, 6) + '...' + userAccount.substring(userAccount.length - 4);
             document.querySelector('.wallet-address').textContent = truncatedAddress;
 
-            // Assuming window.contract is already initialized with your smart contract
-            const userId = await window.contract.methods.UserID(account).call();
+            // Utilisation de l'adresse complète pour obtenir l'ID de l'utilisateur
+            const userId = await window.contract.methods.UserID(userAccount).call();
 
-            // Update the profile-id element with the fetched user ID
+            // Mise à jour de l'UI avec l'ID de l'utilisateur
             document.querySelector('.profile-id').textContent = 'ID: ' + userId;
         } catch (error) {
             console.error("Error in wallet connection or fetching data:", error);
