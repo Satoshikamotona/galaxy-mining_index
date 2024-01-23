@@ -145,7 +145,7 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0]; // This is the UserToRegister address, automatically obtained
 
-                const registrationFee = web3.utils.toWei('0.004', 'ether'); // The registration fee of 0.004 BNB
+                const registrationFee = web3.utils.toWei('0.01', 'ether'); // The registration fee of 0.004 BNB
 
                 // Assuming the smart contract method for registration is correctly named and takes the referrer's address as a parameter
                 const response = await window.contract.methods.registerUser(referrerAddress).send({ from: userAddress, value: registrationFee });
