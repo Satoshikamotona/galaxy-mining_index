@@ -211,7 +211,7 @@
 
         try {
             const directPartnersCount = await this.contract.methods.directPartnersCount(this.userAccount).call();
-            const partnersCountElement = document.getElementById('partnersCount'); // Assurez-vous que cet ID correspond à votre HTML
+            const partnersCountElement = document.getElementById('partner'); // Assurez-vous que cet ID correspond à votre HTML
 
             if (partnersCountElement) {
                 partnersCountElement.textContent = directPartnersCount.toString();
