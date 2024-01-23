@@ -45,6 +45,12 @@ body {
     }
 }
 
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
 .dividend-container {
     text-align: center;
     margin: 20px;
@@ -247,6 +253,7 @@ header {
     padding: 1em;
     position: relative;
     background-size: cover;
+
 }
 
 
@@ -313,6 +320,7 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-light);
+    padding-top: 70px;
 }
 
 /* Titres et Sous-titres */
@@ -381,8 +389,14 @@ a:hover {
   
   .dashboard-header {
     background: var(--primary-color);
-    padding: 20px;
+    padding: 0px;
     text-align: center;
+
+    position: fixed; 
+    width: 100%; /* S'étend sur toute la largeur de la page */
+    top: 0; /* Positionné en haut de la page */
+    left: 0; /* Positionné à gauche de la page */
+    z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
   }
   
   .dashboard-header img {
@@ -548,7 +562,7 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    padding: 50px;
+    padding: 80px;
 
   
   }

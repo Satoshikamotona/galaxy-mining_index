@@ -63,6 +63,8 @@ header {
     padding: 1em;
     position: relative;
     background-size: cover;
+
+    
 }
 
 .logo-container {
@@ -422,4 +424,8 @@ a:hover {
     text-decoration: underline; /* Souligner au survol */
 }
 
+h4 {
+
+    color:var(--accent-color);  
+}
 /* ... Reste de votre CSS ... */
