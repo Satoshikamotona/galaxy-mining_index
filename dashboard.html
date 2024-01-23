@@ -184,9 +184,16 @@
             const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
 
             const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
-          
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
 
-            document.getElementById('teamProfit').textContent = `${totalIncomeWei.toString()} BNB`;
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('teamProfit');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(5)} BNB`;
+            } else {
+                console.error("Element 'teamProfit' not found in the DOM.");
+            }
         } catch (error) {
             console.error("Error in fetching team profit:", error);
         }
