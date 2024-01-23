@@ -129,10 +129,10 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
     if (registrationForm) {
         registrationForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            const parrainAddress = document.getElementById('parrain').value;
+            const referrerAddress = document.getElementById('parrain').value; // Fetches the value from the input field with ID 'parrain'
 
-            if (!parrainAddress) {
-                alert("Please enter the upline address.");
+            if (!referrerAddress) {
+                alert("Please enter the referrer address.");
                 return;
             }
 
@@ -140,15 +140,18 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
                 alert("You are not connected to the smart contract.");
                 return;
             }
+
             try {
                 const accounts = await web3.eth.getAccounts();
-                const userAddress = accounts[0];
-                const registrationFee = web3.utils.toWei('0.0004', 'ether'); // Assurez-vous que ce montant est correct pour BNB
+                const userAddress = accounts[0]; // This is the UserToRegister address, automatically obtained
 
-                const response = await window.contract.methods.register(parrainAddress).send({ from: userAddress, value: registrationFee });
+                const registrationFee = web3.utils.toWei('0.004', 'ether'); // The registration fee of 0.004 BNB
+
+                // Assuming the smart contract method for registration is correctly named and takes the referrer's address as a parameter
+                const response = await window.contract.methods.registerUser(referrerAddress).send({ from: userAddress, value: registrationFee });
                 console.log("Registration successful:", response);
 
-                // Afficher un message de succès et recharger la page
+                // Success message and page reload
                 alert("Registration successful!");
                 window.location.reload();
             } catch (error) {
