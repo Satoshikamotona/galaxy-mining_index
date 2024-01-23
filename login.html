@@ -37,12 +37,18 @@
         <p>&copy; galaxyMining</p>
     </footer>
     <script>
-        
+
 document.getElementById('loginButton').addEventListener('click', async () => {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
+            const isUserRegistered = await window.contract.methods.isRegistered(account).call();
+            
+            if (!isUserRegistered) {
+                alert("Please register first before login.");
+                return; // Stop the login process
+            }
             console.log("User connected:", account);
 
             // Redirect to dashboard.html with the user's address as a query parameter
