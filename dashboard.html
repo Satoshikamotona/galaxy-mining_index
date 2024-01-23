@@ -184,9 +184,9 @@
             const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
 
             const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
-            const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
+          
 
-            document.getElementById('teamProfit').textContent = `${totalIncomeBNB.toString()} BNB`;
+            document.getElementById('teamProfit').textContent = `${totalIncomeWei.toString()} BNB`;
         } catch (error) {
             console.error("Error in fetching team profit:", error);
         }
