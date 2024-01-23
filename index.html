@@ -122,7 +122,13 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
 };
 
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
-
+        window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const parrainAddress = urlParams.get('parrain');
+        if (parrainAddress) {
+            document.getElementById('parrain').value = parrainAddress;
+        }
+    };
 
         document.addEventListener('DOMContentLoaded', function () {
     var registrationForm = document.getElementById('registrationForm');
@@ -141,6 +147,7 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
                 return;
             }
             try {
+
     const accounts = await web3.eth.getAccounts();
     const userAddress = accounts[0]; // The address of the currently connected user
 
@@ -154,7 +161,8 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
 
     // Success message and page reload
     alert("Registration successful!");
-    window.location.reload();
+   
+   window.location.href = 'login.html';
 } catch (error) {
     console.error("Error during registration:", error);
     alert("An error occurred during registration.");
