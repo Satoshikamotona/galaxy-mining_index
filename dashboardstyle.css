@@ -12,6 +12,25 @@ html, body {
     padding: 0;
 }
 
+.program-container {
+    position: relative; /* Nécessaire pour positionner le pseudo-élément */
+}
+
+.program-container:before {
+    content: ''; /* Nécessaire pour générer le pseudo-élément */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('gold-blur.png'); /* Chemin de votre image */
+    background-size: cover; /* ou 'contain' selon vos besoins */
+    opacity: 0.3; /* Ajustez pour la transparence */
+    z-index: -1; /* Place l'image en arrière-plan du contenu */
+}
+
+
+
 body {
     background-attachment: fixed;
 
@@ -72,11 +91,20 @@ body {
     text-align: center;
     margin: 10px 0;
 }
-
+/* Styles par défaut pour mobiles */
+.cardt p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin: 10px 0;
+}
 .profits-row {
     display: flex;
     gap: 20px;
 }
+
+
 
 /* Requête média pour les écrans d'ordinateur */
 @media (min-width: 768px) {
@@ -97,15 +125,31 @@ body {
 }
 
 
+/* Requête média pour les écrans d'ordinateur */
+@media (min-width: 768px) {
+    .card p {
+        font-size: 1.5em; /* Taille de police plus grande pour ordinateur */
+        /* Autres styles spécifiques pour ordinateur */
+    }
+
+    .profits-t {
+        gap: 40px; /* Plus d'espace entre les cartes sur un grand écran */
+    }
+
+    .cardt {
+        /* Vous pouvez ajuster la largeur et la hauteur pour les grands écrans */
+        width: calc(25% - 40px); /* Par exemple, pour quatre cartes par ligne */
+        /* Ajoutez d'autres propriétés de mise en page spécifiques aux ordinateurs si nécessaire */
+    }
+}
 
 .profits-row {
-    justify-content: space-around; /* Cette propriété va répartir l'espace uniformément autour de chaque carte */
+    justify-content: space-around;
+    background-image: "20240115_110655.png";
 }
 
-.cards {
-    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
-    margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
-}
+
+
 .cards {
     flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
     margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
@@ -119,12 +163,14 @@ body {
 
 }
 
-.cards {
+.cardt {
     /* Définit la largeur et la hauteur des cartes */
     width: 200px; /* Remplacez par la largeur souhaitée */
     height: 100px; /* Remplacez par la hauteur souhaitée */
 
 }
+
+
 .card {
   
 
@@ -135,7 +181,7 @@ body {
     
 }
 
-.cards {
+.cardt {
   
 
     flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
@@ -144,6 +190,9 @@ body {
 
 
 }
+
+
+
 /* Background Styles */
 body::before {
     display: none;
@@ -160,7 +209,19 @@ body::before {
     pointer-events: none;
 }
 
+.card {
+    position: relative; /* Important pour positionner l'image correctement */
+    background-color: #1a1a1a; /* Votre couleur de fond actuelle */
+  }
+  
+  .card::before {
+   
+    background-image: url('20240115_110655.png'); /* Chemin de votre image */
+    background-size: cover; /* ou 'contain' selon vos besoins */
+    opacity: 0.5; /* Ajustez pour la transparence */
 
+  }
+  
 
 /* Modern Binance-Inspired Site Background */
 body {
@@ -305,7 +366,6 @@ a:hover {
 
    
         
-    /* Style pour le titre de la page */
 .page-title {
     text-align: center;
     font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
@@ -391,29 +451,29 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .cards.highlight {
+  .cardt.highlight {
     border-color: var(--accent-color);
     background: linear-gradient(45deg, #333333, #1a1a1a);
   }
   
-  .cards h3 {
+  .cardt h3 {
     color: var(--accent-color);
     margin: 0;
     padding: 10px 0;
   }
   
-  .cards p {
+  .cardt p {
     margin: 5px 0;
   }
   
-  .cards a {
+  .cardt a {
     color: var(--accent-color);
     text-decoration: none;
     display: inline-block;
     margin: 10px 0;
   }
   
-  .cards a:hover {
+  .cardt a:hover {
     text-decoration: underline;
   }
   .user-profile-container {
@@ -747,7 +807,7 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    background: var(--primary-color);
+
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -758,7 +818,7 @@ a:hover {
     margin: 0;
 }
 
-.cards-header {
+.cardt-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -768,7 +828,7 @@ a:hover {
     border-top-right-radius: 10px;
 }
 
-.cards-header h1 {
+.cardt-header h1 {
     font-size: 1.5em;
     color: var(--accent-color);
     margin: 0;
@@ -791,20 +851,12 @@ a:hover {
 }
 
 .card-body {
-    background: rgba(33, 36, 41, 0.85); /* Noir translucide pour voir l'image en arrière-plan */
     padding: 15px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-.cards-body {
-    background: rgba(33, 36, 41, 0.85); /* Noir translucide pour voir l'image en arrière-plan */
-    padding: 15px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-}
 
 .program-name {
     font-size: 2em;
@@ -859,12 +911,12 @@ a:hover {
 /* ... autres styles ... */
 
 .card {
-    min-width: 150px; /* Minimum width, can grow if needed */
+    min-width: 130px; /* Minimum width, can grow if needed */
     max-width: 500px; /* Maximum width */
     width: 100%; /* Use a percentage width for flexibility */
     overflow: hidden; /* Hide overflow */
 }
-.cards {
+.cardt {
     min-width: 150px; /* Minimum width, can grow if needed */
     max-width: 500px; /* Maximum width */
     width: 100%; /* Use a percentage width for flexibility */
@@ -876,7 +928,7 @@ a:hover {
     padding: 10px;
     overflow: auto; /* Scroll inside if content is too big */
 }
-.cards-body {
+.cardt-body {
     padding: 10px;
     overflow: auto; /* Scroll inside if content is too big */
 }
@@ -1070,63 +1122,8 @@ a:hover {
 .program-container:hover {
     transform: perspective(500px) rotateX(0deg); /* Effet de redressement au survol */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75); /* Ombre portée plus prononcée au survol */
-}
-.card {
-    align-items: center;
-    background-color: #000; /* Couleur de fond foncée */
-    color: #f0b90b; /* Couleur dorée de Binance */
-    border-radius: 15px; /* Bords arrondis */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombre portée pour un effet de profondeur */
-    background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%); /* Dégradé subtil pour un effet 3D */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition douce pour les effets au survol */
+
 }
 
 
-.card:hover {
-    transform: perspective(500px) rotateX(0deg); /* Effet de redressement au survol */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75); /* Ombre portée plus prononcée au survol */
-}
 
-/* Base styles for .cards */
-.cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    margin: 10px; /* Space between the cards */
-    flex-basis: calc(50% - 20px); /* Adjustment for two cards per line */
-    max-width: calc(50% - 20px); /* Adjustment for two cards per line */
-    background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7)); /* Gradient background with transparency */
-    color: #f0b90b; /* Text color */
-    border: 1px solid #f0b90b; /* Border for a sharper look */
-}
-
-/* 3D hover effect */
-.cards:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Style adjustments for smaller screens */
-@media (max-width: 768px) {
-    .WORKING {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cards {
-        flex-basis: 100%; /* Full width on small screens */
-        max-width: 100%;
-        margin: 10px 0; /* Vertical space on small screens */
-    }
-}
-.cards {
-    /* Vous pouvez ajuster la largeur et la hauteur pour les grands écrans */
-    width: calc(25% - 40px); /* Par exemple, pour quatre cartes par ligne */
-    /* Ajoutez d'autres propriétés de mise en page spécifiques aux ordinateurs si nécessaire */
-
-}
