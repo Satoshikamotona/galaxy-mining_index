@@ -140,24 +140,26 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
                 alert("You are not connected to the smart contract.");
                 return;
             }
-
             try {
-                const accounts = await web3.eth.getAccounts();
-                const userAddress = accounts[0]; // This is the UserToRegister address, automatically obtained
+    const accounts = await web3.eth.getAccounts();
+    const userAddress = accounts[0]; // The address of the currently connected user
 
-                const registrationFee = web3.utils.toWei('0.01', 'ether'); // The registration fee of 0.004 BNB
+    const referrerAddress = document.getElementById('parrain').value; // Fetches the referrer's address from the form
 
-                // Assuming the smart contract method for registration is correctly named and takes the referrer's address as a parameter
-                const response = await window.contract.methods.registerUser(referrerAddress).send({ from: userAddress, value: registrationFee });
-                console.log("Registration successful:", response);
+    const registrationFee = web3.utils.toWei('0.01', 'ether'); // The registration fee of 0.01 BNB
 
-                // Success message and page reload
-                alert("Registration successful!");
-                window.location.reload();
-            } catch (error) {
-                console.error("Error during registration:", error);
-                alert("An error occurred during registration.");
-            }
+    // Call the smart contract method for registration with both userAddress and referrerAddress
+    const response = await window.contract.methods.registerUser(userAddress, referrerAddress).send({ from: userAddress, value: registrationFee });
+    console.log("Registration successful:", response);
+
+    // Success message and page reload
+    alert("Registration successful!");
+    window.location.reload();
+} catch (error) {
+    console.error("Error during registration:", error);
+    alert("An error occurred during registration.");
+}
+
         });
     }
 });
