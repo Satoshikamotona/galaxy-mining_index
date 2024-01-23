@@ -11,6 +11,12 @@ html, body {
     margin: 0;
     padding: 0;
 }
+.galaxy-programs {
+    /* vos autres styles */
+    margin-bottom: 10px; /* Réduire la marge inférieure */
+}
+
+
 
 .program-container {
     position: relative; /* Nécessaire pour positionner le pseudo-élément */
@@ -970,7 +976,7 @@ a:hover {
 
 .galaxy-programs {
     text-align: center;
-    padding: 20px;
+    padding: 0px;
    
 }
 
@@ -981,19 +987,19 @@ a:hover {
 
 .program-container {
     background: rgba(33, 36, 41, 0.85); /* Fond translucide pour l'effet moderne */
-    padding: 20px;
+    padding: 50px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    max-width: 300px; /* Ajustez selon vos besoins */
+    max-width: 400px; /* Ajustez selon vos besoins */
     align-items: center;
     height: 200px;
+    width: 500px;
 
 }
 
 
 .program-container {
     background: rgba(33, 36, 41, 0.85); /* Fond translucide */
-    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     max-width: 250px; /* Largeur maximale */
@@ -1051,16 +1057,6 @@ a:hover {
     display: inline-block;
 }
 
-@media (max-width: 768px) {
-    .program-container {
-        max-width: 100%; /* Pleine largeur sur les petits écrans */
-        margin-bottom: 20px;
-    }
-
-    .grid {
-        grid-template-columns: repeat(3, 1fr); /* Moins de colonnes sur les petits écrans */
-    }
-}
 
 
 
