@@ -40,7 +40,7 @@
         <div class="profits-row">
             <div class="card">
                 <h3>Team Profit </h3>
-                <p>37.5 BNB </p>
+                <p> 0 BNB </p>
             </div>
             <div class="card">
                 <h3>Free Income </h3>
@@ -161,7 +161,21 @@ $(document).ready(async () => {
             console.error("No Ethereum accounts found.");
             return;
         }
+        const calculateTeamProfit = async () => {
+    try {
 
+        const directIncome = await contract.methods.DirectIncome(userAccount).call();
+        const directIncomeFrom10 = await contract.methods.directIncomefrom10(userAccount).call();
+        const level10Income = await contract.methods.Level10Income(userAccount).call();
+
+        const totalIncomeWei = BigInt(directIncome) + BigInt(directIncomeFrom10) + BigInt(level10Income);
+        const totalIncomeBNB = totalIncomeWei / BigInt(1e18);
+
+        document.querySelector('.card p').textContent = `${totalIncomeBNB} BNB`;
+    } catch (error) {
+        console.error("Error in fetching team profit:", error);
+    }
+};
         const getUserIdByAddress = async function(userAddress) {
     const numberOfUsers = await window.contract.methods.NumberOfUsers().call();
     console.log("Nombre total d'utilisateurs:", numberOfUsers);
