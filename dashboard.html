@@ -172,7 +172,7 @@
     },
 
  
-getFreeIncome: async function() {
+     getFreeIncome: async function() {
     if (!this.userAccount) {
         console.error("User account is undefined.");
         return;
@@ -279,6 +279,7 @@ getFreeIncome: async function() {
 
         await this.calculateTeamProfit();
         await this.getPartenairesCount();
+        await this.getFreeIncome();
     }
 };
 
