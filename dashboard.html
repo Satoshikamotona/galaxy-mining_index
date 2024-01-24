@@ -312,32 +312,31 @@
 
 
 
-document.getElementById('claimDividendButton').addEventListener('click', function() {
-    claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
-});
-
 async function claimDividend() {
-    let userAddress = galaxyMining.userAccount; 
+    let userAddress = galaxyMining.userAccount;
     let userData = getDividendData(userAddress);
 
+ 
+    let dividendAmount = Number(userData.dividendAmount).toFixed(18);
+
    
-    let dividendAmountWei = web3.utils.toWei(userData.dividendAmount.toString(), 'ether');
+    let dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
 
     try {
-      
+       
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
         console.log("Dividendes réclamés avec succès");
 
      
         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
         localStorage.setItem(userAddress, JSON.stringify(userData));
-        document.getElementById('dividend-amount').textContent = '0.00000000 BNB';
+        document.getElementById('dividend-amount').textContent = '0.00000000000000 BNB';
     } catch (error) {
         console.error("Erreur lors de la réclamation des dividendes:", error);
     }
 }
 
-const dividendSpeedPerSecond = 0.00000000000463; // Dividendes par seconde en BNB
+const dividendSpeedPerSecond = 0.00000000000463; 
 
 function getDividendData(userAddress) {
     let userData = localStorage.getItem(userAddress);
