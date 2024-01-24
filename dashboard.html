@@ -73,7 +73,7 @@
                 <div class="number-box">
                     <span class="team-number"><p id="totalTeam">0</p></span>
             </div>
-        </div>
+                 </div>
         </div>
     </div>
        
@@ -222,23 +222,27 @@
     },
 
     countPartners: async function(address) {
-    let totalPartners = 0;
+    const directPartners = await this.contract.methods.directPartnersCount(address).call();
+    let totalPartners = parseInt(directPartners);
 
-    // Fonction récursive pour compter les partenaires à tous les niveaux de parrainage
-    async function recursiveCount(currentAddress) {
-        const directPartnersCount = parseInt(await galaxyMining.contract.methods.directPartnersCount(currentAddress).call());
-        totalPartners += directPartnersCount;
-
-        // Obtenir les partenaires directs de l'adresse actuelle
-        const partners = await galaxyMining.contract.methods.getDirectPartners(currentAddress).call();
-        for (const partner of partners) {
-            // Appeler récursivement pour chaque partenaire direct
-            await recursiveCount(partner);
-        }
+    const referrerAddress = await this.contract.methods.referrers(address).call();
+    if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
+        totalPartners += await this.countPartners(referrerAddress);
     }
 
-    await recursiveCount(address);
     return totalPartners;
+},
+
+calculateTotalTeam: async function(userAddress) {
+    const totalPartners = await this.countPartners(userAddress);
+
+    // Mettre à jour l'élément HTML avec le total des partenaires
+    const totalTeamElement = document.getElementById('totalTeam');
+    if (totalTeamElement) {
+        totalTeamElement.textContent = totalPartners.toString();
+    } else {
+        console.error("Element 'totalTeam' not found in the DOM.");
+    }
 },
     getPartenairesCount: async function() {
         if (!this.userAccount) {
