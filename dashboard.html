@@ -234,14 +234,14 @@
             const divClaimedbnb= Number( divClaimedwei ) / 1e18;
 
           
-            const profitElement = document.getElementById('claim-button');
+            const profitElement = document.getElementById('claimDividendButton');
             if (profitElement) {
                 profitElement.textContent = `${divClaimedbnb.toFixed(4)} BNB`;
             } else {
-                console.error("Element 'claim-button' not found in the DOM.");
+                console.error("Element 'claimDividendButton' not found in the DOM.");
             }
         } catch (error) {
-            console.error("Error in fetching claim-button", error);
+            console.error("Error in fetching claimDividendButton", error);
         }
     },
 
