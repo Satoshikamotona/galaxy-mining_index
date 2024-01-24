@@ -237,6 +237,7 @@
             const profitElement = document.getElementById('divclaimed');
             if (profitElement) {
                 profitElement.textContent = `${divClaimedbnb.toFixed(4)} BNB`;
+           
             } else {
                 console.error("Element 'divclaimed' not found in the DOM.");
             }
@@ -376,8 +377,10 @@ async function claimDividend() {
     try {
        
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
-        console.log("Dividendes réclamés avec succès");
-
+        console.log("Dividends successfully claimed");
+        alert("Dividends successfully claimed , check your wallet and enjoy Life 😎 ; ");
+   
+       window.location.reload();
      
         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
         localStorage.setItem(userAddress, JSON.stringify(userData));
