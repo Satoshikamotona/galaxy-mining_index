@@ -25,7 +25,7 @@
         <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
         <div class="profile-info">
             <p class="profile-id">ID: 0</p>
-            <p class="profile-invited">Parrain : <span id="referrerId">Chargement...</span></p>
+            <p class="profile-invited">Upline : <span id="referrerId">loading...</span></p>
 
             <div class="user-link-container">
                 <a href="https://example.com/user-link" class="user-link">https://example.com/user-link</a>
@@ -295,7 +295,7 @@ calculateTotalTeam: async function(userAddress) {
         if (referrerId !== null) {
             $('#referrerId').text('User ID ' + referrerId);
         } else {
-            $('#referrerId').text('Non trouvé');
+            $('#referrerId').text('0');
         }
 
 
