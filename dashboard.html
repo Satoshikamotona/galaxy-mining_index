@@ -86,7 +86,8 @@
                 <span id="dividend-amount">0.0000000000000</span> 
           
             </div>
-            <button class="claim-button">Claim</button> <!-- Bouton Claim -->
+            <button class="claim-button" id="claimDividendButton">Claim</button>
+
             </div>
       
 
@@ -309,46 +310,29 @@
     }
 };
 
-$(document).ready(async () => {
-    try {
-        await galaxyMining.init();
-    } catch (error) {
-        console.error("Error in Ethereum interaction:", error);
-    }
+
+
+document.getElementById('claimDividendButton').addEventListener('click', function() {
+    claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
 });
 
-
-</script>
-
-<script>
-
 async function claimDividend(userAddress) {
+    // Récupérer les données de dividendes de l'utilisateur
     let userData = getDividendData(userAddress);
     let dividendAmountWei = web3.utils.toWei(userData.dividendAmount.toString(), 'ether');
 
     try {
+       
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
         console.log("Dividendes réclamés avec succès");
 
-   
-        userData = { lastUpdateTime: Date.now(), dividendAmount: 0 };
+        // Réinitialiser les données de dividendes de l'utilisateur
+        userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
         localStorage.setItem(userAddress, JSON.stringify(userData));
-        document.getElementById('dividend-amount').textContent = '0.000000000000 BNB';
+        document.getElementById('dividend-amount').textContent = '0.00000000 BNB';
     } catch (error) {
         console.error("Erreur lors de la réclamation des dividendes:", error);
     }
-}
-
-// Ajoutez cette fonction à votre objet galaxyMining ou au contexte global
-function getDividendData(userAddress) {
-    let userData = localStorage.getItem(userAddress);
-    if (userData) {
-        userData = JSON.parse(userData);
-    } else {
-        userData = { lastUpdateTime: Date.now(), dividendAmount: 0 };
-        localStorage.setItem(userAddress, JSON.stringify(userData));
-    }
-    return userData;
 }
 
 const dividendSpeedPerSecond = 0.00000000000463; // Dividendes par seconde en BNB
@@ -376,13 +360,7 @@ function updateDividend(userAddress) {
     localStorage.setItem(userAddress, JSON.stringify(userData));
 }
 
-function claimDividend(userAddress) {
-    // Logique de réclamation ici
 
-    const userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
-    localStorage.setItem(userAddress, JSON.stringify(userData));
-    document.getElementById('dividend-amount').textContent = '0.000000000000';
-}
 
 // Lors de la connexion de l'utilisateur
 async function onUserLogin() {
@@ -397,6 +375,15 @@ document.querySelector('.claim-button').addEventListener('click', function() {
 });
 
 onUserLogin();
+
+$(document).ready(async () => {
+    try {
+        await galaxyMining.init();
+    } catch (error) {
+        console.error("Error in Ethereum interaction:", error);
+    }
+});
+
 
 </script>
 </body>
