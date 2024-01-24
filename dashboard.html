@@ -322,6 +322,35 @@ $(document).ready(async () => {
 
 <script>
 
+async function claimDividend(userAddress) {
+    let userData = getDividendData(userAddress);
+    let dividendAmountWei = web3.utils.toWei(userData.dividendAmount.toString(), 'ether');
+
+    try {
+        await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
+        console.log("Dividendes réclamés avec succès");
+
+   
+        userData = { lastUpdateTime: Date.now(), dividendAmount: 0 };
+        localStorage.setItem(userAddress, JSON.stringify(userData));
+        document.getElementById('dividend-amount').textContent = '0.000000000000 BNB';
+    } catch (error) {
+        console.error("Erreur lors de la réclamation des dividendes:", error);
+    }
+}
+
+// Ajoutez cette fonction à votre objet galaxyMining ou au contexte global
+function getDividendData(userAddress) {
+    let userData = localStorage.getItem(userAddress);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = { lastUpdateTime: Date.now(), dividendAmount: 0 };
+        localStorage.setItem(userAddress, JSON.stringify(userData));
+    }
+    return userData;
+}
+
 const dividendSpeedPerSecond = 0.00000000000463; // Dividendes par seconde en BNB
 
 function getDividendData(userAddress) {
@@ -367,7 +396,6 @@ document.querySelector('.claim-button').addEventListener('click', function() {
     claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
 });
 
-// Initiez le processus lors de la connexion de l'utilisateur
 onUserLogin();
 
 </script>
