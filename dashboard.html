@@ -222,51 +222,51 @@
     },
 
     calculateTotalTeam: async function() {
-        if (!this.userAccount) {
-            console.error("User account is undefined.");
-            return;
-        }
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
 
-        try {
-            const totalUsers = await this.contract.methods.NumberOfUsers().call();
-            let teamTotal = 0;
+    try {
+        let totalTeam = 0;
+        let visited = new Set();
+        let queue = [this.userAccount];
 
-            for (let userId = 1; userId <= totalUsers; userId++) {
-                const userAddress = await this.contract.methods.idToAddress(userId).call();
-                const directPartnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
+        while (queue.length > 0) {
+            let currentUser = queue.shift();
 
-                // Vérifier si l'utilisateur fait partie de la chaîne de parrainage de l'utilisateur connecté
-                if (await this.isUserInReferralChain(this.userAccount, userAddress)) {
-                    teamTotal += parseInt(directPartnersCount);
+            if (visited.has(currentUser)) {
+                continue;
+            }
+            visited.add(currentUser);
+
+            let directPartnersCount = await this.contract.methods.directPartnersCount(currentUser).call();
+            totalTeam += parseInt(directPartnersCount);
+
+            let partners = await this.getDirectPartners(currentUser);
+            for (let partner of partners) {
+                if (!visited.has(partner)) {
+                    queue.push(partner);
                 }
             }
-
-            // Mettre à jour l'affichage
-            const totalTeamElement = document.getElementById('totalTeam');
-            if (totalTeamElement) {
-                totalTeamElement.textContent = teamTotal.toString();
-            } else {
-                console.error("Element 'totalTeam' not found in the DOM.");
-            }
-        } catch (error) {
-            console.error("Error in fetching total team:", error);
-        }
-    },
-
-    isUserInReferralChain: async function(mainUser, currentUser) {
-        // Cette fonction vérifie récursivement si currentUser se trouve dans la chaîne de parrainage de mainUser
-        if (currentUser === mainUser) {
-            return true;
         }
 
-        const referrerAddress = await this.contract.methods.referrers(currentUser).call();
-        if (referrerAddress === '0x0000000000000000000000000000000000000000' || referrerAddress === mainUser) {
-            return referrerAddress === mainUser;
+        const totalTeamElement = document.getElementById('totalTeam');
+        if (totalTeamElement) {
+            totalTeamElement.textContent = totalTeam.toString();
+        } else {
+            console.error("Element 'totalTeam' not found in the DOM.");
         }
+    } catch (error) {
+        console.error("Error in calculating total team:", error);
+    }
+},
 
-        return await this.isUserInReferralChain(mainUser, referrerAddress);
-    },
-    
+getDirectPartners: async function(userAddress) {
+    // Implémentez cette fonction pour retourner les adresses des partenaires directs de 'userAddress'
+    // Cette fonction devrait retourner un tableau d'adresses
+},
+
     getPartenairesCount: async function() {
         if (!this.userAccount) {
             console.error("User account is undefined.");
