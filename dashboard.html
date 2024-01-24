@@ -220,47 +220,21 @@
             console.error("Error in fetching team profit:", error);
         }
     },
+    calculateTotalTeam: async function(userAddress, visited = new Set()) {
+        if (visited.has(userAddress)) {
+            return 0;
+        }
+        visited.add(userAddress);
 
-    calculateTotalTeam: async function() {
-    if (!this.userAccount) {
-        console.error("User account is undefined.");
-        return;
-    }
+        let totalCount = 0;
+        const partners = await this.contract.methods.getDirectPartners(userAddress).call();
 
-    try {
-        let totalTeam = 0;
-        let visited = new Set();
-        let queue = [this.userAccount];
-
-        while (queue.length > 0) {
-            let currentUser = queue.shift();
-
-            if (visited.has(currentUser)) {
-                continue;
-            }
-            visited.add(currentUser);
-
-            let directPartnersCount = await this.contract.methods.directPartnersCount(currentUser).call();
-            totalTeam += parseInt(directPartnersCount);
-
-            let partners = await this.getDirectPartners(currentUser);
-            for (let partner of partners) {
-                if (!visited.has(partner)) {
-                    queue.push(partner);
-                }
-            }
+        for (const partner of partners) {
+            totalCount += 1 + await this.calculateTotalTeam(partner, visited);
         }
 
-        const totalTeamElement = document.getElementById('totalTeam');
-        if (totalTeamElement) {
-            totalTeamElement.textContent = totalTeam.toString();
-        } else {
-            console.error("Element 'totalTeam' not found in the DOM.");
-        }
-    } catch (error) {
-        console.error("Error in calculating total team:", error);
-    }
-},
+        return totalCount;
+    },
 
 getDirectPartners: async function(userAddress) {
     // Implémentez cette fonction pour retourner les adresses des partenaires directs de 'userAddress'
@@ -325,8 +299,9 @@ getDirectPartners: async function(userAddress) {
         await this.calculateTeamProfit();
     await this.getPartenairesCount();
     await this.getFreeIncome();
-    await this.calculateTotalTeam();
-}
+    const teamTotal = await this.calculateTotalTeam(this.userAccount);
+        document.getElementById('totalTeam').textContent = teamTotal.toString();
+    }
 };
 
 $(document).ready(async () => {
