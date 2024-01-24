@@ -222,6 +222,56 @@
         }
     },
 
+    calculateDivClaimed: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const divClaimedwei = await this.contract.methods. totalDivClaimed(this.userAccount).call();
+          
+            const divClaimedbnb= Number( divClaimedwei ) / 1e18;
+
+          
+            const profitElement = document.getElementById('claim-button');
+            if (profitElement) {
+                profitElement.textContent = `${divClaimedbnb.toFixed(4)} BNB`;
+            } else {
+                console.error("Element 'claim-button' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching claim-button", error);
+        }
+    },
+
+    calculateTeamProfit: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('teamProfit');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'teamProfit' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+
 
     getPartenairesCount: async function() {
         if (!this.userAccount) {
@@ -305,6 +355,7 @@
     await this.getPartenairesCount();
     await this.getFreeIncome();
     await this.getDirectTeam();
+    await this.calculateDivClaimed();
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
     }
