@@ -174,6 +174,11 @@
     },
 
     updateProgramLevels: async function (userAddress) {
+    if (!userAddress) {
+        console.log("User address is undefined.");
+        return;
+    }
+    
     try {
         // Récupérer le nombre de niveaux actifs pour l'adresse de l'utilisateur
         const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
