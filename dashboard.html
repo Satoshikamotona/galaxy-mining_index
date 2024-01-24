@@ -83,7 +83,7 @@
             <p>Dividendes Available</p>
             <div class="dividend-info">
                 <img src="17.png" alt="Binance Smart Chain Logo" class="binance-logo">
-                <span id="dividend-amount">0.00000000</span> BNB
+                <span id="dividend-amount">0.0000000000000</span> 
           
             </div>
             <button class="claim-button">Claim</button> <!-- Bouton Claim -->
@@ -343,7 +343,7 @@ function updateDividend(userAddress) {
     userData.dividendAmount += elapsedTime * dividendSpeedPerSecond;
     userData.lastClaimTime = currentTime;
 
-    document.getElementById('dividend-amount').textContent = userData.dividendAmount.toFixed(8) + ' BNB';
+    document.getElementById('dividend-amount').textContent = userData.dividendAmount.toFixed(12) + ' BNB';
     localStorage.setItem(userAddress, JSON.stringify(userData));
 }
 
