@@ -171,7 +171,28 @@
         return null;
     },
 
-  
+ 
+getFreeIncome: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
+
+    try {
+        const freeIncomeWei = await this.contract.methods.freeIncome(this.userAccount).call();
+        const freeIncomeBNB = web3.utils.fromWei(freeIncomeWei, 'ether');
+
+        const freeIncomeElement = document.getElementById('freeincome');
+        if (freeIncomeElement) {
+            freeIncomeElement.textContent = `${parseFloat(freeIncomeBNB).toFixed(5)} BNB`;
+        } else {
+            console.error("Element 'freeincome' not found in the DOM.");
+        }
+    } catch (error) {
+        console.error("Error in fetching free income:", error);
+    }
+},
+
     calculateTeamProfit: async function() {
         if (!this.userAccount) {
             console.error("User account is undefined.");
@@ -190,7 +211,7 @@
             // Mettre à jour l'affichage
             const profitElement = document.getElementById('teamProfit');
             if (profitElement) {
-                profitElement.textContent = `${totalIncomeBNB.toFixed(4)} BNB`;
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
             } else {
                 console.error("Element 'teamProfit' not found in the DOM.");
             }
