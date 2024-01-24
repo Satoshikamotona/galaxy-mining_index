@@ -378,9 +378,8 @@ async function claimDividend() {
        
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
         console.log("Dividends successfully claimed");
-        alert("Dividends successfully claimed , check your wallet and enjoy Life 😎 ; ");
+        alert("Dividends successfully claimed , check your wallet and enjoy Life 😎  ");
    
-       window.location.reload();
      
         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
         localStorage.setItem(userAddress, JSON.stringify(userData));
