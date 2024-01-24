@@ -1,86 +1,78 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="loginstyle.css">
-    <title>GalaxyMining - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>galaxyMining - registration</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
 
 </head>
+
 <body>
     <header>
+        
         <button id="connectWalletButton" class="connect-btn">Connect Wallet</button>
         <div id="connectcontract" class="contract-status">
             <span id="contractIcon"></span> 
             <span id="contractStatus">Not connected to smart contract</span>
         </div>
+        
+
+        <div class="logo-container">
+            <h1 class="site-title">GalaxyMining</h1>
+            <img src="17.png" alt="Binance Smart Chain Logo" class="bnb-logo">
+        </div>
+        <h2>Welcome to <span class="highlight-text">galaxy mining</span></h2>
     
+            
+         
+        </div>
     </header>
+
     <main>
         <section class="container text-center">
-            <h1 class="page-title">WELCOME TO GALAXY MINING</h1>
-
-            <div class="login-container">
-                <h4>Login with your connected wallet</h4>
-                <button id="loginButton" class="connect-btn">Login Automatique</button>
+            <div class="registration-container">
+                <h4>Connect your wallet to register</h4>
+                <!-- Registration Form -->
+                <form id="registrationForm">
+                    <label for="parrain">Parrain's Address:</label>
+                    <input type="text" id="parrain" name="parrain" placeholder="Enter your sponsor's address">
+                    <input type="submit" value="Register">
+                </form>
+                
+                
+                <p>Registration requires 0.0004 BNB</p>
             </div>
+            <p>If you are already registered, <a href="index.html">click here</a> to log in.</p>
         </section>
 
-        <div class="register-invite">
-            <p>If you are not registered yet, <a href="registration.html">click here</a>.</p>
-        </div>
-
+        <section class="text-center">
+            <h2>Contact</h2>
+            <p>Contact us at email@example.com.</p>
+        </section>
     </main>
 
     <footer class="text-center">
         <p>&copy; galaxyMining</p>
     </footer>
+
+    <script src="web3integration.js"></script>
+
     <script>
-
-document.getElementById('loginButton').addEventListener('click', async () => {
-    if (window.ethereum) {
+window.addEventListener('load', async () => {
+    if (window.ethereum) { 
         try {
-            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-            const account = accounts[0];
-            const isUserRegistered = await window.contract.methods.isRegistered(account).call();
-
-            if (!isUserRegistered) {
-                alert("Please register first before login.");
-                return; // Stop the login process
-            }
-            console.log("User connected:", account);
-
-            // Redirect to dashboard.html with the user's address as a query parameter
-            window.location.href = 'dashboard.html?address=' + encodeURIComponent(account);
+            await window.ethereum.request({ method: 'eth_requestAccounts' }); // Demande de connexion au portefeuille
         } catch (error) {
-            console.error("Error during login:", error);
-            alert("Your are Not connected , connect Your wallet first.");
+            console.error("cancel by User");
         }
     } else {
-        console.log("Ethereum browser not detected. Try installing MetaMask!");
-        alert("Ethereum browser not detected. Try installing MetaMask!");
+        console.log("Please install MetaMask!");
     }
 });
-
-
-        document.getElementById('loginButton').addEventListener('click', async () => {
-            if (window.ethereum) {
-                try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                    const account = accounts[0];
-                    // Ici, vous pouvez rediriger l'utilisateur vers son tableau de bord ou afficher ses informations
-                    console.log("Utilisateur connecté :", account);
-                    // Exemple de redirection : window.location.href = 'dashboard.html?address=' + account;
-                } catch (error) {
-                    console.error("Erreur lors de la connexion :", error);
-                }
-            } else {
-                console.log("Navigateur Ethereum non détecté. Essayez d'installer MetaMask!");
-            }
-        });
-
-        
 
 document.getElementById('connectWalletButton').addEventListener('click', async () => {
     if (window.ethereum) {
@@ -107,17 +99,15 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
 
 
 
-       
         let account
         const connectcontract = async() => {
-
+      
           const ABI = [{"inputs":[{"internalType":"address","name":"admin","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"A","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"Admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevel","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claim_DIV","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"G56Matrix","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFunds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFundsbyAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Level10Income","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NumberOfUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TotalIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UplineEarnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Users","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"userAddress","type":"address"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"availableDiv","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"checkUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncomefrom10","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directPartnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"freeIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDirectPartners","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastRegistration","outputs":[{"internalType":"uint256","name":"userID","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"level","type":"uint256"}],"name":"hasLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"},{"internalType":"uint256","name":"_requiredLevel","type":"uint256"}],"name":"hasRequiredLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"idToAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isAdmin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isRegistered","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"l","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"randomUser","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUser","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAdmin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newFees","type":"uint256"}],"name":"setaRegistrationFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"setaRegistrationRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"setactivationRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newfees","type":"uint256"}],"name":"setholdingFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalInevest","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalLevels","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userDividends","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
           const Address = "0x73705f9255649D2346aC0aC59d8E987Fa68917dE";
 
     window.web3 = new Web3(window.ethereum);
     const contractStatus = document.getElementById("contractStatus");
     const contractIconContainer = document.getElementById("connectcontract");
-
 
     try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -134,14 +124,60 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
 };
 
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const parrainAddress = urlParams.get('parrain');
+        if (parrainAddress) {
+            document.getElementById('parrain').value = parrainAddress;
+        }
+    };
 
+        document.addEventListener('DOMContentLoaded', function () {
+    var registrationForm = document.getElementById('registrationForm');
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const referrerAddress = document.getElementById('parrain').value; // Fetches the value from the input field with ID 'parrain'
 
- 
+            if (!referrerAddress) {
+                alert("Please enter the referrer address.");
+                return;
+            }
 
+            if (!window.contract) {
+                alert("You are not connected to the smart contract.");
+                return;
+            }
+            try {
 
-    
-    
+    const accounts = await web3.eth.getAccounts();
+    const userAddress = accounts[0]; // The address of the currently connected user
+
+    const referrerAddress = document.getElementById('parrain').value; // Fetches the referrer's address from the form
+
+    const registrationFee = web3.utils.toWei('0.01', 'ether'); // The registration fee of 0.01 BNB
+
+    // Call the smart contract method for registration with both userAddress and referrerAddress
+    const response = await window.contract.methods.registerUser(userAddress, referrerAddress).send({ from: userAddress, value: registrationFee });
+    console.log("Registration successful:", response);
+
+    // Success message and page reload
+    alert("Registration successful!");
+   
+   window.location.href = 'login.html';
+} catch (error) {
+    console.error("Error during registration:", error);
+    alert("An error occurred during registration.");
+}
+
+        });
+    }
+});
+
 
     </script>
+    
+    
 </body>
+
 </html>
