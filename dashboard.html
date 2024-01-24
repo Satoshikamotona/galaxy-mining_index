@@ -221,29 +221,26 @@
         }
     },
 
-    countPartners: async function(address) {
-    const directPartners = await this.contract.methods.directPartnersCount(address).call();
-    let totalPartners = parseInt(directPartners);
+    calculateTotalTeam: async function(userAddress, visited = new Set()) {
+        // Eviter les répétitions pour la même adresse
+        if (visited.has(userAddress)) {
+            return 0;
+        }
+        visited.add(userAddress);
 
-    const referrerAddress = await this.contract.methods.referrers(address).call();
-    if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
-        totalPartners += await this.countPartners(referrerAddress);
-    }
+        // Compter les partenaires directs
+        let totalPartners = parseInt(await this.contract.methods.directPartnersCount(userAddress).call());
 
-    return totalPartners;
-},
+        // Obtenir les adresses des partenaires directs
+        const referrerAddress = await this.contract.methods.referrers(userAddress).call();
+        if (referrerAddress && referrerAddress !== '0x0000000000000000000000000000000000000000') {
+            // Ajouter les partenaires des niveaux inférieurs
+            totalPartners += await this.calculateTotalTeam(referrerAddress, visited);
+        }
 
-calculateTotalTeam: async function(userAddress) {
-    const totalPartners = await this.countPartners(userAddress);
+        return totalPartners;
+    },
 
-    // Mettre à jour l'élément HTML avec le total des partenaires
-    const totalTeamElement = document.getElementById('totalTeam');
-    if (totalTeamElement) {
-        totalTeamElement.textContent = totalPartners.toString();
-    } else {
-        console.error("Element 'totalTeam' not found in the DOM.");
-    }
-},
     getPartenairesCount: async function() {
         if (!this.userAccount) {
             console.error("User account is undefined.");
@@ -300,11 +297,18 @@ calculateTotalTeam: async function(userAddress) {
 
 
         await this.calculateTeamProfit();
-    await this.getPartenairesCount();
-    await this.getFreeIncome();
-    await this.calculateTotalTeam(this.userAccount);
-}
+        await this.getPartenairesCount();
+         await this.getFreeIncome();
+       const teamSize = await this.calculateTotalTeam(this.userAccount);
+        const teamSizeElement = document.getElementById('totalTeam');
+        if (teamSizeElement) {
+            teamSizeElement.textContent = teamSize.toString();
+        } else {
+            console.error("Element 'totalTeam' not found in the DOM.");
+        }
+    }
 };
+
 
 $(document).ready(async () => {
     try {
