@@ -317,12 +317,13 @@ document.getElementById('claimDividendButton').addEventListener('click', functio
 });
 
 async function claimDividend(userAddress) {
-    // Récupérer les données de dividendes de l'utilisateur
     let userData = getDividendData(userAddress);
+    
+    // Convertir le montant des dividendes en Wei
     let dividendAmountWei = web3.utils.toWei(userData.dividendAmount.toString(), 'ether');
 
     try {
-       
+        // Appel de la méthode Claim_DIV du contrat avec les bons paramètres
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
         console.log("Dividendes réclamés avec succès");
 
