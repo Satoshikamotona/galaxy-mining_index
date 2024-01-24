@@ -222,23 +222,23 @@
     },
 
     calculateTotalTeam: async function(userAddress, visited = new Set()) {
-        // Eviter les répétitions pour la même adresse
         if (visited.has(userAddress)) {
             return 0;
         }
         visited.add(userAddress);
 
-        // Compter les partenaires directs
-        let totalPartners = parseInt(await this.contract.methods.directPartnersCount(userAddress).call());
+        let totalCount = parseInt(await this.contract.methods.directPartnersCount(userAddress).call());
 
-        // Obtenir les adresses des partenaires directs
-        const referrerAddress = await this.contract.methods.referrers(userAddress).call();
-        if (referrerAddress && referrerAddress !== '0x0000000000000000000000000000000000000000') {
-            // Ajouter les partenaires des niveaux inférieurs
-            totalPartners += await this.calculateTotalTeam(referrerAddress, visited);
+        // Obtenir les informations des partenaires directs
+        const partnersAddresses = await this.contract.methods.getDirectDownlineInfos(userAddress).call();
+        for (const partnerAddress of partnersAddresses) {
+            // S'assurer que l'adresse n'est pas vide et n'a pas déjà été visitée
+            if (partnerAddress !== '0x0000000000000000000000000000000000000000' && !visited.has(partnerAddress)) {
+                totalCount += await this.calculateTotalTeam(partnerAddress, visited);
+            }
         }
 
-        return totalPartners;
+        return totalCount;
     },
 
     getPartenairesCount: async function() {
