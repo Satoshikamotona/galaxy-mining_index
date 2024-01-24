@@ -223,15 +223,16 @@
     calculateTotalTeam: async function(userAddress) {
     let totalPartners = 0;
 
-    async function countPartners(address) {
-        const directPartners = await galaxyMining.contract.methods.directPartnersCount(address).call();
+    // Fonction récursive pour compter les partenaires
+    const countPartners = async (address) => {
+        const directPartners = await this.contract.methods.directPartnersCount(address).call();
         totalPartners += parseInt(directPartners);
 
-        const referrerAddress = await galaxyMining.contract.methods.referrers(address).call();
+        const referrerAddress = await this.contract.methods.referrers(address).call();
         if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
             await countPartners(referrerAddress);
         }
-    }
+    };
 
     await countPartners(userAddress);
 
