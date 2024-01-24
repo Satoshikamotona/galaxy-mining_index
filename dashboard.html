@@ -220,30 +220,29 @@
     },
 
  
-    calculateTotalTeam: async function(userAddress) {
-    let totalPartners = 0;
-
-    // Fonction récursive pour compter les partenaires
-    const countPartners = async (address) => {
+    countPartners: async function(address) {
         const directPartners = await this.contract.methods.directPartnersCount(address).call();
-        totalPartners += parseInt(directPartners);
+        let totalPartners = parseInt(directPartners);
 
         const referrerAddress = await this.contract.methods.referrers(address).call();
         if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
-            await countPartners(referrerAddress);
+            totalPartners += await this.countPartners(referrerAddress);
         }
-    };
 
-    await countPartners(userAddress);
+        return totalPartners;
+    },
 
-    const totalTeamElement = document.getElementById('totalTeam');
-    if (totalTeamElement) {
-        totalTeamElement.textContent = totalPartners.toString();
-    } else {
-        console.error("Element 'totalTeam' not found in the DOM.");
-    }
-},
+    calculateTotalTeam: async function(userAddress) {
+        const totalPartners = await this.countPartners(userAddress);
 
+        // Mettre à jour l'élément HTML avec le total des partenaires
+        const totalTeamElement = document.getElementById('totalTeam');
+        if (totalTeamElement) {
+            totalTeamElement.textContent = totalPartners.toString();
+        } else {
+            console.error("Element 'totalTeam' not found in the DOM.");
+        }
+    },
 
     getPartenairesCount: async function() {
         if (!this.userAccount) {
