@@ -70,8 +70,7 @@
             <div class="card">
                 <h3 class="team-title">Team</h3>
                 <div class="number-box">
-                    <span class="team-number"> <p>0</p></span>
-                </div>
+                    <span class="team-number"><p id="totalTeam">0</p></span>
             </div>
         </div>
     </div>
@@ -221,6 +220,28 @@
     },
 
  
+    calculateTotalTeam: async function(userAddress) {
+    let totalPartners = 0;
+
+    async function countPartners(address) {
+        const directPartners = await galaxyMining.contract.methods.directPartnersCount(address).call();
+        totalPartners += parseInt(directPartners);
+
+        const referrerAddress = await galaxyMining.contract.methods.referrers(address).call();
+        if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
+            await countPartners(referrerAddress);
+        }
+    }
+
+    await countPartners(userAddress);
+
+    const totalTeamElement = document.getElementById('totalTeam');
+    if (totalTeamElement) {
+        totalTeamElement.textContent = totalPartners.toString();
+    } else {
+        console.error("Element 'totalTeam' not found in the DOM.");
+    }
+},
 
 
     getPartenairesCount: async function() {
@@ -280,6 +301,10 @@
         await this.calculateTeamProfit();
         await this.getPartenairesCount();
         await this.getFreeIncome();
+        await countPartners(userAddress);
+        await this.calculateTotalTeam(this.userAccount);
+
+
     }
 };
 
