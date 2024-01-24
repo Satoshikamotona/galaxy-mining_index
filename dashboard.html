@@ -321,45 +321,55 @@ $(document).ready(async () => {
 </script>
 
 <script>
-const dividendSpeedPerDay = 1; // 1 BNB par jour
-const dividendElement = document.getElementById('dividend-amount');
+    
+const dividendSpeedPerSecond = 0.00000000000463; // Dividendes par seconde en BNB
 
-// Récupère la valeur initiale et le timestamp de départ depuis le localStorage ou les initialise
-let initialValue = parseFloat(localStorage.getItem('initialValue')) || 0;
-let startTime = parseInt(localStorage.getItem('startTime'), 10);
-
-if (!startTime) {
-    startTime = Date.now();
-    localStorage.setItem('startTime', startTime);
+function getDividendData(userAddress) {
+    let userData = localStorage.getItem(userAddress);
+    if (userData) {
+        userData = JSON.parse(userData);
+    } else {
+        userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
+        localStorage.setItem(userAddress, JSON.stringify(userData));
+    }
+    return userData;
 }
 
-// Fonction pour mettre à jour les dividendes
-function updateDividend() {
+function updateDividend(userAddress) {
+    let userData = getDividendData(userAddress);
     const currentTime = Date.now();
-    // Calcule le temps écoulé en secondes depuis le début
-    const elapsedTime = (currentTime - startTime) / 1000; 
-    // Calcule le montant à ajouter en se basant sur le temps écoulé
-    let increment = (elapsedTime / 86400) * dividendSpeedPerDay;
-    let currentValue = initialValue + increment;
-    dividendElement.textContent = currentValue.toFixed(8); // Affiche la valeur avec 8 décimales
-    // Stocke la valeur actuelle dans le localStorage
-    localStorage.setItem('initialValue', currentValue.toFixed(8));
+
+    const elapsedTime = (currentTime - userData.lastClaimTime) / 1000;
+    userData.dividendAmount += elapsedTime * dividendSpeedPerSecond;
+    userData.lastClaimTime = currentTime;
+
+    document.getElementById('dividend-amount').textContent = userData.dividendAmount.toFixed(8) + ' BNB';
+    localStorage.setItem(userAddress, JSON.stringify(userData));
 }
 
-// Met à jour les dividendes immédiatement et ensuite chaque seconde
-updateDividend();
-setInterval(updateDividend, 1000);
+function claimDividend(userAddress) {
+    // Logique de réclamation ici
 
-
-function copyToClipboard(selector) {
-    var text = document.querySelector(selector).href;
-    navigator.clipboard.writeText(text).then(function() {
-        alert("Link copied to clipboard!");
-    })
-    .catch(function(err) {
-        console.error('Could not copy text: ', err);
-    });
+    const userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
+    localStorage.setItem(userAddress, JSON.stringify(userData));
+    document.getElementById('dividend-amount').textContent = '0.00000000 BNB';
 }
+
+// Lors de la connexion de l'utilisateur
+async function onUserLogin() {
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+    const userAddress = accounts[0];
+    setInterval(() => updateDividend(userAddress), 1000);
+}
+
+// Ajoutez un événement pour le bouton 'claim'
+document.querySelector('.claim-button').addEventListener('click', function() {
+    claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
+});
+
+// Initiez le processus lors de la connexion de l'utilisateur
+onUserLogin();
+
 </script>
 </body>
 </html>
