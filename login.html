@@ -55,7 +55,7 @@ document.getElementById('loginButton').addEventListener('click', async () => {
             window.location.href = 'dashboard.html?address=' + encodeURIComponent(account);
         } catch (error) {
             console.error("Error during login:", error);
-            alert("An error occurred during login.");
+            alert("Your are Not connected , connect Your wallet first.");
         }
     } else {
         console.log("Ethereum browser not detected. Try installing MetaMask!");
