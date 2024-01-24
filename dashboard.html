@@ -219,30 +219,29 @@
         }
     },
 
- 
     countPartners: async function(address) {
-        const directPartners = await this.contract.methods.directPartnersCount(address).call();
-        let totalPartners = parseInt(directPartners);
+    const directPartners = await this.contract.methods.directPartnersCount(address).call();
+    let totalPartners = parseInt(directPartners);
 
-        const referrerAddress = await this.contract.methods.referrers(address).call();
-        if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
-            totalPartners += await this.countPartners(referrerAddress);
-        }
+    const referrerAddress = await this.contract.methods.referrers(address).call();
+    if (referrerAddress !== '0x0000000000000000000000000000000000000000') {
+        totalPartners += await this.countPartners(referrerAddress);
+    }
 
-        return totalPartners;
-    },
-
+    return totalPartners;
+},
     calculateTotalTeam: async function(userAddress) {
         const totalPartners = await this.countPartners(userAddress);
 
         // Mettre à jour l'élément HTML avec le total des partenaires
         const totalTeamElement = document.getElementById('totalTeam');
+        
         if (totalTeamElement) {
-            totalTeamElement.textContent = totalPartners.toString();
-        } else {
-            console.error("Element 'totalTeam' not found in the DOM.");
-        }
-    },
+        totalTeamElement.textContent = totalPartners.toString();
+    } else {
+        console.error("Element 'totalTeam' not found in the DOM.");
+    }
+},
 
     getPartenairesCount: async function() {
         if (!this.userAccount) {
@@ -298,14 +297,12 @@
             $('#referrerId').text('Non trouvé');
         }
 
+
         await this.calculateTeamProfit();
-        await this.getPartenairesCount();
-        await this.getFreeIncome();
-        await countPartners(userAddress);
-        await this.calculateTotalTeam(this.userAccount);
-
-
-    }
+    await this.getPartenairesCount();
+    await this.getFreeIncome();
+    await this.calculateTotalTeam(this.userAccount);
+}
 };
 
 $(document).ready(async () => {
