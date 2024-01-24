@@ -321,7 +321,7 @@ $(document).ready(async () => {
 </script>
 
 <script>
-    
+
 const dividendSpeedPerSecond = 0.00000000000463; // Dividendes par seconde en BNB
 
 function getDividendData(userAddress) {
@@ -352,7 +352,7 @@ function claimDividend(userAddress) {
 
     const userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
     localStorage.setItem(userAddress, JSON.stringify(userData));
-    document.getElementById('dividend-amount').textContent = '0.00000000 BNB';
+    document.getElementById('dividend-amount').textContent = '0.000000000000';
 }
 
 // Lors de la connexion de l'utilisateur
