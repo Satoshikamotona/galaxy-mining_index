@@ -316,18 +316,19 @@ document.getElementById('claimDividendButton').addEventListener('click', functio
     claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
 });
 
-async function claimDividend(userAddress) {
+async function claimDividend() {
+    let userAddress = galaxyMining.userAccount; 
     let userData = getDividendData(userAddress);
-    
-    // Convertir le montant des dividendes en Wei
+
+   
     let dividendAmountWei = web3.utils.toWei(userData.dividendAmount.toString(), 'ether');
 
     try {
-        // Appel de la méthode Claim_DIV du contrat avec les bons paramètres
+      
         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
         console.log("Dividendes réclamés avec succès");
 
-        // Réinitialiser les données de dividendes de l'utilisateur
+     
         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
         localStorage.setItem(userAddress, JSON.stringify(userData));
         document.getElementById('dividend-amount').textContent = '0.00000000 BNB';
