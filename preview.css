@@ -211,12 +211,7 @@ h3 {
     transform: scale(1.05); /* Agrandit légèrement la carte au survol */
 }
 
-.badge-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px 0;
-}
+
 
 .badge {
     width: 30px;
