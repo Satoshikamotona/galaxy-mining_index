@@ -198,29 +198,7 @@
         return null;
     },
 
-    getUserWalletAddress: async function(userAddress) {
  
-    if (window.ethereum) {
-        try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            const account = accounts[0];
-
-     
-            const truncatedAddress = account.substring(0, 6) + '...' + account.substring(account.length - 4);
-
-            // Mettre à jour l'adresse dans l'élément HTML
-            document.querySelector('.wallet-address').textContent = truncatedAddress;
-
-            return account;
-        } catch (error) {
-            console.error("An error occurred connecting to Ethereum:", error);
-        }
-    } else {
-        console.error("Ethereum object not found. You need to install MetaMask!");
-    }
-},
-
-
 
 
 
@@ -241,7 +219,13 @@
  
  
  
-   
+         $(document).ready(async () => {
+    try {
+        await galaxyMining.init();
+    } catch (error) {
+        console.error("Error in Ethereum interaction:", error);
+    }
+});
   
  
      }
