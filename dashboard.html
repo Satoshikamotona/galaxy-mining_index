@@ -198,8 +198,8 @@
     
 
         try {
-        // Récupérer le nombre de niveaux actifs pour l'adresse de l'utilisateur
-        const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
+       
+        const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
 
         // Sélectionner tous les carrés
         const squares = document.querySelectorAll('.square');
@@ -243,7 +243,35 @@
     }
 },
 
-level: async function() {
+Updatelevels: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const G56Matrix = await this.contract.methods.G56Matrix(this.userAccount).call();
+            const squares = document.querySelectorAll('.square');
+
+
+
+            squares.forEach((square, index) => {
+    if (index < G56Matrix) {
+        // Niveau actif
+        square.classList.add('active');
+        square.classList.remove('inactive');
+    } else {
+        // Niveau inactif
+        square.classList.add('inactive');
+        square.classList.remove('active');
+    }
+});
+} catch (error) {
+console.error("Erreur lors de la récupération des niveaux actifs:", error);
+}
+},
+
+    level: async function() {
         if (!this.userAccount) {
             console.error("User account is undefined.");
             return;
@@ -266,6 +294,7 @@ level: async function() {
             }
         }
     },
+
 
 
     calculateTeamProfit: async function() {
@@ -433,7 +462,7 @@ level: async function() {
     await this.updateProgramLevels();
     await this.getUserLevel();
     await this.level();
-
+    await this.Updatelevels();
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
     }
