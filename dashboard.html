@@ -180,23 +180,21 @@
     }
     
     try {
+    
         const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
-        console.log("Niveaux actifs :", activeLevels);
+        console.log("Nombre de niveaux actifs :", activeLevels);
+// Sélectionner tous les carrés
+const squares = document.querySelectorAll('.square');
 
-        // Sélectionner tous les carrés
-        const squares = document.querySelectorAll('.square');
-
-        squares.forEach((square, index) => {
-    console.log(`Carré ${index}, ActiveLevels: ${activeLevels}`);
-    if (index < activeLevels) {
-        console.log(`Carré ${index} - jaune`);
-        square.style.backgroundColor = 'yellow';
-    } else {
-        console.log(`Carré ${index} - gris`);
-        square.style.backgroundColor = 'grey';
-    }
-});
-
+squares.forEach((square, index) => {
+            if (index < activeLevels) {
+                // Niveau actif
+                square.style.backgroundColor = 'yellow';
+            } else {
+                // Niveau inactif
+                square.style.backgroundColor = 'grey';
+            }
+        });
     } catch (error) {
         console.error("Erreur lors de la récupération des niveaux actifs:", error);
     }
@@ -382,12 +380,14 @@
         }
 
 
-        await this.calculateTeamProfit();
+    await this.calculateTeamProfit();
     await this.getPartenairesCount();
     await this.getFreeIncome();
     await this.getDirectTeam();
     await this.calculateDivClaimed();
     await this.updateProgramLevels();
+    await this.updateProgramLevels();
+
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
     }
