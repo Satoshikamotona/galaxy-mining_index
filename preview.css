@@ -263,6 +263,7 @@ h3 {
 
 }
 .buy-level-button img {
-    width: 50px; /* ou toute autre taille appropriée */
-    height: auto; /* pour garder le rapport hauteur/largeur */
+    width: 50px; /* ou la taille que vous avez définie */
+    height: auto;
+    border: none; /* Supprime la bordure */
 }
