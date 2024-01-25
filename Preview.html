@@ -224,14 +224,15 @@
             const buyButton = levelDiv.querySelector('.buy-level-button');
 
             if (i <= activeLevels) {
-                // Niveau actif, affichez les badges
-                badgeContainer.innerHTML = "badge"; // Votre code pour afficher les badges
-                buyButton.style.display = 'none'; // Cache le panier
-            } else {
-                // Niveau inactif, afficher le panier
-                badgeContainer.innerHTML = ''; // Vide les badges s'il y en a
-                buyButton.style.display = 'block'; // Affiche le panier
-            }
+    // Niveau actif, affichez les badges
+    badgeContainer.innerHTML = "badge"; // Votre code pour afficher les badges
+    buyButton.classList.remove('show');
+} else {
+    // Niveau inactif, afficher le panier
+    badgeContainer.innerHTML = ''; // Vide les badges s'il y en a
+    buyButton.classList.add('show');
+}
+
         }
     } catch (error) {
         console.error("Erreur lors de la mise à jour des niveaux :", error);
