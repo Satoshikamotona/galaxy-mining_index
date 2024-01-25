@@ -190,7 +190,37 @@
       },
 
 
-  
+    updateProgramLevels: async function (userAddress) {
+    if (!userAddress) {
+        console.log("User address is undefined.");
+        return;
+    }
+    
+
+        try {
+       
+        const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
+
+        // Sélectionner tous les carrés
+        const squares = document.querySelectorAll('.square');
+
+        // Mettre à jour la couleur des carrés en fonction du nombre de niveaux actifs
+        squares.forEach((square, index) => {
+            if (index < activeLevels) {
+                // Niveau actif
+                square.classList.add('active');
+                square.classList.remove('inactive');
+            } else {
+                // Niveau inactif
+                square.classList.add('inactive');
+                square.classList.remove('active');
+            }
+        });
+    } catch (error) {
+        console.error("Erreur lors de la récupération des niveaux actifs:", error);
+    }
+},
+
 
      getFreeIncome: async function() {
     if (!this.userAccount) {
