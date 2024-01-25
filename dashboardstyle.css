@@ -708,7 +708,7 @@ a:hover {
 }
 
 #dividend-amount {
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #f0b90b; /* Couleur jaune de Binance */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur au texte */
