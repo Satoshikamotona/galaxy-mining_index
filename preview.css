@@ -304,3 +304,7 @@ h3 {
 }
 
 
+.badge-container {
+    display: flex;
+  align-items: center;
+}
