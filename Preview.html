@@ -25,12 +25,15 @@
       </div>
     <div class="main-container">
       <div class="card" id="lvl1">
+
         <h3>Lvl 1</h3>
         
           <div class="badge-container">
             <div class="badge"></div>
             <div class="badge"></div>
             <div class="badge"></div>
+            <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
           </div>
         </div>
         <div class="main-container">
@@ -41,6 +44,8 @@
                 <div class="badge"></div>
                 <div class="badge"></div>
                 <div class="badge"></div>
+                <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
               </div>
             </div>
   
@@ -52,6 +57,8 @@
                     <div class="badge"></div>
                     <div class="badge"></div>
                     <div class="badge"></div>
+                    <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                   </div>
                 </div>
 
@@ -63,6 +70,8 @@
                         <div class="badge"></div>
                         <div class="badge"></div>
                         <div class="badge"></div>
+                        <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                       </div>
                     </div>
 
@@ -74,6 +83,8 @@
                             <div class="badge"></div>
                             <div class="badge"></div>
                             <div class="badge"></div>
+                            <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                           </div>
                         </div>
                         <div class="main-container">
@@ -84,6 +95,8 @@
                                 <div class="badge"></div>
                                 <div class="badge"></div>
                                 <div class="badge"></div>
+                                <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                               </div>
                             </div>
                             <div class="main-container">
@@ -94,6 +107,8 @@
                                     <div class="badge"></div>
                                     <div class="badge"></div>
                                     <div class="badge"></div>
+                                    <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                                   </div>
                                 </div>
                                 <div class="main-container">
@@ -104,6 +119,8 @@
                                         <div class="badge"></div>
                                         <div class="badge"></div>
                                         <div class="badge"></div>
+                                        <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                                       </div>
                                     </div>
                                     <div class="main-container">
@@ -114,6 +131,8 @@
                                             <div class="badge"></div>
                                             <div class="badge"></div>
                                             <div class="badge"></div>
+                                            <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                                           </div>
                                         </div>
                                 
@@ -125,6 +144,8 @@
                                                 <div class="badge"></div>
                                                 <div class="badge"></div>
                                                 <div class="badge"></div>
+                                                <button class="buy-level-button"><img src="panier.png" alt="Buy Now" class="panier-img"></button>
+
                                               </div>
                                             </div>
 </div>
@@ -192,25 +213,29 @@
         return null;
     },
 
- 
     updateLevelsDisplay: async function() {
-  try {
-    const userAddress = this.userAccount; // Assurez-vous que c'est l'adresse de l'utilisateur connecté
-    const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
+    try {
+        const userAddress = this.userAccount;
+        const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
 
-    for (let i = 1; i <= 10; i++) {
-      const levelDiv = document.getElementById(`lvl${i}`);
-      if (i <= activeLevels) {
-        // Niveau actif, affichez-le normalement
-        levelDiv.innerHTML = `<h3>Lvl ${i}</h3><div class="badge-container">...</div>`;
-      } else {
-        // Niveau inactif, affichez le bouton d'achat
-        levelDiv.innerHTML = `<h3>Lvl ${i}</h3><button class="buy-level-button"><img src="panier.png" alt="Acheter"></button>`;
-      }
+        for (let i = 1; i <= 10; i++) {
+            const levelDiv = document.getElementById(`lvl${i}`);
+            const badgeContainer = levelDiv.querySelector('.badge-container');
+            const buyButton = levelDiv.querySelector('.buy-level-button');
+
+            if (i <= activeLevels) {
+                // Niveau actif, affichez les badges
+                badgeContainer.innerHTML = `badge`; // Votre code pour afficher les badges
+                buyButton.style.display = 'none'; // Cache le panier
+            } else {
+                // Niveau inactif, afficher le panier
+                badgeContainer.innerHTML = ''; // Vide les badges s'il y en a
+                buyButton.style.display = 'block'; // Affiche le panier
+            }
+        }
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour des niveaux :", error);
     }
-  } catch (error) {
-    console.error("Erreur lors de la mise à jour des niveaux :", error);
-  }
 },
 
 
