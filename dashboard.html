@@ -180,7 +180,7 @@
     }
         try {
        
-        const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
+        const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
         console.log("Niveaux actifs pour l'utilisateur:", activeLevels);
         return activeLevels;
     } catch (error) {
@@ -199,7 +199,7 @@
 
         try {
         // Récupérer le nombre de niveaux actifs pour l'adresse de l'utilisateur
-        const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
+        const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
 
         // Sélectionner tous les carrés
         const squares = document.querySelectorAll('.square');
