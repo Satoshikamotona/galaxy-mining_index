@@ -177,14 +177,58 @@
         return null;
     },
  
+    getUserIdByAddress: async function(userAddress) {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+        console.log("Nombre total d'utilisateurs:", numberOfUsers);
 
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            try {
+                const address = await this.contract.methods.idToAddress(userId).call();
+                console.log("Vérification de l'adresse pour l'ID", userId, ":", address);
+                if (address.toLowerCase() === userAddress.toLowerCase()) {
+                    console.log("ID trouvé:", userId);
+                    return userId;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+            }
+        }
+
+        console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+        return null;
+    },
+
+    getUserWalletAddress: async function(userAddress) {
  
+    if (window.ethereum) {
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+
+     
+            const truncatedAddress = account.substring(0, 6) + '...' + account.substring(account.length - 4);
+
+            // Mettre à jour l'adresse dans l'élément HTML
+            document.querySelector('.wallet-address').textContent = truncatedAddress;
+
+            return account;
+        } catch (error) {
+            console.error("An error occurred connecting to Ethereum:", error);
+        }
+    } else {
+        console.error("Ethereum object not found. You need to install MetaMask!");
+    }
+},
+
+
+
 
 
  
      init: async function() {
          await this.connectContract();
- 
+         await this.getUserWalletAddress(); // Ceci va mettre à jour this.userAccount et l'affichage de l'adresse
+       
          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
          if (accounts.length === 0) {
              console.error("No Ethereum accounts found.");
@@ -195,26 +239,11 @@
          const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
          $('.wallet-address').text(truncatedAddress);
  
-         const userId = await this.getUserIdByAddress(this.userAccount);
-         if (userId !== null) {
-             $('.profile-id').text('ID: ' + userId);
-         } else {
-             console.error("User ID not found for the connected address");
-         }
- 
-         const referrerAddress = await this.contract.methods.referrers(this.userAccount).call();
-         const referrerId = await this.getUserIdByAddress(referrerAddress);
-         if (referrerId !== null) {
-             $('#referrerId').text('User ID ' + referrerId);
-         } else {
-             $('#referrerId').text('0');
-         }
  
  
-     await this.calculateTeamProfit();
+   
   
  
-         document.getElementById('totalTeam').textContent = teamTotal.toString();
      }
  };
  
