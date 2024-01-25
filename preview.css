@@ -196,15 +196,24 @@ h3 {
 
 .badge-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px 0;
+    flex-wrap: wrap; /* Permet aux badges de se mettre à la ligne si nécessaire */
+    justify-content: center; /* Centre les badges horizontalement */
+    align-items: center; /* Alignement vertical */
+    /* autres styles... */
 }
+
+
+.badge-container {
+    width: 100%; /* Ajustez en fonction de la largeur disponible */
+    /* autres styles... */
+}
+
 
 .badge {
     width: 30px;
     height: 30px;
-    margin: 5px;
+    margin: 2px;
+
 }
 
 h3 {
@@ -243,6 +252,12 @@ h3 {
     color: #f0b90b; /* Couleur jaune doré pour le titre */
 
 }
+
+
+.buy-level-button img {
+    border: none !important;
+    outline: none !important;
+}
 .buy-level-button {
     display: none; /* Cache par défaut */
     border: none !important;
@@ -257,4 +272,21 @@ h3 {
     display: block; /* Montrer seulement quand la classe 'show' est ajoutée */
 }
 
- 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Ajoute un espacement entre les éléments flex enfants */
+    /* autres styles de .main-container */
+
+}
+.card {
+    margin-bottom: 5px; /* Ajoute de l'espace en bas de chaque carte */
+    /* autres styles de .card */
+
+}
+
+.card {
+    padding: 20px; /* Ajoute de l'espace autour du contenu à l'intérieur de la carte */
+    /* autres styles de .card */
+}
+
