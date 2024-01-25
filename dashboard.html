@@ -180,13 +180,21 @@
     }
     
     try {
-    
+        // Récupérer le nombre de niveaux actifs pour l'adresse de l'utilisateur
         const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
-        console.log("Nombre de niveaux actifs :", activeLevels);
-// Sélectionner tous les carrés
-const squares = document.querySelectorAll('.square');
+        const totalLevels = 10; // Nombre total de niveaux dans le contrat
 
-squares.forEach((square, index) => {
+        // Sélectionner tous les carrés
+        const squares = document.querySelectorAll('.square');
+
+        // S'assurer qu'il y a assez de carrés dans le HTML
+        if (squares.length < totalLevels) {
+            console.error("Il n'y a pas assez de carrés dans le HTML.");
+            return;
+        }
+
+        // Mettre à jour la couleur des carrés en fonction du nombre de niveaux actifs
+        squares.forEach((square, index) => {
             if (index < activeLevels) {
                 // Niveau actif
                 square.style.backgroundColor = 'yellow';
@@ -199,7 +207,6 @@ squares.forEach((square, index) => {
         console.error("Erreur lors de la récupération des niveaux actifs:", error);
     }
 },
-
 
 
      getFreeIncome: async function() {

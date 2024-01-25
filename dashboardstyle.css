@@ -708,7 +708,7 @@ a:hover {
 }
 
 #dividend-amount {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
     color: #f0b90b; /* Couleur jaune de Binance */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur au texte */
@@ -901,7 +901,7 @@ a:hover {
 .square {
     width: 25px;
     height: 25px;
-    background-color: var(--accent-color);
+    background-color: #F0B90B;
     border-radius: 4px;
 }
 
@@ -1030,8 +1030,18 @@ a:hover {
 .square {
     width: 30px;
     height: 30px;
-    background-color: var(--accent-color);
+    background-color: #F0B90B;
     border-radius: 3px;
+}
+
+/* Couleur pour les niveaux actifs */
+.square.active {
+    background-color: yellow;
+}
+
+/* Couleur pour les niveaux inactifs */
+.square.inactive {
+    background-color: grey;
 }
 
 .preview-button {
