@@ -176,28 +176,28 @@
             console.error("Error connecting to contract: ", error);
         }
     },
-
     buyLevel: async function(event) {
-      const button = event.target;
+    const button = event.target.closest('.buy-level-button');
     const level = button.getAttribute('data-level');
     let amount = button.getAttribute('data-amount');
     const userAddress = this.userAccount;
- // Assurez-vous que 'amount' est une chaîne de caractères
- if (typeof amount !== 'string') {
-        amount = String(amount);
+
+    if (!amount) {
+        console.error('Amount is null, check data-amount attribute');
+        return;
     }
 
     try {
         const price = web3.utils.toWei(amount, 'ether');
-            const response = await window.contract.methods.BuyLevel(userAddress).send({ from: userAddress, value: registrationFee });
-            console.log("Registration successful:", response);
-           
-             // Success message and page reload
-          alert("Level buy uccessful!");
-        } catch (error) {
-            console.error('Transaction failed:', error);
-        }
-    },
+        const response = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price });
+        console.log("Operation successful:", response);
+
+        alert("Level buy successful!");
+    } catch (error) {
+        console.error('Transaction failed:', error);
+    }
+},
+
 
 
 
@@ -279,12 +279,12 @@
          const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
          $('.wallet-address').text(truncatedAddress);
  
-         const buttons = document.querySelectorAll('.buy-level-button');
-        buttons.forEach(button => {
-            button.addEventListener('click', (event) => this.buyLevel(event));
-        });
-    }
-};
+         document.addEventListener('DOMContentLoaded', () => {
+    // Ici, ajoutez le code pour attacher les écouteurs d'événements
+    document.querySelectorAll('.buy-level-button').forEach(button => {
+        button.addEventListener('click', (event) => galaxyMining.buyLevel(event));
+    });
+})
      
          $(document).ready(async () => {
     try {
