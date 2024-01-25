@@ -254,23 +254,6 @@ h3 {
 }
 
 
-.buy-level-button img {
-    border: none !important;
-    outline: none !important;
-}
-.buy-level-button {
-    display: none; /* Cache par défaut */
-    border: none !important;
-    outline: none !important;
-}
-
-.buy-level-button img {
-    border: none !important;
-}
-
-.buy-level-button.show {
-    display: block; /* Montrer seulement quand la classe 'show' est ajoutée */
-}
 
 .main-container {
     display: flex;
