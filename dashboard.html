@@ -180,22 +180,23 @@
     }
     
     try {
-        // Récupérer le nombre de niveaux actifs pour l'adresse de l'utilisateur
         const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
+        console.log("Niveaux actifs :", activeLevels);
 
         // Sélectionner tous les carrés
         const squares = document.querySelectorAll('.square');
 
-        // Mettre à jour la couleur des carrés en fonction du nombre de niveaux actifs
         squares.forEach((square, index) => {
-            if (index < activeLevels) {
-                // Niveau actif
-                square.style.backgroundColor = 'yellow';
-            } else {
-                // Niveau inactif
-                square.style.backgroundColor = 'grey';
-            }
-        });
+    console.log(`Carré ${index}, ActiveLevels: ${activeLevels}`);
+    if (index < activeLevels) {
+        console.log(`Carré ${index} - jaune`);
+        square.style.backgroundColor = 'yellow';
+    } else {
+        console.log(`Carré ${index} - gris`);
+        square.style.backgroundColor = 'grey';
+    }
+});
+
     } catch (error) {
         console.error("Erreur lors de la récupération des niveaux actifs:", error);
     }
