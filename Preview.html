@@ -132,4 +132,167 @@
     <p>&copy; galaxyMining</p>
 </footer>
 </body>
+
+<script>
+
+  var galaxyMining = {
+     account: null,
+     contract: null,
+     userAccount: null,
+ 
+     connectContract: async function() {
+           const ABI = [{"inputs":[{"internalType":"address","name":"admin","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"A","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"Admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevel","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claim_DIV","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"G56Matrix","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFunds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFundsbyAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Level10Income","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NumberOfUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TotalIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UplineEarnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Users","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"userAddress","type":"address"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"availableDiv","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"checkUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncomefrom10","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directPartnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"freeIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDirectPartners","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastRegistration","outputs":[{"internalType":"uint256","name":"userID","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"level","type":"uint256"}],"name":"hasLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"},{"internalType":"uint256","name":"_requiredLevel","type":"uint256"}],"name":"hasRequiredLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"idToAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isAdmin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isRegistered","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"l","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"randomUser","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUser","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAdmin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newFees","type":"uint256"}],"name":"setaRegistrationFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"setaRegistrationRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"setactivationRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newfees","type":"uint256"}],"name":"setholdingFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalInevest","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalLevels","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userDividends","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
+           const Address = "0x27438eC0Ca75Ea82fd700eB07C50836059760955";
+ 
+         try {
+             window.web3 = new Web3(window.ethereum);
+             await window.ethereum.request({ method: 'eth_requestAccounts' });
+             this.account = (await web3.eth.getAccounts())[0];
+             this.contract = new web3.eth.Contract(ABI, Address);
+             console.log("Connected to smart contract");
+         } catch (error) {
+             console.error("Error connecting to contract: ", error);
+         }
+     },
+
+     getUserIdByAddress: async function(userAddress) {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+        console.log("Nombre total d'utilisateurs:", numberOfUsers);
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            try {
+                const address = await this.contract.methods.idToAddress(userId).call();
+                console.log("Vérification de l'adresse pour l'ID", userId, ":", address);
+                if (address.toLowerCase() === userAddress.toLowerCase()) {
+                    console.log("ID trouvé:", userId);
+                    return userId;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+            }
+        }
+
+        console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+        return null;
+    },
+ 
+
+ 
+
+
+ 
+     init: async function() {
+         await this.connectContract();
+ 
+         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+         if (accounts.length === 0) {
+             console.error("No Ethereum accounts found.");
+             return;
+         }
+ 
+         this.userAccount = accounts[0];
+         const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
+         $('.wallet-address').text(truncatedAddress);
+ 
+         const userId = await this.getUserIdByAddress(this.userAccount);
+         if (userId !== null) {
+             $('.profile-id').text('ID: ' + userId);
+         } else {
+             console.error("User ID not found for the connected address");
+         }
+ 
+         const referrerAddress = await this.contract.methods.referrers(this.userAccount).call();
+         const referrerId = await this.getUserIdByAddress(referrerAddress);
+         if (referrerId !== null) {
+             $('#referrerId').text('User ID ' + referrerId);
+         } else {
+             $('#referrerId').text('0');
+         }
+ 
+ 
+     await this.calculateTeamProfit();
+  
+ 
+         document.getElementById('totalTeam').textContent = teamTotal.toString();
+     }
+ };
+ 
+ 
+ 
+ async function claimDividend() {
+     let userAddress = galaxyMining.userAccount;
+     let userData = getDividendData(userAddress);
+ 
+  
+     let dividendAmount = Number(userData.dividendAmount).toFixed(18);
+ 
+    
+     let dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
+ 
+     try {
+        
+         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
+         console.log("Dividends successfully claimed");
+         alert("Dividends successfully claimed , check your wallet and enjoy Life 😎  ");
+    
+      
+         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
+         localStorage.setItem(userAddress, JSON.stringify(userData));
+         document.getElementById('dividend-amount').textContent = '0.00000000000000 BNB';
+     } catch (error) {
+         console.error("Erreur lors de la réclamation des dividendes:", error);
+     }
+ }
+ 
+ const dividendSpeedPerSecond = 0.00000000000463; 
+ 
+ function getDividendData(userAddress) {
+     let userData = localStorage.getItem(userAddress);
+     if (userData) {
+         userData = JSON.parse(userData);
+     } else {
+         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
+         localStorage.setItem(userAddress, JSON.stringify(userData));
+     }
+     return userData;
+ }
+ 
+ function updateDividend(userAddress) {
+     let userData = getDividendData(userAddress);
+     const currentTime = Date.now();
+ 
+     const elapsedTime = (currentTime - userData.lastClaimTime) / 1000;
+     userData.dividendAmount += elapsedTime * dividendSpeedPerSecond;
+     userData.lastClaimTime = currentTime;
+ 
+     document.getElementById('dividend-amount').textContent = userData.dividendAmount.toFixed(12) + ' BNB';
+     localStorage.setItem(userAddress, JSON.stringify(userData));
+ }
+ 
+ 
+ 
+ // Lors de la connexion de l'utilisateur
+ async function onUserLogin() {
+     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+     const userAddress = accounts[0];
+     setInterval(() => updateDividend(userAddress), 1000);
+ }
+ 
+ // Ajoutez un événement pour le bouton 'claim'
+ document.querySelector('.claim-button').addEventListener('click', function() {
+     claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
+ });
+ 
+ onUserLogin();
+ 
+ $(document).ready(async () => {
+     try {
+         await galaxyMining.init();
+     } catch (error) {
+         console.error("Error in Ethereum interaction:", error);
+     }
+ });
+ 
+ 
+ </script>
 </html>
