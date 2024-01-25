@@ -901,7 +901,7 @@ a:hover {
 .square {
     width: 25px;
     height: 25px;
- 
+    background-color: #F0B90B;
     border-radius: 4px;
 }
 
@@ -1030,13 +1030,13 @@ a:hover {
 .square {
     width: 30px;
     height: 30px;
-   
+    background-color: #F0B90B;
     border-radius: 3px;
 }
 
 /* Couleur pour les niveaux actifs */
 .square.active {
-    background-color:  #F0B90B;
+    background-color: #F0B90B;
 }
 
 /* Couleur pour les niveaux inactifs */
