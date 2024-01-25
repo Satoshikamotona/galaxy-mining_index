@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <div class="dashboard-header">
-        <img src="17.png" alt="Binance Logo">
-        <span class="wallet-address">0x76...D756</span>
+  <div class="dashboard-header">
+    <img src="17.png" alt="Binance Logo">
+    <span class="wallet-address">0x00...000</span>
       </div>
       <div class="MATRIX">
         <div class="G56">
@@ -218,80 +218,6 @@
  };
  
  
- 
- async function claimDividend() {
-     let userAddress = galaxyMining.userAccount;
-     let userData = getDividendData(userAddress);
- 
-  
-     let dividendAmount = Number(userData.dividendAmount).toFixed(18);
- 
-    
-     let dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
- 
-     try {
-        
-         await galaxyMining.contract.methods.Claim_DIV(dividendAmountWei).send({ from: userAddress });
-         console.log("Dividends successfully claimed");
-         alert("Dividends successfully claimed , check your wallet and enjoy Life 😎  ");
-    
-      
-         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
-         localStorage.setItem(userAddress, JSON.stringify(userData));
-         document.getElementById('dividend-amount').textContent = '0.00000000000000 BNB';
-     } catch (error) {
-         console.error("Erreur lors de la réclamation des dividendes:", error);
-     }
- }
- 
- const dividendSpeedPerSecond = 0.00000000000463; 
- 
- function getDividendData(userAddress) {
-     let userData = localStorage.getItem(userAddress);
-     if (userData) {
-         userData = JSON.parse(userData);
-     } else {
-         userData = { lastClaimTime: Date.now(), dividendAmount: 0 };
-         localStorage.setItem(userAddress, JSON.stringify(userData));
-     }
-     return userData;
- }
- 
- function updateDividend(userAddress) {
-     let userData = getDividendData(userAddress);
-     const currentTime = Date.now();
- 
-     const elapsedTime = (currentTime - userData.lastClaimTime) / 1000;
-     userData.dividendAmount += elapsedTime * dividendSpeedPerSecond;
-     userData.lastClaimTime = currentTime;
- 
-     document.getElementById('dividend-amount').textContent = userData.dividendAmount.toFixed(12) + ' BNB';
-     localStorage.setItem(userAddress, JSON.stringify(userData));
- }
- 
- 
- 
- // Lors de la connexion de l'utilisateur
- async function onUserLogin() {
-     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-     const userAddress = accounts[0];
-     setInterval(() => updateDividend(userAddress), 1000);
- }
- 
- // Ajoutez un événement pour le bouton 'claim'
- document.querySelector('.claim-button').addEventListener('click', function() {
-     claimDividend(galaxyMining.userAccount); // Assurez-vous que galaxyMining.userAccount est l'adresse actuelle de l'utilisateur
- });
- 
- onUserLogin();
- 
- $(document).ready(async () => {
-     try {
-         await galaxyMining.init();
-     } catch (error) {
-         console.error("Error in Ethereum interaction:", error);
-     }
- });
  
  
  </script>
