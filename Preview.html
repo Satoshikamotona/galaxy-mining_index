@@ -178,13 +178,17 @@
     },
 
     buyLevel: async function(event) {
-        // Assurez-vous que cette fonction est bien liée à l'objet `galaxyMining` lorsqu'elle est appelée
-        const level = event.target.getAttribute('data-level');
-        const amount = event.target.getAttribute('data-amount');
-        const userAddress = this.userAccount; // Utilisez l'adresse stockée dans l'objet
+      const button = event.target;
+    const level = button.getAttribute('data-level');
+    let amount = button.getAttribute('data-amount');
+    const userAddress = this.userAccount;
+ // Assurez-vous que 'amount' est une chaîne de caractères
+ if (typeof amount !== 'string') {
+        amount = String(amount);
+    }
 
-        try {
-            const price = web3.utils.toWei(amount, 'ether');
+    try {
+        const price = web3.utils.toWei(amount, 'ether');
             const gas = await this.contract.methods.BuyLevel(userAddress, level).estimateGas({ from: userAddress, value: price });
 
             const receipt = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price, gas });
