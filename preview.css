@@ -11,6 +11,7 @@
     --text-dark: #000000; /* Black for text on light backgrounds */
     --accent-colorS: #f0bb0ba0; /* Binance yellow for highlights */
 }
+
 .dashboard-header img {
     width: 50px;
     vertical-align: middle;
@@ -144,7 +145,7 @@ body {
     width: 100%;
     max-width: 460px; /* Taille maximale du conteneur pour les cartes */
     margin: 20px auto; /* Marge automatique pour centrer dans la page */
-    display: flex;
+
     flex-direction: column;
     align-items: center; /* Centrer les cartes verticalement */
     width: 150px; /* Réduire la taille des badges */
@@ -163,26 +164,17 @@ body {
 
 .card {
 
-    border-radius: 20px;
-    padding: 30px;
+  
+
     text-align: center;
 
     margin-bottom: 20px;
 
-    width: 80%; /* Pourcentage de la largeur du main-container */
-    max-width: 300px; /* Largeur maximale */
-    height: auto; /* Hauteur ajustée automatiquement */
-    display: flex;
+
     flex-direction: column;
     justify-content: space-between; /* Espace égal entre les éléments */
 }
 
-.badge-container {
- 
-    justify-content: center;
-    flex-wrap: wrap; /* Permettre le retour à la ligne des badges si nécessaire */
-    margin: 10px 0;
-}
 
 .badge {
     width: 30px; /* Réduire la taille des badges */
@@ -197,15 +189,6 @@ h3 {
 }
 
 
-.card {
-
-    border-radius: 20px;
-    padding: 20px;
-    color: white;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Ombre plus profonde pour plus de profondeur */
-    transition: transform 0.3s ease; /* Transition pour l'effet au survol */
-}
 
 .card:hover {
     transform: scale(1.05); /* Agrandit légèrement la carte au survol */
@@ -221,8 +204,6 @@ h3 {
 .badge {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    background-color: #fff;
     margin: 5px;
 }
 
@@ -267,3 +248,19 @@ h3 {
     height: auto;
     border: none; /* Supprime la bordure */
 }
+
+img {
+    border: none !important;
+    outline: none !important;
+}
+
+.buy-level-button img {
+    background: transparent;
+    padding: 0;
+}
+
+.buy-level-button img {
+    border: none !important;
+    outline: none !important;
+}
+ 
