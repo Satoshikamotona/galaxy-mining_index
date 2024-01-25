@@ -176,6 +176,7 @@
             console.error("Error connecting to contract: ", error);
         }
     },
+
     buyLevel: async function(event) {
     const button = event.target.closest('.buy-level-button');
     const level = button.getAttribute('data-level');
@@ -190,14 +191,13 @@
     try {
         const price = web3.utils.toWei(amount, 'ether');
         const response = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price });
-        console.log("Operation successful:", response);
+        console.log("Level buy successful:", response);
 
         alert("Level buy successful!");
     } catch (error) {
         console.error('Transaction failed:', error);
     }
 },
-
 
 
 
@@ -279,12 +279,12 @@
          const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
          $('.wallet-address').text(truncatedAddress);
  
-         document.addEventListener('DOMContentLoaded', () => {
-    // Ici, ajoutez le code pour attacher les écouteurs d'événements
-    document.querySelectorAll('.buy-level-button').forEach(button => {
-        button.addEventListener('click', (event) => galaxyMining.buyLevel(event));
-    });
-})
+         const buttons = document.querySelectorAll('.buy-level-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => this.buyLevel(event));
+        });
+    }
+};
      
          $(document).ready(async () => {
     try {
