@@ -24,8 +24,8 @@
 
       </div>
     <div class="main-container">
-        <div class="card">
-          <h3>Lvl 1</h3>
+      <div class="card" id="lvl1">
+        <h3>Lvl 1</h3>
         
           <div class="badge-container">
             <div class="badge"></div>
@@ -34,8 +34,8 @@
           </div>
         </div>
         <div class="main-container">
-            <div class="card">
-              <h3>Lvl 2</h3>
+          <div class="card" id="lvl2">
+            <h3>Lvl 2</h3>
            
               <div class="badge-container">
                 <div class="badge"></div>
@@ -45,8 +45,8 @@
             </div>
   
             <div class="main-container">
-                <div class="card">
-                  <h3>Lvl 3</h3>
+              <div class="card" id="lvl3">
+                <h3>Lvl 3</h3>
                 
                   <div class="badge-container">
                     <div class="badge"></div>
@@ -56,8 +56,8 @@
                 </div>
 
                 <div class="main-container">
-                    <div class="card">
-                      <h3>Lvl 4</h3>
+                  <div class="card" id="lvl4">
+                    <h3>Lvl 4</h3>
                     
                       <div class="badge-container">
                         <div class="badge"></div>
@@ -67,8 +67,8 @@
                     </div>
 
                     <div class="main-container">
-                        <div class="card">
-                          <h3>Lvl 5</h3>
+                      <div class="card" id="lvl5">
+                        <h3>Lvl 5</h3>
                        
                           <div class="badge-container">
                             <div class="badge"></div>
@@ -77,8 +77,8 @@
                           </div>
                         </div>
                         <div class="main-container">
-                            <div class="card">
-                              <h3>Lvl 6</h3>
+                          <div class="card" id="lvl6">
+                            <h3>Lvl 6</h3>
                              
                               <div class="badge-container">
                                 <div class="badge"></div>
@@ -87,8 +87,8 @@
                               </div>
                             </div>
                             <div class="main-container">
-                                <div class="card">
-                                  <h3>Lvl 7</h3>
+                              <div class="card" id="lvl7">
+                                <h3>Lvl 7</h3>
                                 
                                   <div class="badge-container">
                                     <div class="badge"></div>
@@ -97,8 +97,8 @@
                                   </div>
                                 </div>
                                 <div class="main-container">
-                                    <div class="card">
-                                      <h3>Lvl 8</h3>
+                                  <div class="card" id="lvl8">
+                                    <h3>Lvl 8</h3>
                                  
                                       <div class="badge-container">
                                         <div class="badge"></div>
@@ -107,8 +107,8 @@
                                       </div>
                                     </div>
                                     <div class="main-container">
-                                        <div class="card">
-                                          <h3>Lvl 9</h3>
+                                      <div class="card" id="lvl9">
+                                        <h3>Lvl 9</h3>
                                       
                                           <div class="badge-container">
                                             <div class="badge"></div>
@@ -118,8 +118,8 @@
                                         </div>
                                 
                                         <div class="main-container">
-                                            <div class="card">
-                                              <h3>Lvl 10</h3>
+                                          <div class="card" id="lvl10">
+                                            <h3>Lvl 10</h3>
                                               
                                               <div class="badge-container">
                                                 <div class="badge"></div>
@@ -193,13 +193,33 @@
     },
 
  
+    updateLevelsDisplay: async function() {
+  try {
+    const userAddress = this.userAccount; // Assurez-vous que c'est l'adresse de l'utilisateur connecté
+    const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
+
+    for (let i = 1; i <= 10; i++) {
+      const levelDiv = document.getElementById(`lvl${i}`);
+      if (i <= activeLevels) {
+        // Niveau actif, affichez-le normalement
+        levelDiv.innerHTML = `<h3>Lvl ${i}</h3><div class="badge-container">...</div>`;
+      } else {
+        // Niveau inactif, affichez le bouton d'achat
+        levelDiv.innerHTML = `<h3>Lvl ${i}</h3><button class="buy-level-button"><img src="panier.png" alt="Acheter"></button>`;
+      }
+    }
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour des niveaux :", error);
+  }
+},
 
 
 
  
      init: async function() {
           await this.connectContract();
-        await this.getUserWalletAddress(); // Ceci va mettre à jour this.userAccount et l'affichage de l'adresse
+        await this.getUserWalletAddress(); 
+        await this.updateLevelsDisplay();
        
          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
          if (accounts.length === 0) {
