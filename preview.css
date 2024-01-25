@@ -178,7 +178,7 @@ body {
 }
 
 .badge-container {
-    display: flex;
+ 
     justify-content: center;
     flex-wrap: wrap; /* Permettre le retour à la ligne des badges si nécessaire */
     margin: 10px 0;
