@@ -139,27 +139,26 @@ body {
 
 
 
-/* ... autres styles ... */
 
-.main-container {
-    width: 100%;
-    max-width: 460px; /* Taille maximale du conteneur pour les cartes */
-    margin: 20px auto; /* Marge automatique pour centrer dans la page */
-
-    flex-direction: column;
-    align-items: center; /* Centrer les cartes verticalement */
-    width: 150px; /* Réduire la taille des badges */
-    height: 150px;
-
-       
-    align-items: center;
-    backdrop-filter: blur(10px); /* Ajoute un effet de flou à l'arrière-plan */
+.badge-container {
+    display: flex; /* Utilisation de Flexbox */
+    flex-direction: column; /* Alignement vertical des éléments */
+    justify-content: flex-start; /* Aligner les éléments en haut */
+    align-items: center; /* Centrer les éléments horizontalement */
+    width: 150px; /* Taille du conteneur (carré) */
+    height: 150px; /* Hauteur égale à la largeur pour un carré */
+    margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
+    backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
     background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée pour un effet 3D */
-
     border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
-    transform: translateZ(0); /* Prépare l'élément pour les animations 3D */
+
+
+}
+.badge-container h3 {
+    margin-top: 40px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
+    margin-bottom: 10px; /* Espace entre le titre 'Lvl' et les badges */
 }
 
 .card {
@@ -182,7 +181,15 @@ body {
     border-radius: 50%;
     background-color: #fff;
     margin: 5px; /* Espacement réduit entre les badges */
+    flex-wrap: wrap; /* Permet aux badges de se mettre à la ligne si nécessaire */
+
 }
+.badges {
+    display: flex; /* Aligner les badges horizontalement */
+    justify-content: center; /* Centrer les badges */
+    width: 100%; /* Utiliser toute la largeur disponible */
+}
+
 
 h3 {
     font-size: 1.2rem; /* Taille de police réduite */
@@ -194,25 +201,15 @@ h3 {
     transform: scale(1.05); /* Agrandit légèrement la carte au survol */
 }
 
-.badge-container {
-    display: flex;
-    flex-wrap: wrap; /* Permet aux badges de se mettre à la ligne si nécessaire */
-    justify-content: center; /* Centre les badges horizontalement */
-    align-items: center; /* Alignement vertical */
-    /* autres styles... */
-}
 
 
-.badge-container {
-    width: 100%; /* Ajustez en fonction de la largeur disponible */
-    /* autres styles... */
-}
 
 
 .badge {
     width: 30px;
     height: 30px;
     margin: 2px;
+    flex-wrap: wrap; /* Permet aux badges de se mettre à la ligne si nécessaire */
 
 }
 
@@ -273,3 +270,32 @@ h3 {
     /* autres styles de .card */
 }
 
+
+
+.badge, .buy-level-button {
+    margin: 5px; /* Espace autour des badges et du bouton */
+}
+
+.buy-level-button {
+    display: none; /* Cache initialement le bouton */
+}
+
+
+.card {
+    margin-bottom: 20px; /* Espacement entre les cartes */
+    /* autres styles pour .card */
+}
+
+
+.badge, .buy-level-button {
+    margin: 5px; /* Espace autour des badges et du bouton */
+}
+
+.buy-level-button {
+    display: none; /* Cache initialement le bouton */
+}
+
+.card {
+    margin-bottom: 0px;
+    padding: 0px;
+}
