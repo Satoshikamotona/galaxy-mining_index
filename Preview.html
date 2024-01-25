@@ -243,22 +243,23 @@
     for (let i = 1; i <= 10; i++) {
         const levelDiv = document.getElementById(`lvl${i}`);
         const badgesDiv = levelDiv.querySelector('.badges');
-        const buyButton = levelDiv.querySelector('.buy-level-button');
+        const buyButtonHolder = levelDiv.querySelector('.buy-button-holder'); // Assurez-vous que cette classe existe dans votre HTML
 
-        badgesDiv.innerHTML = ''; // Nettoyer les badges précédents ou le bouton "Buy"
+        badgesDiv.innerHTML = ''; // Nettoyer les badges précédents
 
         if (i <= activeLevels) {
             // Niveau actif, afficher trois badges
-            for (let j = 0; j < 3; j++) { // Toujours créer trois badges
+            for (let j = 0; j < 3; j++) {
                 const badge = document.createElement('div');
                 badge.className = 'badge';
-                badgesDiv.appendChild(badge); // Ajouter le badge au conteneur
+                badgesDiv.appendChild(badge);
             }
-            buyButton.style.display = 'none'; // Cacher le bouton "Buy"
+            badgesDiv.style.display = 'flex'; // Afficher les badges
+            buyButtonHolder.style.display = 'none'; // Cacher le bouton "Buy"
         } else {
             // Niveau inactif, afficher le bouton "Buy"
-            badgesDiv.appendChild(buyButton); // Ajouter le bouton "Buy" au conteneur
-            buyButton.style.display = 'block';
+            badgesDiv.style.display = 'none'; // Cacher les badges
+            buyButtonHolder.style.display = 'flex'; // Assurez-vous que le bouton "Buy" est visible
         }
     }
 },
