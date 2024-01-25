@@ -78,7 +78,7 @@
     </div>
        
         <div class="right-section">
-
+            <p id="levels">0 </p> 
         <div class="dividend-container">
             <p>Dividendes Available</p>
             <div class="dividend-info">
@@ -242,6 +242,31 @@
         console.error("Error in fetching free income:", error);
     }
 },
+
+level: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const G56Matrix = await this.contract.methods.G56Matrix(this.userAccount).call();
+            const levelsCountElement = document.getElementById('levels');
+
+            if (levelsCountElement) {
+                levelsCountElement.textContent = G56Matrix.toString();
+            } else {
+                console.error("Element 'levels' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+            // En cas d'erreur, affichez 0
+            if (document.getElementById('levels')) {
+                document.getElementById('levels').textContent = "0";
+            }
+        }
+    },
+
 
     calculateTeamProfit: async function() {
         if (!this.userAccount) {
