@@ -255,14 +255,11 @@
                 badgesDiv.appendChild(badge); // Ajouter le badge au conteneur
             }
             buyButton.style.display = 'none'; // Cacher le bouton "Buy"
-             badgesDiv.style.display = 'flex';
             
         } else {
             // Niveau inactif, afficher le bouton "Buy"
             badgesDiv.appendChild(buyButton); // Ajouter le bouton "Buy" au conteneur
             buyButton.style.display = 'block';
-            badgesDiv.style.display = 'none';
-            buyButton.style.display = 'flex';
         }
     }
 },
