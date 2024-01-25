@@ -189,10 +189,11 @@
 
     try {
         const price = web3.utils.toWei(amount, 'ether');
-            const gas = await this.contract.methods.BuyLevel(userAddress, level).estimateGas({ from: userAddress, value: price });
-
-            const receipt = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price, gas });
-            console.log('Transaction receipt:', receipt);
+            const response = await window.contract.methods.BuyLevel(userAddress).send({ from: userAddress, value: registrationFee });
+            console.log("Registration successful:", response);
+           
+             // Success message and page reload
+          alert("Level buy uccessful!");
         } catch (error) {
             console.error('Transaction failed:', error);
         }
