@@ -272,14 +272,6 @@ h3 {
 
 
 
-.badge, .buy-level-button {
-    margin: 5px; /* Espace autour des badges et du bouton */
-}
-
-.buy-level-button {
-    display: none; /* Cache initialement le bouton */
-}
-
 
 .card {
     margin-bottom: 20px; /* Espacement entre les cartes */
@@ -287,15 +279,26 @@ h3 {
 }
 
 
-.badge, .buy-level-button {
-    margin: 5px; /* Espace autour des badges et du bouton */
-}
-
-.buy-level-button {
-    display: none; /* Cache initialement le bouton */
-}
-
 .card {
     margin-bottom: 0px;
     padding: 0px;
+}
+
+.buy-level-button {
+    background: none;
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+}
+
+.panier-img {
+    background: none;
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    flex-direction: column;
+    display: flex; /* Aligner les badges horizontalement */
+    position: relative;
 }
