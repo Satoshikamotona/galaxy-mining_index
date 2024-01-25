@@ -1036,7 +1036,7 @@ a:hover {
 
 /* Couleur pour les niveaux actifs */
 .square.active {
-    background-color: yellow;
+    background-color:  #F0B90B;
 }
 
 /* Couleur pour les niveaux inactifs */
