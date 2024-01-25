@@ -262,3 +262,7 @@ h3 {
     color: #f0b90b; /* Couleur jaune doré pour le titre */
 
 }
+.buy-level-button img {
+    width: 50px; /* ou toute autre taille appropriée */
+    height: auto; /* pour garder le rapport hauteur/largeur */
+}
