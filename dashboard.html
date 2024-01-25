@@ -432,6 +432,7 @@ level: async function() {
     await this.calculateDivClaimed();
     await this.updateProgramLevels();
     await this.getUserLevel();
+    await this.level();
 
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
