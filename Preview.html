@@ -27,7 +27,9 @@
                 <div class="badge-container">
                     <h3>Lvl 1</h3>
                     <div class="badges">
-                      <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+                      <button class="buy-level-button" data-level="1" data-amount="0.1">
+                        <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+                    </button>
 
                   </div>
                 </div>
@@ -37,7 +39,9 @@
                 <div class="badge-container">
                     <h3>Lvl 2</h3>
                     <div class="badges">
-                      <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+                      <button class="buy-level-button" data-level="2" data-amount="0.1">
+                        <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+                    </button>
 
                   </div>
                 </div>
@@ -47,7 +51,9 @@
               <div class="badge-container">
                   <h3>Lvl 3</h3>
                   <div class="badges">
-                    <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+                    <button class="buy-level-button" data-level="3" data-amount="0.1">
+                      <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+                  </button>
 
                 </div>
               </div>
@@ -58,7 +64,9 @@
                 <h3>Lvl 4</h3>
 
                 <div class="badges">
-                  <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+                  <button class="buy-level-button" data-level="4" data-amount="0.1">
+                    <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+                </button>
 
               </div>
             </div>
@@ -69,7 +77,9 @@
           <div class="badge-container">
               <h3>Lvl 5</h3>
               <div class="badges">
-                <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+                <button class="buy-level-button" data-level="5" data-amount="0.1">
+                  <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+              </button>
 
             </div>
           </div>
@@ -80,7 +90,9 @@
         <div class="badge-container">
             <h3>Lvl 6</h3>
             <div class="badges">
-              <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+              <button class="buy-level-button" data-level="6" data-amount="0.1">
+                <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+            </button>
 
           </div>
         </div>
@@ -90,7 +102,9 @@
       <div class="badge-container">
           <h3>Lvl 7</h3>
           <div class="badges">
-            <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+            <button class="buy-level-button" data-level="7" data-amount="0.1">
+              <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+          </button>
 
         </div>
       </div>
@@ -100,7 +114,9 @@
     <div class="badge-container">
         <h3>Lvl 8</h3>
         <div class="badges">
-          <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+          <button class="buy-level-button" data-level="8" data-amount="0.1">
+            <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+        </button>
 
       </div>
     </div>
@@ -110,8 +126,9 @@
   <div class="badge-container">
       <h3>Lvl 9</h3>
       <div class="badges">
-        <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
-
+        <button class="buy-level-button" data-level="9" data-amount="0.1">
+          <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+      </button>
     </div>
   </div>
 </div>
@@ -120,7 +137,9 @@
   <div class="badge-container">
       <h3>Lvl 10</h3>
       <div class="badges">
-        <button class="buy-level-button"><img src="H3 (2).png" alt="Buy Now" class="panier-img"></button>
+        <button class="buy-level-button" data-level="10" data-amount="0.1">
+          <img src="H3 (2).png" alt="Buy Now" class="panier-img">
+      </button>
 
     </div>
   </div>
@@ -157,6 +176,25 @@
             console.error("Error connecting to contract: ", error);
         }
     },
+
+    buyLevel: async function(event) {
+        // Assurez-vous que cette fonction est bien liée à l'objet `galaxyMining` lorsqu'elle est appelée
+        const level = event.target.getAttribute('data-level');
+        const amount = event.target.getAttribute('data-amount');
+        const userAddress = this.userAccount; // Utilisez l'adresse stockée dans l'objet
+
+        try {
+            const price = web3.utils.toWei(amount, 'ether');
+            const gas = await this.contract.methods.BuyLevel(userAddress, level).estimateGas({ from: userAddress, value: price });
+
+            const receipt = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price, gas });
+            console.log('Transaction receipt:', receipt);
+        } catch (error) {
+            console.error('Transaction failed:', error);
+        }
+    },
+
+
 
     getUserWalletAddress: async function() {
         if (window.ethereum) {
@@ -236,9 +274,13 @@
          const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
          $('.wallet-address').text(truncatedAddress);
  
-        }
+         const buttons = document.querySelectorAll('.buy-level-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => this.buyLevel(event));
+        });
+    }
 };
-        
+     
          $(document).ready(async () => {
     try {
         await galaxyMining.init();
