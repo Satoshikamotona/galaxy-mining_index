@@ -173,6 +173,23 @@
         return null;
     },
 
+      getUserLevel: async function(userAddress) {
+        if (!userAddress) {
+        console.log("User address is undefined.");
+        return;
+    }
+        try {
+       
+        const activeLevels = await galaxyMining.contract.methods.G56Matrix(userAddress).call();
+        console.log("Niveaux actifs pour l'utilisateur:", activeLevels);
+        return activeLevels;
+    } catch (error) {
+        console.error("Erreur lors de la récupération des niveaux actifs:", error);
+    }
+
+      },
+
+
     updateProgramLevels: async function (userAddress) {
     if (!userAddress) {
         console.log("User address is undefined.");
@@ -389,7 +406,7 @@
     await this.getDirectTeam();
     await this.calculateDivClaimed();
     await this.updateProgramLevels();
-    await this.updateProgramLevels();
+    await this.getUserLevel();
 
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
