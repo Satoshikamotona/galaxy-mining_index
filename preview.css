@@ -2,7 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+  @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
 
+  @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
 :root {
     --primary-color: #0f0e0e; /* Black for backgrounds */
     --accent-color: #F0B90B; /* Binance yellow for highlights */
@@ -195,6 +197,11 @@ h3 {
     font-size: 1.2rem; /* Taille de police réduite */
 }
 
+h4 {
+    font-size: 1.2rem; /* Taille de police réduite */
+    padding: 0px;
+}
+
 
 
 .card:hover {
@@ -290,9 +297,70 @@ h3 {
     height: 50px; /* Hauteur fixe pour l'image */
     margin: 0; /* Pas de marge pour l'image */
     padding: 0; /* Pas de padding pour l'image */
-    display: flex; /* Pour s'assurer que l'image ne prend pas plus de place que nécessaire */
     align-items: center; /* Centrage vertical */
 
 }
 
 
+
+.buy-level-button { /* Remplacez .conteneur par le sélecteur réel de votre conteneur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribue l'espace uniformément entre les éléments */
+    padding: 10px; /* Espacement autour des éléments dans le conteneur */
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-top: 0; /* Optionnel, en fonction de l'espacement souhaité */
+}
+
+
+h4, h5 {
+   
+
+    margin: 10px 0; /* Espacement au-dessus et en dessous de h4 et h5 */
+}
+
+ h5 {
+    font-size: 1rem; /* Taille de police pour h4, ajustez pour h5 si nécessaire */
+
+
+ }
+.buy-level-button {
+    width: 50px; /* Largeur fixe pour l'image */
+    height: 50px; /* Hauteur fixe pour l'image */
+    margin: 0; /* Pas de marge pour l'image */
+    padding: 0; /* Pas de padding pour l'image */
+}
+h5 {
+    font-family: 'Gabriela', serif;
+        font-size: 0.8rem; /* Taille de police */
+    color: #FFD700; /* Couleur jaune doré */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+    margin: 5px 0; /* Ajuster l'espacement autour du texte */
+    transition: transform 0.3s ease; /* Animation lors du survol */
+}
+
+h5:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+
+h4 {
+    font-family: 'Gabriela', serif;
+        color: white ; /* Couleur jaune doré */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+
+    transition: transform 0.3s ease; /* Animation lors du survol */
+}
+
+h4:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
