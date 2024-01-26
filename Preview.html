@@ -305,7 +305,7 @@ updateBadgesDisplay: async function() {
             }
         }
 
-        // Remplir les badges restants avec des badges inactifs
+        // Remplir les badges restants avec des badges inactifs jusqu'à avoir 3 badges
         for (let j = activeBadgesCount; j < 3; j++) {
             const badge = document.createElement('div');
             badge.className = 'badge';
@@ -314,11 +314,9 @@ updateBadgesDisplay: async function() {
 
         // Réinitialiser les badges si tous sont actifs
         if (activeBadgesCount == 3) {
-            setTimeout(() => {
-                for (const badge of badgesDiv.children) {
-                    badge.className = 'badge'; // Remettre à la classe initiale
-                }
-            }, 5000); // Réinitialisation après un délai (ici 5 secondes)
+            for (const badge of badgesDiv.children) {
+                badge.className = 'badge'; // Remettre à la classe initiale
+            }
         }
     }
 },
