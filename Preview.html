@@ -284,7 +284,6 @@
         }
     }
 },
-
 updateBadgesDisplay: async function() {
     const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
     const partners = await this.getUserPartners();
@@ -295,7 +294,13 @@ updateBadgesDisplay: async function() {
         badgesDiv.innerHTML = ''; // Nettoyer les badges précédents
         let activeBadgesCount = 0;
 
+        // Parcourir chaque partenaire et créer des badges actifs si le niveau du partenaire est suffisant
         for (const partner of partners) {
+            // S'arrêter si on a déjà 3 badges actifs
+            if (activeBadgesCount >= 3) {
+                break;
+            }
+
             const partnerLevel = await this.contract.methods.G56Matrix(partner).call();
             if (partnerLevel >= i) {
                 const badge = document.createElement('div');
@@ -305,18 +310,11 @@ updateBadgesDisplay: async function() {
             }
         }
 
-        // Remplir les badges restants avec des badges inactifs jusqu'à avoir 3 badges
-        for (let j = activeBadgesCount; j < 3; j++) {
+        // Remplir les badges restants avec des badges inactifs jusqu'à avoir 3 badges au total
+        while (badgesDiv.children.length < 3) {
             const badge = document.createElement('div');
             badge.className = 'badge';
             badgesDiv.appendChild(badge);
-        }
-
-        // Réinitialiser les badges si tous sont actifs
-        if (activeBadgesCount == 3) {
-            for (const badge of badgesDiv.children) {
-                badge.className = 'badge'; // Remettre à la classe initiale
-            }
         }
     }
 },
