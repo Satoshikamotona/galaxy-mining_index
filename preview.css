@@ -288,8 +288,8 @@ h3 {
     display: flex;
     justify-content: center; /* Centrage horizontal */
     align-items: center; /* Centrage vertical */
-    width: 65%; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
-    height: 65px; /* Hauteur fixe pour le bouton */
+    width: 40px; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
+    height: 40px; /* Hauteur fixe pour le bouton */
     background: none; /* Pas de fond pour le bouton */
     border: none; /* Pas de bordure pour le bouton, ajustez selon vos besoins */
     padding: 0; /* Pas de padding pour le bouton */
@@ -307,4 +307,17 @@ h3 {
 .badge-container {
     display: flex;
   align-items: center;
+}
+
+.buy-level-button.active {
+ display: flex;
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    width: 65%; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
+    height: 65px; /* Hauteur fixe pour le bouton */
+    background: none; /* Pas de fond pour le bouton */
+    border: none; /* Pas de bordure pour le bouton, ajustez selon vos besoins */
+    padding: 0; /* Pas de padding pour le bouton */
+    margin: 0 auto; /* Marges automatiques pour centrer le bouton si le conteneur parent est plus large */
+
 }
