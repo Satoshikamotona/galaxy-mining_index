@@ -288,8 +288,8 @@ h3 {
     display: flex;
     justify-content: center; /* Centrage horizontal */
     align-items: center; /* Centrage vertical */
-    width: 60px; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
-    height: 60px; /* Hauteur fixe pour le bouton */
+    width: 70%; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
+    height: 70px; /* Hauteur fixe pour le bouton */
     background: none; /* Pas de fond pour le bouton */
     border: none; /* Pas de bordure pour le bouton, ajustez selon vos besoins */
     padding: 0; /* Pas de padding pour le bouton */
@@ -301,11 +301,8 @@ h3 {
     height: 100px; /* Hauteur fixe pour l'image */
     margin: 0; /* Pas de marge pour l'image */
     padding: 0; /* Pas de padding pour l'image */
+    display: block; /* Pour s'assurer que l'image ne prend pas plus de place que nécessaire */
+
 }
 
-
-.badge-container {
-    display: flex;
-  align-items: center;
-}
 
