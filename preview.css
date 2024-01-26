@@ -366,3 +366,7 @@ h4:hover {
         transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
     }
 
+    .badges.badge-active {
+    color: #F0B90B ; /* ou la couleur dorée souhaitée */
+    }
+    

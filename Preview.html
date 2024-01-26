@@ -304,6 +304,8 @@ updateBadgesDisplay: async function() {
                 if (activeBadgesCount <= 3) { // Limite à 3 badges actifs
                     const badge = document.createElement('div');
                     badge.className = 'badge badge-active'; // Classe pour un badge actif
+                    console.log("Partenaire:", partner, "Niveau du partenaire:", partnerLevel);
+
                     badgesDiv.appendChild(badge);
                 }
             }
