@@ -1,4 +1,8 @@
 /* BNB Smart Chain Color Scheme */
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
 :root {
     --primary-color: #000000; /* Black for backgrounds */
     --accent-color: #F0B90B; /* Binance yellow for highlights */
@@ -40,7 +44,11 @@ html, body {
 body {
     background-attachment: fixed;
 
-    background-image: url('9.png');
+        /* Autres propriétés du background comme avant */
+
+   
+    
+    background-image: url('Hackathon\ \(14\).png'); /* Chemin vers votre image de fond */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -241,7 +249,7 @@ body {
     background-size: cover, auto;
     background-position: center;
     background-repeat: no-repeat;
-    animation: BackgroundAnimation 30s infinite alternate;
+    animation: BackgroundAnimation 120s infinite alternate;
 }
 
 @keyframes BackgroundAnimation {
@@ -1166,4 +1174,21 @@ a:hover {
         margin: 0 5px; /* Réduit la marge entre les éléments */
         /* Autres styles si nécessaire */
     }
+}
+h5{
+    font-family: 'Gabriela', serif;
+  font-size: 1rem; /* Taille de police */
+  
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+   
+    transition: transform 0.3s ease; /* Animation lors du survol */
+    text-align: center;
+    margin-top: 10px;
+}
+
+h5:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
 }
