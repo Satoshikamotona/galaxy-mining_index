@@ -145,8 +145,8 @@ body {
     flex-direction: column; /* Alignement vertical des éléments */
     justify-content: flex-start; /* Aligner les éléments en haut */
     align-items: center; /* Centrer les éléments horizontalement */
-    width: 200px; /* Taille du conteneur (carré) */
-    height: 200px; /* Hauteur égale à la largeur pour un carré */
+    width: 150px; /* Taille du conteneur (carré) */
+    height: 150px; /* Hauteur égale à la largeur pour un carré */
     margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
     border-radius: 20px; /* Coins arrondis */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
@@ -297,11 +297,12 @@ h3 {
 }
 
 .panier-img {
-    width: 100px; /* Largeur fixe pour l'image */
-    height: 100px; /* Hauteur fixe pour l'image */
+    width: 50px; /* Largeur fixe pour l'image */
+    height: 50px; /* Hauteur fixe pour l'image */
     margin: 0; /* Pas de marge pour l'image */
     padding: 0; /* Pas de padding pour l'image */
-    display: block; /* Pour s'assurer que l'image ne prend pas plus de place que nécessaire */
+    display: flex; /* Pour s'assurer que l'image ne prend pas plus de place que nécessaire */
+    align-items: center; /* Centrage vertical */
 
 }
 
