@@ -57,7 +57,6 @@ body {
 
 
 
-
   .container {
     max-width: 460px; /* Adjust the width as needed */
     margin: auto;
@@ -88,7 +87,8 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('9.png'); /* Chemin vers votre image de fond */
+        background: blur(5px);
+    background-image: url('Hackathon\ \(14\).png'); /* Chemin vers votre image de fond */
     background-size: cover; /* L'image couvre tout l'espace disponible */
     background-repeat: no-repeat; /* L'image ne se répète pas */
     background-position: center; /* L'image est centrée */
@@ -102,7 +102,7 @@ body {
     background-size: cover, auto;
     background-position: center;
     background-repeat: no-repeat;
-    animation: BackgroundAnimation 30s infinite alternate;
+    animation: BackgroundAnimation 120s infinite alternate;
 }
 
 @keyframes BackgroundAnimation {
