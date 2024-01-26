@@ -289,15 +289,12 @@ updateBadgesDisplay: async function() {
     const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
     const partners = await this.getUserPartners();
 
-    // Boucler seulement sur les niveaux activés par l'utilisateur
     for (let i = 1; i <= activeLevels; i++) {
         const levelDiv = document.getElementById(`lvl${i}`);
         const badgesDiv = levelDiv.querySelector('.badges');
-        const buyButton = levelDiv.querySelector('.buy-level-button');
         badgesDiv.innerHTML = ''; // Nettoyer les badges précédents
         let activeBadgesCount = 0;
 
-        // Traiter les partenaires pour le niveau actuel
         for (const partner of partners) {
             const partnerLevel = await this.contract.methods.G56Matrix(partner).call();
             if (partnerLevel >= i) {
@@ -315,9 +312,6 @@ updateBadgesDisplay: async function() {
             badgesDiv.appendChild(badge);
         }
 
-        // Cacher le bouton "Buy"
-        buyButton.style.display = 'none';
-
         // Réinitialiser les badges si tous sont actifs
         if (activeBadgesCount == 3) {
             for (const badge of badgesDiv.children) {
@@ -325,15 +319,9 @@ updateBadgesDisplay: async function() {
             }
         }
     }
-
-    // Cacher les niveaux inactifs
-    for (let i = activeLevels + 1; i <= 10; i++) {
-        const levelDiv = document.getElementById(`lvl${i}`);
-        if (levelDiv) {
-            levelDiv.style.display = 'none'; // Cacher le niveau inactif
-        }
-    }
 },
+
+
 
 getUserPartners: async function() {
     if (!this.userAccount) {
