@@ -285,11 +285,38 @@
     }
 },
 
+updateBadgesDisplay: async function() {
+    const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
+    const partners = await this.getUserPartners();
+
+    for (let i = 1; i <= 10; i++) {
+        const levelDiv = document.getElementById(`lvl${i}`);
+        const badgesDiv = levelDiv.querySelector('.badges');
+        badgesDiv.innerHTML = ''; 
+
+     
+        partners.forEach(async (partner) => {
+            const partnerLevel = await this.contract.methods.G56Matrix(partner).call();
+            if (partnerLevel >= i) {
+                const badge = document.createElement('div');
+                badge.className = 'badge badge-active'; 
+                badgesDiv.appendChild(badge);
+            } else {
+                const badge = document.createElement('div');
+                badge.className = 'badge';
+                badgesDiv.appendChild(badge);
+            }
+        });
+    }
+},
+
  
      init: async function() {
+
           await this.connectContract();
-        await this.getUserWalletAddress(); 
-        await this.updateLevelsDisplay();
+          await this.getUserWalletAddress(); 
+          await this.updateLevelsDisplay();
+          await this.updateBadgesDisplay();
        
          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
          if (accounts.length === 0) {
