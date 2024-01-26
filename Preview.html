@@ -292,23 +292,39 @@ updateBadgesDisplay: async function() {
     for (let i = 1; i <= 10; i++) {
         const levelDiv = document.getElementById(`lvl${i}`);
         const badgesDiv = levelDiv.querySelector('.badges');
-        badgesDiv.innerHTML = ''; 
+        badgesDiv.innerHTML = ''; // Nettoyer les badges précédents
 
-     
-        partners.forEach(async (partner) => {
+        let activeBadgesCount = 0;
+
+        // Logique pour changer la couleur des badges
+        for (const partner of partners) {
             const partnerLevel = await this.contract.methods.G56Matrix(partner).call();
             if (partnerLevel >= i) {
-                const badge = document.createElement('div');
-                badge.className = 'badge badge-active'; 
-                badgesDiv.appendChild(badge);
-            } else {
-                const badge = document.createElement('div');
-                badge.className = 'badge';
-                badgesDiv.appendChild(badge);
+                activeBadgesCount++;
+                if (activeBadgesCount <= 3) { // Limite à 3 badges actifs
+                    const badge = document.createElement('div');
+                    badge.className = 'badge badge-active'; // Classe pour un badge actif
+                    badgesDiv.appendChild(badge);
+                }
             }
-        });
+        }
+
+        // Remplir les badges restants avec des badges inactifs
+        for (let j = activeBadgesCount; j < 3; j++) {
+            const badge = document.createElement('div');
+            badge.className = 'badge';
+            badgesDiv.appendChild(badge);
+        }
+
+        // Réinitialiser les badges si tous sont actifs
+        if (activeBadgesCount == 3) {
+            for (const badge of badgesDiv.children) {
+                badge.className = 'badge'; // Remettre à la classe initiale
+            }
+        }
     }
 },
+
 
 getUserPartners: async function() {
     if (!this.userAccount) {
