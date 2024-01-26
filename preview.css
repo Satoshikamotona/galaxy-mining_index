@@ -290,10 +290,11 @@ h3 {
     align-items: center; /* Centrage vertical */
     width: 70%; /* Assurez-vous que le bouton s'étend sur toute la largeur du conteneur parent */
     height: 70px; /* Hauteur fixe pour le bouton */
-    background: none; /* Pas de fond pour le bouton */
-    border: none; /* Pas de bordure pour le bouton, ajustez selon vos besoins */
+    background: white; /* Pas de fond pour le bouton */
+    border: 2px; /* Pas de bordure pour le bouton, ajustez selon vos besoins */
     padding: 0; /* Pas de padding pour le bouton */
     margin: 0 auto; /* Marges automatiques pour centrer le bouton si le conteneur parent est plus large */
+    border-radius: 15%;
 }
 
 .panier-img {
