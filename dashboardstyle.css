@@ -716,6 +716,8 @@ a:hover {
 }
 
 #dividend-amount {
+    font-family: 'Gabriela', serif;
+
     font-size: 1.3em;
     font-weight: bold;
     color: #f0b90b; /* Couleur jaune de Binance */
@@ -1191,4 +1193,63 @@ h5{
 
 h5:hover {
     transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+.dashboard-header .wallet-address {
+   
+        padding: 5px 20px;
+        margin-top: 20px; /* Espace au-dessus du bouton */
+        border: none;
+        border-radius: 25px; /* Bouton avec des bords arrondis */
+        background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+        color: #ffffff; /* Texte blanc */
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase; /* Texte en majuscules */
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+    }
+
+.copy-bar {
+    padding: 18x 20px;
+    margin-top: 25px; /* Espace au-dessus du bouton */
+    border: none;
+    border-radius: 10px; /* Bouton avec des bords arrondis */
+    background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+    color: #ffffff; /* Texte blanc */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+
+}
+
+.card {
+    display: flex; /* Utilisation de Flexbox */
+    flex-direction: column; /* Alignement vertical des éléments */
+    justify-content: flex-start; /* Aligner les éléments en haut */
+    align-items: center; /* Centrer les éléments horizontalement */
+    width: 110px; /* Taille du conteneur (carré) */
+    height: 80px; /* Hauteur égale à la largeur pour un carré */
+    margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
+    backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+    font-family: 'Gabriela', serif;
+
+
+}
+.badge-container h4 {
+    margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
+    margin-bottom: 0px; /* Espace entre le titre 'Lvl' et les badges */
+}
+.program-value {
+    font-family: 'Gabriela', serif;
+   font-size: 1.2em;
 }
