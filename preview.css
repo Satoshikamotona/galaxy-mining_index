@@ -145,8 +145,8 @@ body {
     flex-direction: column; /* Alignement vertical des éléments */
     justify-content: flex-start; /* Aligner les éléments en haut */
     align-items: center; /* Centrer les éléments horizontalement */
-    width: 150px; /* Taille du conteneur (carré) */
-    height: 150px; /* Hauteur égale à la largeur pour un carré */
+    width: 200px; /* Taille du conteneur (carré) */
+    height: 200px; /* Hauteur égale à la largeur pour un carré */
     margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
     border-radius: 20px; /* Coins arrondis */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
