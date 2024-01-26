@@ -1177,7 +1177,7 @@ a:hover {
 }
 h5{
     font-family: 'Gabriela', serif;
-  font-size: 1rem; /* Taille de police */
+  font-size: 0.8rem; /* Taille de police */
   
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
     font-weight: bold; /* Police en gras */
@@ -1186,7 +1186,7 @@ h5{
    
     transition: transform 0.3s ease; /* Animation lors du survol */
     text-align: center;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 h5:hover {
