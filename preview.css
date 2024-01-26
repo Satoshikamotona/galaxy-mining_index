@@ -158,9 +158,9 @@ body {
 
 
 }
-.badge-container h3 {
-    margin-top: 40px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
-    margin-bottom: 10px; /* Espace entre le titre 'Lvl' et les badges */
+.badge-container h4 {
+    margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
+    margin-bottom: 0px; /* Espace entre le titre 'Lvl' et les badges */
 }
 
 .card {
@@ -211,14 +211,6 @@ h4 {
 
 
 
-
-.badge {
-    width: 30px;
-    height: 30px;
-    margin: 2px;
-    flex-wrap: wrap; /* Permet aux badges de se mettre à la ligne si nécessaire */
-
-}
 
 h3 {
     font-size: 1.2rem;
