@@ -310,6 +310,21 @@ updateBadgesDisplay: async function() {
     }
 },
 
+getUserPartners: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
+
+    try {
+        const partners = await this.contract.methods.getDirectPartners(this.userAccount).call();
+        console.log("Partenaires directs :", partners);
+        return partners;
+    } catch (error) {
+        console.error("Erreur lors de la récupération des partenaires directs:", error);
+    }
+},
+
  
      init: async function() {
 
@@ -317,6 +332,7 @@ updateBadgesDisplay: async function() {
           await this.getUserWalletAddress(); 
           await this.updateLevelsDisplay();
           await this.updateBadgesDisplay();
+          await this.getUserPartners();
        
          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
          if (accounts.length === 0) {
