@@ -11,7 +11,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('9.png'); /* Chemin vers votre image de fond */
+    background-image: url('Hackathon\ \(14\).png'); /* Chemin vers votre image de fond */
     background-size: cover; /* L'image couvre tout l'espace disponible */
     background-repeat: no-repeat; /* L'image ne se répète pas */
     background-position: center; /* L'image est centrée */
@@ -394,4 +394,18 @@ a:hover {
             /* Autres styles pour le statut connecté */
         }
         
-    
+        .connect-btn {
+            padding: 10px 20px;
+            margin-top: 20px; /* Espace au-dessus du bouton */
+            border: none;
+            border-radius: 25px; /* Bouton avec des bords arrondis */
+            background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+            color: #ffffff; /* Texte blanc */
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase; /* Texte en majuscules */
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+        }
