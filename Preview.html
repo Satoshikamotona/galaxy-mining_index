@@ -314,12 +314,15 @@ updateBadgesDisplay: async function() {
 
         // Réinitialiser les badges si tous sont actifs
         if (activeBadgesCount == 3) {
-            for (const badge of badgesDiv.children) {
-                badge.className = 'badge'; // Remettre à la classe initiale
-            }
+            setTimeout(() => {
+                for (const badge of badgesDiv.children) {
+                    badge.className = 'badge'; // Remettre à la classe initiale
+                }
+            }, 5000); // Réinitialisation après un délai (ici 5 secondes)
         }
     }
 },
+
 
 
 
