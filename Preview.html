@@ -293,21 +293,15 @@ updateBadgesDisplay: async function() {
         const levelDiv = document.getElementById(`lvl${i}`);
         const badgesDiv = levelDiv.querySelector('.badges');
         badgesDiv.innerHTML = ''; // Nettoyer les badges précédents
-
         let activeBadgesCount = 0;
 
-        // Logique pour changer la couleur des badges
         for (const partner of partners) {
             const partnerLevel = await this.contract.methods.G56Matrix(partner).call();
             if (partnerLevel >= i) {
+                const badge = document.createElement('div');
+                badge.className = 'badge badge-active'; // Classe pour un badge actif
+                badgesDiv.appendChild(badge);
                 activeBadgesCount++;
-                if (activeBadgesCount <= 3) { // Limite à 3 badges actifs
-                    const badge = document.createElement('div');
-                    badge.className = 'badge badge-active'; // Classe pour un badge actif
-                    console.log("Partenaire:", partner, "Niveau du partenaire:", partnerLevel);
-
-                    badgesDiv.appendChild(badge);
-                }
             }
         }
 
@@ -326,6 +320,7 @@ updateBadgesDisplay: async function() {
         }
     }
 },
+
 
 
 getUserPartners: async function() {
