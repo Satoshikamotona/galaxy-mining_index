@@ -254,14 +254,12 @@
                 badge.className = 'badge';
                 badgesDiv.appendChild(badge); // Ajouter le badge au conteneur
             }
-     
-            buyButton.style.display = 'none';            
+            buyButton.style.display = 'none'; // Cacher le bouton "Buy"
+            
         } else {
             // Niveau inactif, afficher le bouton "Buy"
             badgesDiv.appendChild(buyButton); // Ajouter le bouton "Buy" au conteneur
-      
-            badgesDiv.style.display = 'none';
-            buyButton.style.display = 'block'; // Afficher 
+            buyButton.style.display = 'block';
         }
     }
 },
