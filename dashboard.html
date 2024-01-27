@@ -363,7 +363,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
         }
 
         try {
-            const divClaimedwei = await this.contract.methods. totalDivClaimed(this.userAccount).call();
+            const divClaimedwei = await this.contract.methods.totalDivClaimed(this.userAccount).call();
           
             const divClaimedbnb= Number( divClaimedwei ) / 1e18;
 
@@ -514,6 +514,31 @@ updateDividendCounter: async function(lastUpdate) {
 },
 
 
+ claimDividends: async function() {
+    try {
+        // Assurez-vous que l'utilisateur est connecté
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        // Récupérer le montant des dividendes du compteur et convertir en Wei
+        const dividendAmountBNB = document.getElementById('dividend-amount').textContent;
+        const dividendAmountWei = web3.utils.toWei(dividendAmountBNB, 'ether');
+
+        // Soustraire une petite marge (10 Wei) pour éviter les erreurs de transaction
+        const amountToClaim = web3.utils.toBN(dividendAmountWei).sub(web3.utils.toBN('10'));
+
+        // Appel de la fonction Claim_DIV du contrat
+        await this.contract.methods.Claim_DIV(this.userAccount, amountToClaim.toString()).send({ from: galaxyMining.userAccount });
+
+        console.log("Dividends successfully claimed");
+    } catch (error) {
+        console.error("Error claiming dividends:", error);
+    }
+},
+
+
 
     init: async function() {
         await this.connectContract();
@@ -562,6 +587,17 @@ updateDividendCounter: async function(lastUpdate) {
     }
 };
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Assurez-vous que le script est chargé complètement
+    const claimButton = document.getElementById('claimDividendButton');
+    if (claimButton) {
+        claimButton.addEventListener('click', function() {
+            claimDividends();
+        });
+    } else {
+        console.error("Claim button not found");
+    }
+});
 
 
 
