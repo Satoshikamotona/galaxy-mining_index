@@ -1295,3 +1295,10 @@ h5:hover {
         padding: 40px;
     }
 }
+
+.lastInfos , h1 {
+    color: #f0b90b;
+}
+.lastInfos , span {
+    color: #f0f0f0;
+}
