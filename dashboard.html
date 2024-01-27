@@ -489,12 +489,15 @@ updateDividendCounter: function(lastUpdate) {
         }
     },
 
-    updateDividendDisplay: function(dividendAmount) {
+    updateDividendDisplay: function(dividends) {
     const dividendElement = document.getElementById('dividend-amount');
     if (dividendElement) {
-        dividendElement.textContent = `${dividendAmount} BNB`;
+        // Convertir les dividendes en nombre, puis fixer à 10 chiffres après la virgule
+        const formattedDividends = parseFloat(dividends).toFixed(10);
+        dividendElement.textContent = `${formattedDividends} BNB`;
     }
 },
+
 
 
     init: async function() {
