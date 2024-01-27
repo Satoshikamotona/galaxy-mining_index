@@ -453,11 +453,13 @@ updateDividendCounter: function(lastUpdate) {
     const currentTimestamp = Math.floor(Date.now() / 1000);
     const timeElapsed = currentTimestamp - lastUpdate;
 
+    // Convertir 0.01 Ether en Wei et créer un objet BigNumber
+    const initialAmount = web3.utils.toBN(web3.utils.toWei('0.01', 'ether'));
+
     // Calculer les dividendes (exemple : 0.01 BNB * 10% par jour)
-    const dailyRate = 0.10; // 10%
-    const initialAmount = web3.utils.BN('0.01', 'ether'); // Montant initial en Wei
-    const dividendsPerSecond = (initialAmount * dailyRate) / (24 * 60 * 60); // Dividendes par seconde
-    const dividends = dividendsPerSecond * timeElapsed;
+    const dailyRate = web3.utils.toBN('10'); // 10%
+    const dividendsPerSecond = initialAmount.mul(dailyRate).div(web3.utils.toBN('100')).div(web3.utils.toBN('86400')); // Dividendes par seconde
+    const dividends = dividendsPerSecond.mul(web3.utils.toBN(timeElapsed));
 
     // Mise à jour de l'affichage
     this.updateDividendDisplay(web3.utils.fromWei(dividends.toString(), 'ether'));
