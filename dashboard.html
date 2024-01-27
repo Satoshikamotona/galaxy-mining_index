@@ -592,13 +592,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const claimButton = document.getElementById('claimDividendButton');
     if (claimButton) {
         claimButton.addEventListener('click', function() {
-            claimDividends();
+            if (galaxyMining && typeof galaxyMining.claimDividends === "function") {
+                galaxyMining.claimDividends();
+            } else {
+                console.error("claimDividends function not found");
+            }
         });
     } else {
         console.error("Claim button not found");
     }
 });
-
 
 
 
