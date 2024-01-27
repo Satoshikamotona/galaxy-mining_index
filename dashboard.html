@@ -433,22 +433,22 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
     },
 
     startDividendCounter: async function() {
-    
+    // Assurez-vous que l'utilisateur est connecté
     if (!this.userAccount) {
         console.error("User account is undefined.");
         return;
     }
 
-    
+    // Récupérer le dernier timestamp de mise à jour
     const lastUpdate = await this.contract.methods.LastUpdate(this.userAccount).call();
     
-    
+    // Démarrer le compteur de dividendes
     this.updateDividendCounter(lastUpdate);
 
-    
+    // Mise à jour du compteur toutes les secondes
     setInterval(() => this.updateDividendCounter(lastUpdate), 1000);
-
 },
+
 
     updateDividendCounter: async function() {
         if (!this.userAccount) {
@@ -548,7 +548,10 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
 
 
         document.getElementById('totalTeam').textContent = teamTotal.toString();
-
+        const dividendElement = document.getElementById('dividend-amount');
+    if (dividendElement) {
+        dividendElement.textContent = '0.000000000 BNB';
+    }
 
     }
 };
