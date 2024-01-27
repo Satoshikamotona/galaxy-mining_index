@@ -520,24 +520,21 @@ claimDividends: async function() {
             return;
         }
 
-        // Récupérer le montant des dividendes et retirer l'unité 'BNB'
         const dividendAmountText = document.getElementById('dividend-amount').textContent;
-        const dividendAmount = dividendAmountText.split(' ')[0]; // Retire 'BNB'
+        const dividendAmount = dividendAmountText.split(' ')[0];
 
-        // Convertir le montant des dividendes en Wei
         const dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
 
-        // Soustraire une petite marge pour éviter les erreurs de transaction
         const amountToClaim = web3.utils.toBN(dividendAmountWei).sub(web3.utils.toBN('10'));
 
-        // Appel de la fonction Claim_DIV du contrat
-        await this.contract.methods.Claim_DIV(this.userAccount, amountToClaim.toString()).send({ from: this.userAccount });
+        await this.contract.methods.Claim_DIV(amountToClaim.toString()).send({ from: this.userAccount });
 
         console.log("Dividends successfully claimed");
     } catch (error) {
         console.error("Error claiming dividends:", error);
     }
 },
+
 
 
     init: async function() {
