@@ -461,17 +461,17 @@ updateDividendCounter: async function() {
 
         if (currentLevel == 0) {
             // Utilisateur juste inscrit, utiliser les frais d'inscription
-            amountForCalculation = web3.utils.toWei('0.01', 'ether');
+            amountForCalculation = new web3.utils.BN(web3.utils.toWei('0.01', 'ether'));
         } else {
             // Utilisateur avec niveaux actifs, utiliser le prix du niveau le plus élevé
             let highestLevelPrice = await this.contract.methods.levelPrices(currentLevel).call();
-            amountForCalculation = web3.utils.toBN(highestLevelPrice);
+            amountForCalculation = new web3.utils.BN(highestLevelPrice);
         }
 
         // Calcul des dividendes
-        const dailyRate = web3.utils.toBN('3'); // 3%
-        const dividendsPerSecond = amountForCalculation.mul(dailyRate).div(web3.utils.toBN('100')).div(web3.utils.toBN('86400'));
-        const dividends = dividendsPerSecond.mul(web3.utils.toBN(timeElapsed));
+        const dailyRate = new web3.utils.BN('3'); // 3%
+        const dividendsPerSecond = amountForCalculation.mul(dailyRate).div(new web3.utils.BN('100')).div(new web3.utils.BN('86400'));
+        const dividends = dividendsPerSecond.mul(new web3.utils.BN(timeElapsed));
 
         // Mise à jour de l'affichage
         this.updateDividendDisplay(web3.utils.fromWei(dividends.toString(), 'ether'));
