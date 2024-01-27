@@ -1,8 +1,10 @@
-/* BNB Smart Chain Color Scheme */
 
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
 :root {
     --primary-color: #000000; /* Black for backgrounds */
     --accent-color: #F0B90B; /* Binance yellow for highlights */
@@ -552,9 +554,7 @@ a:hover {
   .user-link:hover {
     text-decoration: underline; /* Adds underline on hover */
   }
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+ 
 
   :root {
     --primary-color: #121212; /* Couleur de fond principale */
@@ -1252,4 +1252,46 @@ h5:hover {
 .program-value {
     font-family: 'Gabriela', serif;
    font-size: 1.2em;
+}
+
+
+
+
+.lastInfos:hover {
+    box-shadow: 0px 0px 25px rgba(240, 185, 11, 0.8); /* Ombre plus prononcée au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.lastInfos label {
+    margin-bottom: 10px; /* Espace augmenté sous chaque label */
+    font-size: 1em; /* Taille de police appropriée pour les labels */
+}
+
+.Second {
+
+    font-size: 1.7em;
+    text-align: center;
+}
+.lastInfos {
+    max-width: 150px; /* Largeur maximale pour les petits écrans */
+    margin: 20px; /* Centrage horizontal */
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-size: 0.6em; /* Taille de police */
+    text-align: center; /* Centrage du texte */
+    align-items: center;
+    display: block;
+    margin: 20px auto;
+    display: grid;
+    place-items: center; /* Centrage horizontal et vertical */
+}
+
+@media only screen and (min-width: 769px) {
+    .lastInfos {
+        max-width: 500px; /* Largeur maximale pour les grands écrans */
+        padding: 40px;
+    }
 }
