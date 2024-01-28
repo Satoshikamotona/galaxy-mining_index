@@ -208,12 +208,13 @@
         const priceWei = web3.utils.toWei(amount, 'ether');
         const userBalanceWei = await web3.eth.getBalance(userAddress);
         
-        if (BigInt(userBalanceWei) >= BigInt(priceWei)) {
-            // L'utilisateur a suffisamment de fonds, procéder à l'achat du niveau
-            const response = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: priceWei });
-            console.log("Level buy successful:", response);
-            alert("Level buy successful!");
-            window.location.reload();
+        const receipt = await web3.eth.getTransactionReceipt(transaction.transactionHash);
+
+         if (receipt.status) {
+          console.log("Level buy successful:", transaction);
+           alert("Level buy successful!");
+           window.location.reload();
+           
         } else {
             // L'utilisateur n'a pas suffisamment de fonds
             console.log("Your balance is less than the price of the level.");

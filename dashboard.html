@@ -147,7 +147,7 @@
 <div class="lastInfos">
     <h1>Best Learder</h1>
     <div class="Second">
-        <span id="best-promoter"> User ID 5 </span>
+        <span id="best-promoter">loading...</span>
     </div>
 </div>
 
@@ -673,9 +673,14 @@ claimDividends: async function() {
 
         await this.contract.methods.Claim_DIV(amountToClaim.toString()).send({ from: this.userAccount });
 
-        console.log("Dividends successfully claimed");
-        
-          alert ( "dividendes claimed successfully");
+        const receipt = await web3.eth.getTransactionReceipt(transaction.transactionHash);
+
+     if (receipt.status) {
+    console.log("Dividendes claimed successfully:", transaction);
+    alert("Dividendes claimed successfully, Check your wallet and enjoy Life😎");
+    window.location.reload();
+     }
+
 
     } catch (error) {
         console.error("Error claiming dividends:", error);
