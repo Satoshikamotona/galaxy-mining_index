@@ -673,15 +673,11 @@ claimDividends: async function() {
 
         await this.contract.methods.Claim_DIV(amountToClaim.toString()).send({ from: this.userAccount });
 
-        const receipt = await web3.eth.getTransactionReceipt(transaction.transactionHash);
-
-     if (receipt.status) {
-    console.log("Dividendes claimed successfully:", transaction);
-    alert("Dividendes claimed successfully, Check your wallet and enjoy Life😎");
-    window.location.reload();
-     }
-
-
+        console.log("Dividends successfully claimed");
+        
+          alert ( "dividendes claimed successfully, Check your Wallet and Enjoy life 😎");
+          window.location.reload();
+          
     } catch (error) {
         console.error("Error claiming dividends:", error);
     }
