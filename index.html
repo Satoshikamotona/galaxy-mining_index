@@ -86,13 +86,14 @@ checkUserRegistration: async function() {
 },
 
 
-   handleLogin: async function() {
+   // Gestionnaire d'événement pour le bouton de connexion
+handleLogin: async () => {
     if (window.ethereum) {
-        const isUserRegistered = await this.checkUserRegistration();
+        const isUserRegistered = await galaxyMining.checkUserRegistration(); // Utilisez galaxyMining ici
 
         if (isUserRegistered) {
             // L'utilisateur est inscrit, redirigez-le vers le tableau de bord
-            window.location.href = 'dashboard.html?address=' + encodeURIComponent(this.userAccount);
+            window.location.href = 'dashboard.html?address=' + encodeURIComponent(galaxyMining.userAccount); // Utilisez galaxyMining.userAccount ici
         }
     } else {
         console.log("Ethereum browser not detected. Try installing MetaMask!");
