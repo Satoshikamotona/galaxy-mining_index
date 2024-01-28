@@ -124,56 +124,45 @@ document.getElementById('connectWalletButton').addEventListener('click', async (
 };
 
         document.getElementById("connectWalletButton").addEventListener('click', connectcontract);
-    window.onload = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const parrainAddress = urlParams.get('parrain');
-        if (parrainAddress) {
-            document.getElementById('parrain').value = parrainAddress;
+
+        var registrationForm = document.getElementById('registrationForm');
+if (registrationForm) {
+    registrationForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const referrerAddress = document.getElementById('parrain').value;
+
+        if (!referrerAddress) {
+            alert("Please enter the referrer address.");
+            return;
         }
-    };
 
-        document.addEventListener('DOMContentLoaded', function () {
-    var registrationForm = document.getElementById('registrationForm');
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const referrerAddress = document.getElementById('parrain').value; // Fetches the value from the input field with ID 'parrain'
+        if (!window.contract) {
+            alert("You are not connected to the smart contract.");
+            return;
+        }
 
-            if (!referrerAddress) {
-                alert("Please enter the referrer address.");
-                return;
+        try {
+            const accounts = await web3.eth.getAccounts();
+            const userAddress = accounts[0];
+            const registrationFee = web3.utils.toWei('0.01', 'ether');
+            const userBalance = await web3.eth.getBalance(userAddress);
+
+            if (BigInt(userBalance) >= BigInt(registrationFee)) {
+                const response = await window.contract.methods.registerUser(userAddress, referrerAddress).send({ from: userAddress, value: registrationFee });
+                console.log("Registration successful:", response);
+                alert("Registration successful!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Your balance is insufficient to cover the registration fee.");
             }
-
-            if (!window.contract) {
-                alert("You are not connected to the smart contract.");
-                return;
-            }
-            try {
-
-    const accounts = await web3.eth.getAccounts();
-    const userAddress = accounts[0]; // The address of the currently connected user
-
-    const referrerAddress = document.getElementById('parrain').value; // Fetches the referrer's address from the form
-
-    const registrationFee = web3.utils.toWei('0.01', 'ether'); // The registration fee of 0.01 BNB
-
-    // Call the smart contract method for registration with both userAddress and referrerAddress
-    const response = await window.contract.methods.registerUser(userAddress, referrerAddress).send({ from: userAddress, value: registrationFee });
-    console.log("Registration successful:", response);
-
-    // Success message and page reload
-    alert("Registration successful!");
-   
-   window.location.href = 'index.html';
-} catch (error) {
-    console.error("Error during registration:", error);
-    alert("An error occurred during registration.");
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred during registration.");
+        }
+    });
 }
 
-        });
-    }
-});
-
+   
 
     </script>
     
