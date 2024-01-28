@@ -447,7 +447,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             }
 
             try {
-                const GlobalCommunity = await this.contract.methods.NumberOfUsers(this.userAccount).call();
+                const GlobalCommunity = await this.contract.methods.NumberOfUsers().call();
                 const GlobalCommunityElement = document.getElementById("theCurrentNumber");
             
 
