@@ -68,9 +68,9 @@ checkUserRegistration: async function() {
             const isUserRegistered = await this.contract.methods.isRegistered(this.userAccount).call();
 
             if (!isUserRegistered) {
-                alert("Please register first before login.");
-                return false; // L'utilisateur n'est pas inscrit
-            }
+            alert("Please register first before login.");
+           return false; // L'utilisateur n'est pas inscrit
+}
 
             console.log("User connected:", this.userAccount);
             return true; // L'utilisateur est inscrit
@@ -86,18 +86,21 @@ checkUserRegistration: async function() {
 },
 
 
-   // Gestionnaire d'événement pour le bouton de connexion
 handleLogin: async () => {
     if (window.ethereum) {
-        const isUserRegistered = await galaxyMining.checkUserRegistration(); // Utilisez galaxyMining ici
+        const isUserRegistered = await galaxyMining.checkUserRegistration(); 
 
         if (isUserRegistered) {
-            // L'utilisateur est inscrit, redirigez-le vers le tableau de bord
-            window.location.href = 'dashboard.html?address=' + encodeURIComponent(galaxyMining.userAccount); // Utilisez galaxyMining.userAccount ici
+
+            window.location.href = 'dashboard.html?address=' + encodeURIComponent(galaxyMining.userAccount);
+
         }
     } else {
+       
+
         console.log("Ethereum browser not detected. Try installing MetaMask!");
         alert("Ethereum browser not detected. Try installing MetaMask!");
+
     }
 },
 

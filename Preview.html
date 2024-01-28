@@ -205,15 +205,25 @@
     }
 
     try {
-        const price = web3.utils.toWei(amount, 'ether');
-        const response = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: price });
-        console.log("Level buy successful:", response);
-
-        alert("Level buy successful!");
+        const priceWei = web3.utils.toWei(amount, 'ether');
+        const userBalanceWei = await web3.eth.getBalance(userAddress);
+        
+        if (BigInt(userBalanceWei) >= BigInt(priceWei)) {
+            // L'utilisateur a suffisamment de fonds, procéder à l'achat du niveau
+            const response = await this.contract.methods.BuyLevel(userAddress, level).send({ from: userAddress, value: priceWei });
+            console.log("Level buy successful:", response);
+            alert("Level buy successful!");
+            window.location.reload();
+        } else {
+            // L'utilisateur n'a pas suffisamment de fonds
+            console.log("Your balance is less than the price of the level.");
+            alert("Your balance is less than the price of the level.");
+        }
     } catch (error) {
         console.error('Transaction failed:', error);
     }
 },
+
 
 
 
