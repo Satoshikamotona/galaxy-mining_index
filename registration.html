@@ -138,30 +138,33 @@ var galaxyMining = {
     },
 
     connectWallet: async function() {
-    // Vérifie si l'environnement Ethereum (par exemple, MetaMask) est disponible
     if (window.ethereum) {
         try {
-            // Demande à l'utilisateur de connecter son compte Ethereum
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-
-            // Stocke l'adresse du compte connecté dans la propriété userAccount
             this.userAccount = accounts[0];
-
-            // Met à jour le bouton de connexion avec l'adresse du compte connecté
             this.updateWalletButton();
 
-            // Ici, vous pouvez ajouter d'autres actions à effectuer après la connexion au portefeuille.
-            // Par exemple, vous pouvez vérifier le statut d'inscription de l'utilisateur ici.
+            // Mettre à jour le texte dans #contractStatus
+            const contractStatus = document.getElementById("contractStatus");
+            if (this.contract) {
+                contractStatus.textContent = "Connected to smart contract";
+            } else {
+                contractStatus.textContent = "Not connected to smart contract";
+            }
 
+            // Autres actions après la connexion au portefeuille...
         } catch (error) {
-            // Gestion des erreurs, par exemple si l'utilisateur refuse de connecter son portefeuille
             console.error("Error connecting to wallet:", error);
         }
     } else {
-        // Ce message s'affiche si l'environnement Ethereum n'est pas détecté (par exemple, si MetaMask n'est pas installé)
         console.log("Ethereum environment not detected. Please install MetaMask!");
+
+        // Mettre à jour le texte dans #contractStatus
+        const contractStatus = document.getElementById("contractStatus");
+        contractStatus.textContent = "Ethereum environment not detected. Please install MetaMask!";
     }
 },
+
 
 
     updateWalletButton:async function() {
@@ -214,13 +217,11 @@ $(document).ready(async () => {
             const referrerAddress = $('#parrain').val(); // Récupère l'adresse du parrain
             const userBalance = await web3.eth.getBalance(galaxyMining.account); // Obtient le solde de l'utilisateur
 
-            // Vérifie si l'utilisateur est connecté au contrat
             if (!galaxyMining.contract) {
                 alert("You are not connected to the smart contract.");
                 return;
             }
 
-            // Vérifie si le solde de l'utilisateur est suffisant
             const registrationFee = web3.utils.toWei('0.01', 'ether');
             if (BigInt(userBalance) < BigInt(registrationFee)) {
                 alert("Your balance is insufficient to cover the registration fee.");
