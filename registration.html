@@ -85,24 +85,7 @@ var galaxyMining = {
         }
     },
 
-    ConnectContract: async function() {
-        window.web3 = new Web3(window.ethereum);
-        const contractStatus = document.getElementById("contractStatus");
-        const contractIconContainer = document.getElementById("connectcontract");
 
-        try {
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-            this.account = (await web3.eth.getAccounts())[0];
-            this.contract = new web3.eth.Contract(this.ABI, this.Address);
-
-            contractStatus.textContent = "Connected to smart contract";
-            contractIconContainer.classList.add("connected");
-        } catch (error) {
-            console.error("Error connecting to contract: ", error);
-            contractStatus.textContent = "Error connecting to smart contract";
-            contractIconContainer.classList.remove("connected");
-        }
-    },
 
 
     registerUser: async function(referrerAddress) {
@@ -154,21 +137,32 @@ var galaxyMining = {
         }
     },
 
-  
     connectWallet: async function() {
-        if (window.ethereum) {
-            try {
-                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                this.userAccount = accounts[0];
-                this.updateWalletButton();
-                // Autres actions après la connexion au portefeuille...
-            } catch (error) {
-                console.error("Error connecting to wallet:", error);
-            }
-        } else {
-            console.log("Ethereum environment not detected. Please install MetaMask!");
+    // Vérifie si l'environnement Ethereum (par exemple, MetaMask) est disponible
+    if (window.ethereum) {
+        try {
+            // Demande à l'utilisateur de connecter son compte Ethereum
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
+            // Stocke l'adresse du compte connecté dans la propriété userAccount
+            this.userAccount = accounts[0];
+
+            // Met à jour le bouton de connexion avec l'adresse du compte connecté
+            this.updateWalletButton();
+
+            // Ici, vous pouvez ajouter d'autres actions à effectuer après la connexion au portefeuille.
+            // Par exemple, vous pouvez vérifier le statut d'inscription de l'utilisateur ici.
+
+        } catch (error) {
+            // Gestion des erreurs, par exemple si l'utilisateur refuse de connecter son portefeuille
+            console.error("Error connecting to wallet:", error);
         }
-    },
+    } else {
+        // Ce message s'affiche si l'environnement Ethereum n'est pas détecté (par exemple, si MetaMask n'est pas installé)
+        console.log("Ethereum environment not detected. Please install MetaMask!");
+    }
+},
+
 
     updateWalletButton: function() {
         const connectButton = document.getElementById('connectWalletButton');
