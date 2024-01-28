@@ -441,6 +441,66 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             console.error("Error in fetching team profit:", error);
         }
     },
+
+    calculateTotalProfits: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+            const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
+            const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome + BigInt(totalFreeIncome));
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('totalearnings');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'totalearnings' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+    calculateTotalProfitsFor: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+            const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
+            const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome + BigInt(totalFreeIncome));
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('program-value');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'program-value' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+    
+
+
          GetglobalMembers : async function() {
             if (!this.userAccount) {
                 console.error("User account is undifined")
@@ -695,7 +755,7 @@ claimDividends: async function() {
     await this.GetglobalMembers();
     await this.getTotalinvest() ;
     await this.findTopPromoter();
- 
+    await this.calculateTotalProfits();
     }
 };
 
