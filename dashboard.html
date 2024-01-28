@@ -167,6 +167,22 @@
     </footer>
 
 <script>
+
+    if (window.ethereum) {
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+    .then(accounts => {
+        const userAddress = accounts[0];
+
+        genererEtAfficherLienParrainage(userAddress);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+} else {
+    // Gérer l'absence d'un portefeuille Ethereum
+    console.log("Portefeuille Ethereum non détecté");
+}
+
 async function getUserIdFromAddress(userAddress) {
     try {
         // Remplacez par l'appel approprié à votre contrat intelligent pour obtenir l'ID de l'utilisateur
@@ -210,7 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gérer l'absence d'un portefeuille Ethereum
     }
 });
-
+// Fonction pour copier le lien dans le presse-papiers
+function copyToClipboard(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        navigator.clipboard.writeText(element.href)
+            .then(() => console.log("Lien copié!"))
+            .catch(err => console.error("Erreur lors de la copie: ", err));
+    }
+}
 
 
  var galaxyMining = {
