@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+   
 
 <div class="dashboard-header">
     <img src="17.png" alt="Binance Logo">
@@ -29,10 +29,12 @@
             <p class="profile-invited">Upline : <span id="referrerId">loading...</span></p>
 
             <div class="user-link-container">
-                <a href="https://example.com/user-link" class="user-link">https://example.com/user-link</a>
+                <a href="#" class="user-link">...</a>
                 <div class="copy-bar" onclick="copyToClipboard('.user-link')">Copy</div>
             </div>
         
+         
+            
             
         </div>
   
@@ -165,6 +167,63 @@
     </footer>
 
 <script>
+
+if (window.ethereum) {
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+    .then(accounts => {
+        const userAddress = accounts[0];
+
+        genererEtAfficherLienParrainage(userAddress);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+} else {
+    // Gérer l'absence d'un portefeuille Ethereum
+    console.log("Portefeuille Ethereum non détecté");
+}
+
+
+function genererLienParrainage(adresseUtilisateur) {
+    const baseUrl = "https://galaxy-mining.space/registration.html";
+    return `${baseUrl}?parrain=${encodeURIComponent(adresseUtilisateur)}`;
+}
+
+function genererEtAfficherLienParrainage(adresseUtilisateur) {
+    let lienParrainage = genererLienParrainage(adresseUtilisateur);
+
+    let elementLien = document.querySelector('.user-link-container .user-link');
+    elementLien.href = lienParrainage;
+    elementLien.textContent = lienParrainage;
+}
+
+
+// Fonction pour copier le lien dans le presse-papiers
+function copyToClipboard(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        navigator.clipboard.writeText(element.href)
+            .then(() => console.log("Lien copié!"))
+            .catch(err => console.error("Erreur lors de la copie: ", err));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.ethereum) {
+        window.ethereum.request({ method: 'eth_requestAccounts' })
+            .then(accounts => {
+                const userAddress = accounts[0];
+                genererEtAfficherLienParrainage(userAddress);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    } else {
+        console.log("Portefeuille Ethereum non détecté");
+        // Ici, vous pouvez gérer le cas où aucun portefeuille n'est détecté
+    }
+});
+
 
  var galaxyMining = {
     account: null,

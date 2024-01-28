@@ -1258,7 +1258,7 @@ h5:hover {
 
 
 .lastInfos:hover {
-    box-shadow: 0px 0px 25px rgba(240, 185, 11, 0.8); /* Ombre plus prononcée au survol */
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8); /* Ombre plus prononcée au survol */
     transform: scale(1.05); /* Légère augmentation de la taille au survol */
 }
 
@@ -1272,22 +1272,27 @@ h5:hover {
     font-size: 1.7em;
     text-align: center;
 }
-.lastInfos {
-    max-width: 150px; /* Largeur maximale pour les petits écrans */
-    margin: 20px; /* Centrage horizontal */
+
+ .lastInfos {
+
+    max-width: 200px;
+    margin: 20px;
     padding: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-    border-radius: 15px;
+    border-radius: 20px;
     transition: all 0.3s ease;
-    font-size: 0.6em; /* Taille de police */
-    text-align: center; /* Centrage du texte */
+    font-size: 0.6em; 
+    text-align: center; 
     align-items: center;
-    display: block;
     margin: 20px auto;
     display: grid;
-    place-items: center; /* Centrage horizontal et vertical */
+    place-items: center;
+    height: px;
+
+
 }
+
 
 @media only screen and (min-width: 769px) {
     .lastInfos {
@@ -1301,4 +1306,26 @@ h5:hover {
 }
 .lastInfos , span {
     color: #f0f0f0;
+}
+
+
+
+
+#background-video {
+    position: fixed; /* Position fixe pour couvrir tout l'écran */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Couvre toute la largeur */
+    min-height: 100%; /* Couvre toute la hauteur */
+    width: auto; /* Maintient le rapport d'aspect */
+    height: auto; /* Maintient le rapport d'aspect */
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
+    background-size: cover; /* S'assure que la vidéo couvre tout l'écran */
+}
+#background-video {
+    /* Autres styles ici... */
+    filter: blur(25px); /* Ajoute un effet de flou */
+}
+.user-link {
+    font-size: 1em;
 }

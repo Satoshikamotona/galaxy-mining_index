@@ -1,0 +1,404 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #000000; /* Black for backgrounds */
+    --accent-color: #F0B90B; /* Binance yellow for highlights */
+    --secondary-color: #FFFFFF; /* White for secondary elements */
+    --text-light: #FFFFFF; /* White for text */
+    --text-dark: #000000; /* Black for text on light backgrounds */
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    background-color: var(--primary-color);
+ 
+    background-size: cover; /* L'image couvre tout l'espace disponible */
+    background-repeat: no-repeat; /* L'image ne se répète pas */
+    background-position: center; /* L'image est centrée */
+}
+
+
+
+/* Background Styles */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Modern Binance-Inspired Site Background */
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 30s infinite alternate;
+}
+
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+/* ... le reste de votre CSS ... */
+
+/* Header Styles */
+header {
+    color: var(--text-light);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    background-size: cover;
+
+    
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 6px 0;
+}
+
+header::before {
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+
+
+
+/* Enhanced Registration Container Styles */
+.login-container {
+    max-width: 400px; /* Largeur maximale pour les petits écrans */
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(240, 185, 11, 0.6);
+    transition: all 0.3s ease;
+}
+
+/* Style pour les écrans d'ordinateur (largeurs plus grandes) */
+@media only screen and (min-width: 769px) {
+    .login-container {
+        max-width: 500px; /* Largeur maximale ajustée pour les grands écrans */
+        padding: 40px; /* Padding ajusté pour les grands écrans */
+        /* Autres styles spécifiques aux grands écrans si nécessaire */
+    }
+}
+
+
+
+.login-container:hover {
+    box-shadow: 0px 0px 25px rgba(240, 185, 11, 0.8); /* Ombre plus prononcée au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 10px; /* Espace augmenté sous chaque label */
+    font-size: 1em; /* Taille de police appropriée pour les labels */
+}
+.login-container input[type="text"] {
+    width: 100%;
+    padding: 12px 15px; /* Padding confortable pour les champs de texte */
+    margin-bottom: 20px; /* Espace augmenté entre les champs de texte */
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .site-title {
+        margin: 10px 0;
+    }
+
+/* Style Général du Texte */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+
+
+/* Style des Paragraphes */
+p {
+    text-align: center; /* Centrage des paragraphes */
+    margin-bottom: 1em;
+}
+
+/* Alignement et Style des Sections */
+section {
+    text-align: center; /* Centrage du contenu des sections */
+    padding: 20px;
+}
+
+/* Style des Liens */
+a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+    h2 {
+        font-size: 1.3em;
+    }
+    /* Autres styles responsives */
+
+
+    .connect-btn {
+        background: linear-gradient(45deg, #f0b90b, #ecb706); /* Gradient jaune doré */
+        border: 2px solid #f0b90b; /* Bordure dorée */
+        border-radius: 4px; /* Bords légèrement arrondis */
+        color: #ffffff; /* Texte en gris foncé pour contraster avec le fond doré */
+        padding: 12px 25px; /* Espacement intérieur */
+        text-transform: uppercase; /* Texte en majuscules */
+        font-weight: 600; /* Texte semi-gras */
+        cursor: pointer; /* Curseur en forme de main */
+        transition: all 0.3s ease; /* Transition douce pour les interactions */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Ombre légère */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne */
+    }
+    
+    .connect-btn:hover, .connect-btn:focus {
+        background: linear-gradient(45deg, #f7e0ac, #f0b90b); /* Changement de gradient au survol */
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée au survol */
+        transform: translateY(-2px); /* Léger déplacement vers le haut pour un effet dynamique */
+    }
+    #accountInfo {
+        background-color: #1f1f1f; /* Fond gris foncé */
+        color: #f0b90b; /* Couleur du texte dorée pour évoquer Binance */
+        border: 1px solid #f0b90b; /* Bordure dorée */
+        padding: 10px 20px; /* Padding pour l'espace intérieur */
+        border-radius: 10px; /* Bords arrondis pour un look moderne */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Ombre subtile pour la profondeur */
+        margin-top: 20px; /* Marge au-dessus de la div */
+        font-family: 'Arial', sans-serif; /* Police moderne et lisible */
+        text-align: center; /* Alignement du texte au centre */
+    }
+    
+  
+    .bnb-logo-container {
+        text-align: center; /* Centrer le logo dans le conteneur */
+        margin: 20px 0; /* Ajouter de l'espace autour du conteneur du logo */
+    }
+    
+    .bnb-logo {
+        height: 100px; /* Ajuster la taille du logo */
+        width: auto; }
+
+        #contractStatus {
+            display: block; /* Rendre l'élément de type bloc pour appliquer la mise en page */
+            text-align: center; /* Centrer le texte à l'intérieur de l'élément */
+            color:var(--accent-color);; /* Couleur rouge pour le texte si non connecté */
+            margin: 10px auto; /* Marge automatique pour centrer horizontalement */
+            padding: 5px; /* Ajouter un peu d'espace interne pour l'esthétique */
+            /* Autres styles que vous souhaitez appliquer */
+        }
+        
+        #contractStatus.connected {
+            color: green; /* Couleur verte pour le texte si connecté */
+            /* Autres styles pour le statut connecté */
+        }
+        
+    /* Style pour le titre de la page */
+.page-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
+    font-size: 1.5em; /* Taille de la police */
+    color: white; /* Couleur d'accentuation */
+    margin-top: 20px; /* Espace au-dessus du titre */
+    margin-bottom: 40px; /* Espace en dessous du titre */
+}
+
+
+
+h4 {
+
+    color:var(--accent-color);  
+}
+.connect-btn {
+    padding: 10px 20px;
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    border: none;
+    border-radius: 25px; /* Bouton avec des bords arrondis */
+    background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+    color: #ffffff; /* Texte blanc */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+}
+
+
+#background-video {
+    position: fixed; /* Position fixe pour couvrir tout l'écran */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Couvre toute la largeur */
+    min-height: 100%; /* Couvre toute la hauteur */
+    width: auto; /* Maintient le rapport d'aspect */
+    height: auto; /* Maintient le rapport d'aspect */
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
+    background-size: cover; /* S'assure que la vidéo couvre tout l'écran */
+}
+#background-video {
+    /* Autres styles ici... */
+    filter: blur(25px); /* Ajoute un effet de flou */
+}
+#countdownTimer {
+    color: #4a90e2; /* Couleur bleue moderne */
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em; /* Taille plus grande pour l'impact */
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    border: 1px solid #d4af37; /* Bordure dorée */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Exemple d'animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#countdownTimer:hover {
+    animation: pulse 2s infinite;
+}
+#countdownTimer {
+    background-color: #000000; /* Fond noir */
+    color: #ffd700; /* Texte en or */
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Ombre dorée */
+    margin: 20px;
+ 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#countdownTimer {
+    animation: pulse 2s infinite;
+}
+#countdownTimer {
+    background-color: #1a1a1a; /* Couleur de fond sombre */
+    color: #e9ec37; /* Couleur du texte en turquoise, évoquant le digital */
+    font-family: 'Roboto', sans-serif; /* Police moderne */
+    font-size: 1.5em; /* Taille de la police ajustée */
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px; /* Bordures arrondies */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Ombre subtile */
+    width: 50%; /* Réduire la largeur */
+    margin: 10px auto; /* Centrer le conteneur */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#countdownTimer {
+    animation: pulse 2s infinite;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Prend toute la hauteur de la fenêtre de visualisation */
+}
+
+.LaunchTime {
+    display: flex;
+    justify-content: center;
+}
+
+.LaunchTime div {
+    flex-basis: 100px;
+    text-align: center;
+}
+
+.LaunchTime div p {
+    font-size: 60px;
+    margin-bottom: -14px;
+}
+

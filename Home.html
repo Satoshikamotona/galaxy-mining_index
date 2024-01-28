@@ -1,70 +1,45 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>galaxyMining - registration</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <title>GalaxyMining - Login</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 </head>
-
 <body>
     <header>
-        
         <button id="connectWalletButton" class="connect-btn">Connect Wallet</button>
         <div id="connectcontract" class="contract-status">
             <span id="contractIcon"></span> 
             <span id="contractStatus">Not connected to smart contract</span>
         </div>
-        
-
-        <div class="logo-container">
-            <h1 class="site-title">GalaxyMining</h1>
-            <img src="17.png" alt="Binance Smart Chain Logo" class="bnb-logo">
-        </div>
-        <h2>Welcome to <span class="highlight-text">galaxy mining</span></h2>
     
-            
-         
-        </div>
     </header>
-
     <main>
         <section class="container text-center">
-            <div class="registration-container">
-                <h4>Connect your wallet to register</h4>
-                <!-- Registration Form -->
-                <form id="registrationForm">
-                    <label for="parrain">Parrain's Address:</label>
-                    <input type="text" id="parrain" name="parrain" placeholder="Enter your sponsor's address">
-                    <input type="submit" value="Register">
-                </form>
-                
-                
-                <p>Registration requires 0.0004 BNB</p>
+            <h1 class="page-title">WELCOME TO GALAXY MINING</h1>
+
+            <div class="login-container">
+                <h4>Login with your connected wallet</h4>
+                <button id="loginButton" class="connect-btn">Login Automatic</button>
             </div>
-            <p>If you are already registered, <a href="Home.html">click here</a> to log in.</p>
         </section>
 
-        <section class="text-center">
-            <h2>Contact</h2>
-            <p>Contact us at email@example.com.</p>
-        </section>
+        <div class="register-invite">
+            <p>If you are not registered yet, <a href="registration.html">click here</a>.</p>
+        </div>
+
     </main>
 
     <footer class="text-center">
         <p>&copy; galaxyMining</p>
     </footer>
-
-
     <script>
 
-
+ 
 var galaxyMining = {
     account: null,
     contract: null,
@@ -87,61 +62,51 @@ var galaxyMining = {
 
 
 
+checkUserRegistration: async function() {
+    if (this.userAccount) {
+        try {
+            const isUserRegistered = await this.contract.methods.isRegistered(this.userAccount).call();
 
-registerUserWithReferrer: async function() {
-    if (!this.contract) {
-        alert("You are not connected to the smart contract.");
-        return;
-    }
+            if (!isUserRegistered) {
+            alert("Please register first before login.");
+           return false; // L'utilisateur n'est pas inscrit
+}
 
-    try {
-        const referrerAddress = await this.contract.methods.idToAddress(referrerId).call();
-        const userAddress = this.userAccount; 
-        const registrationFee = web3.utils.toWei('0.01', 'ether');
-
-        const userBalance = await web3.eth.getBalance(userAddress);
-
-        if (BigInt(userBalance) >= BigInt(registrationFee)) {
-            const response = await this.contract.methods.registerUser(userAddress, referrerAddress).send({ from: userAddress, value: registrationFee });
-            console.log("Registration successful:", response);
-            alert("Registration successful!");
-            window.location.href = 'dashboard.html';
-        } else {
-            alert("Your balance is insufficient to cover the registration fee.");
+            console.log("User connected:", this.userAccount);
+            return true; // L'utilisateur est inscrit
+        } catch (error) {
+            console.error("Error during login:", error);
+            alert("Your are Not connected , connect Your wallet first.");
+            return false; // Erreur lors de la vérification
         }
-
-    } catch (error) {
-        console.error("Error during registration with referrer:", error);
-        alert("An error occurred during registration with referrer.");
+    } else {
+        console.log("User account not available.");
+        return false; // Compte utilisateur non disponible
     }
 },
 
 
-    checkRegistrationStatus: async function() {
-        if (window.ethereum && this.contract) {
-            try {
-                const accounts = await web3.eth.getAccounts();
-                if (accounts.length === 0) {
-                    console.log("No Ethereum account found.");
-                    return;
-                }
+handleLogin: async () => {
+    if (window.ethereum) {
+        const isUserRegistered = await galaxyMining.checkUserRegistration(); 
 
-                this.userAccount = accounts[0];
-                const isRegistered = await this.contract.methods.isRegistered(this.userAccount).call();
+        if (isUserRegistered) {
 
-                if (isRegistered) {
-                    alert("You are already registered. Now you will automatically be redirected to your account.");
-                    window.location.href = 'dashboard.html';
-                }
-            } catch (error) {
-                console.error("Error checking registration status:", error);
-            }
-        } else {
-            console.log("Ethereum environment or contract not found.");
+            window.location.href = 'dashboard.html?address=' + encodeURIComponent(galaxyMining.userAccount);
+
         }
-    },
+    } else {
+       
 
-    connectWallet: async function() {
+        console.log("Ethereum browser not detected. Try installing MetaMask!");
+        alert("Ethereum browser not detected. Try installing MetaMask!");
+
+    }
+},
+
+
+
+connectWallet: async function() {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -184,10 +149,11 @@ registerUserWithReferrer: async function() {
 
 
 
+       
 
-init: async function() {
+
+ init: async function() {
  await this.connectContract();
- await this.checkRegistrationStatus();
  await this.connectWallet();
  await this.updateWalletButton();
 
@@ -210,40 +176,20 @@ buttons.forEach(button => {
 });
 }
 };
-
+ 
 
 $(document).ready(async () => {
     try {
         await galaxyMining.init();
+        document.getElementById('loginButton').addEventListener('click', galaxyMining.handleLogin);
+        document.getElementById('connectWalletButton').addEventListener('click', galaxyMining.handleConnectWallet);
 
-        $('#registrationForm').submit(async function(e) {
-            e.preventDefault();
-            const referrerId = $('#parrain').val(); // Récupère l'ID du parrain
-
-            if (!referrerId) {
-                alert("Please enter the referrer's ID.");
-                return;
-            }
-
-            try {
-                await galaxyMining.registerUserWithReferrer(referrerId);
-            } catch (error) {
-                console.error("Error during registration with referrer:", error);
-                alert("An error occurred during registration with referrer.");
-            }
-        });
     } catch (error) {
-        console.error("Error during initialization:", error);
-        alert("An error occurred during initialization.");
+        console.error("Error in Ethereum interaction:", error);
     }
 });
-
-
-
+    
 
     </script>
-    
-    
 </body>
-
 </html>
