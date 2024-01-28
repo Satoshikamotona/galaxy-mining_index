@@ -642,7 +642,7 @@ claimDividends: async function() {
         // Mise à jour de l'élément HTML avec l'ID du meilleur promoteur et le nombre de partenaires
         const bestPromoterElement = document.getElementById('best-promoter');
         if (bestPromoterElement) {
-            bestPromoterElement.textContent = `User ID ${bestPromoterId} with ${maxPartnersCount} Direct `;
+            bestPromoterElement.textContent = `ID ${bestPromoterId} with ${maxPartnersCount} Direct `;
         }
     } catch (error) {
         console.error("Error finding top promoter:", error);
