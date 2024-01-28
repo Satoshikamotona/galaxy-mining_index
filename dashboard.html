@@ -97,7 +97,7 @@
                 <div class="program-container">
                     <div class="program-header">
                         <div class="program-name">G56</div>
-                        <div class="program-value">0 BNB</div>
+                        <div class="program-value" id="BNB">0 BNB</div>
                     </div>
                 
                     <div class="grid">
@@ -488,11 +488,11 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
 
             // Mettre à jour l'affichage
-            const profitElement = document.getElementById('program-value');
+            const profitElement = document.getElementById('BNB');
             if (profitElement) {
                 profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
             } else {
-                console.error("Element 'program-value' not found in the DOM.");
+                console.error("Element 'BNB' not found in the DOM.");
             }
         } catch (error) {
             console.error("Error in fetching team profit:", error);
