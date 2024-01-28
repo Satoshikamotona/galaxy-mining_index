@@ -467,27 +467,29 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             }
          },
 
-         getTotalinvest : async function () { 
-            if (!this.userAccount) {
-                console.error("User account is undifined")
-            }
+         getTotalinvest: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined");
+        return; // Arrêter l'exécution si le compte utilisateur est indéfini
+    }
 
-            try {
-                const TOTALINVEST = await this.contract.methods.totalInevest().call();
-                const ELEMENT   = document.getElementById('BNBAmount');
-                if (ELEMENT) {
-                    ELEMENT.textContent = `${TOTALINVEST.toFixed(3)} BNB`;
-                }
-                else {
-                    console.error("element 'BNBAmount' not found in the Dom" )
-                }
-            } catch (error) {  
-                console.error("Element in fectiching BNB A mount: ", error);
-                if ( document.getElementById('BNBAmount')) {
-                    document.getElementById('BNBAmount').textContent = "0 BNB";
-                }
-            }
-         },
+    try {
+        const totalInvestWei = await this.contract.methods.totalInevest().call();
+        const totalInvestBNB = Number(totalInvestWei) / 1e18;
+
+        const element = document.getElementById('BNBAmount');
+        if (element) {
+            element.textContent = `${parseFloat(totalInvestBNB).toFixed(3)} BNB`; // Afficher avec 3 décimales
+        } else {
+            console.error("Element 'BNBAmount' not found in the DOM");
+        }
+    } catch (error) {
+        console.error("Error in fetching BNB Amount:", error);
+        if (document.getElementById('BNBAmount')) {
+            document.getElementById('BNBAmount').textContent = "0 BNB";
+        }
+    }
+},
 
 
     getPartenairesCount: async function() {
