@@ -444,6 +444,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
          GetglobalMembers : async function() {
             if (!this.userAccount) {
                 console.error("User account is undifined")
+                return;
             }
 
             try {
@@ -465,6 +466,29 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
                }
             }
          },
+
+         getTotalinvest : async function () { 
+            if (!this.userAccount) {
+                console.error("User account is undifined")
+            }
+
+            try {
+                const TOTALINVEST = await this.contract.methods.totalInevest().call();
+                const ELEMENT   = document.getElementById('BNBAmount');
+                if (ELEMENT) {
+                    ELEMENT.textContent = `${TOTALINVEST.toFixed(3)} BNB`;
+                }
+                else {
+                    console.error("element 'BNBAmount' not found in the Dom" )
+                }
+            } catch (error) {  
+                console.error("Element in fectiching BNB A mount: ", error);
+                if ( document.getElementById('BNBAmount')) {
+                    document.getElementById('BNBAmount').textContent = "0 BNB";
+                }
+            }
+         },
+
 
     getPartenairesCount: async function() {
         if (!this.userAccount) {
@@ -640,8 +664,8 @@ claimDividends: async function() {
     await this.startDividendCounter();
     await this.updateDividendDisplay('0.000000000');
     await this.GetglobalMembers();
-    
-
+    await this.getTotalinvest() ;
+ 
     }
 };
 
