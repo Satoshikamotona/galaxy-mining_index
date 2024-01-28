@@ -455,7 +455,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
             const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
 
-            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome + BigInt(totalFreeIncome));
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome) + BigInt(totalFreeIncome);
             // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
             const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
 
@@ -483,7 +483,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
             const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
 
-            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome + BigInt(totalFreeIncome));
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome) + BigInt(totalFreeIncome);
             // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
             const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
 
@@ -756,6 +756,7 @@ claimDividends: async function() {
     await this.getTotalinvest() ;
     await this.findTopPromoter();
     await this.calculateTotalProfits();
+    await this.calculateTotalProfitsFor();
     }
 };
 
