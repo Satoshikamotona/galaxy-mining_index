@@ -122,7 +122,8 @@
         </div>
     </div>
 </div>
-</div>
+
+
 
 <div class="lastInfos">
     <h1>Global Community</h1>
@@ -150,9 +151,9 @@
     <div class="Second">
         <span id="LastUserInfos">0 </span>
     </div>
+
+
 </div>
-
-
     <footer class="text-center">
         <p>&copy; galaxyMining</p>
     </footer>
@@ -280,6 +281,7 @@
 },
 
 
+
      getFreeIncome: async function() {
     if (!this.userAccount) {
         console.error("User account is undefined.");
@@ -300,6 +302,7 @@
         console.error("Error in fetching free income:", error);
     }
 },
+
 
 Updatelevels: async function() {
         if (!this.userAccount) {
@@ -556,6 +559,9 @@ claimDividends: async function() {
         await this.contract.methods.Claim_DIV(amountToClaim.toString()).send({ from: this.userAccount });
 
         console.log("Dividends successfully claimed");
+        
+          alert ( "dividendes claimed successfully");
+
     } catch (error) {
         console.error("Error claiming dividends:", error);
     }
