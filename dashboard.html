@@ -125,6 +125,10 @@
 
 </div>
 
+<div class="Info-contenaire">
+
+    <h1>Recent Activities</h1>
+
 
 <div class="lastInfos">
     <h1>Global Community</h1>
@@ -154,6 +158,7 @@
     </div>
 
 
+</div>
 </div>
     <footer class="text-center">
         <p>&copy; galaxyMining</p>
@@ -436,7 +441,30 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
             console.error("Error in fetching team profit:", error);
         }
     },
+         GetglobalMembers : async function() {
+            if (!this.userAccount) {
+                console.error("User account is undifined")
+            }
 
+            try {
+                const GlobalCommunity = await this.contract.methods.NumberOfUsers(this.userAccount).call();
+                const GlobalCommunityElement = document.getElementById("theCurrentNumber");
+            
+
+            if(GlobalCommunityElement) {
+                 GlobalCommunityElement.textContent = GlobalCommunity.toString();
+            }
+            else {
+                console.error("Element 'GlobalCommunityElement' not found in the Dom");
+            }
+          }  catch (error) {
+                console.error("Error in fetching 'GlobalCommuniyElement:", error);
+
+               if (document.getElementById('theCurentNumber')) {
+                   document.getElementById('theCurrentNumber').textContent = "0";
+               }
+            }
+         },
 
     getPartenairesCount: async function() {
         if (!this.userAccount) {
@@ -611,8 +639,8 @@ claimDividends: async function() {
     await this.getUserAddressAndSendToServer();
     await this.startDividendCounter();
     await this.updateDividendDisplay('0.000000000');
-
-  
+    await this.GetglobalMembers();
+    
 
     }
 };
