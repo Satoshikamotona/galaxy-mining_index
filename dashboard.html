@@ -622,6 +622,33 @@ claimDividends: async function() {
     }
 },
 
+    findTopPromoter: async function() {
+    let maxPartnersCount = 0;
+    let bestPromoterId = 0;
+
+    try {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            const userAddress = await this.contract.methods.idToAddress(userId).call();
+            const partnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
+
+            if (partnersCount > maxPartnersCount) {
+                maxPartnersCount = partnersCount;
+                bestPromoterId = userId;
+            }
+        }
+
+        // Mise à jour de l'élément HTML avec l'ID du meilleur promoteur et le nombre de partenaires
+        const bestPromoterElement = document.getElementById('best-promoter');
+        if (bestPromoterElement) {
+            bestPromoterElement.textContent = `User ID ${bestPromoterId} with ${maxPartnersCount} Direct `;
+        }
+    } catch (error) {
+        console.error("Error finding top promoter:", error);
+    }
+},
+
 
 
     init: async function() {
@@ -667,6 +694,7 @@ claimDividends: async function() {
     await this.updateDividendDisplay('0.000000000');
     await this.GetglobalMembers();
     await this.getTotalinvest() ;
+    await this.findTopPromoter();
  
     }
 };
