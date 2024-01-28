@@ -164,7 +164,7 @@ var galaxyMining = {
 },
 
 
-    updateWalletButton: function() {
+    updateWalletButton:async function() {
         const connectButton = document.getElementById('connectWalletButton');
         if (this.userAccount) {
             const truncatedAddress = this.userAccount.substr(0, 6) + '...' + this.userAccount.substr(-4);
@@ -183,7 +183,7 @@ init: async function() {
  await this.checkRegistrationStatus();
  await this.connectWallet();
  await this.updateWalletButton();
- await this.ConnectContract();
+
 
 
 const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
