@@ -57,7 +57,7 @@ body {
 }
 @media (max-width: 768px) {
     body {
-        background-size: 100% 100%; /* Ou toute autre propriété adaptée aux écrans plus petits */
+        background-size: 80% 100%; /* Ou toute autre propriété adaptée aux écrans plus petits */
     }
 }
 
@@ -150,8 +150,7 @@ body {
 /* Requête média pour les écrans d'ordinateur */
 @media (min-width: 768px) {
     .card p {
-        font-size: 1.5em; /* Taille de police plus grande pour ordinateur */
-        /* Autres styles spécifiques pour ordinateur */
+        font-size: 1.5em;
     }
 
     .profits-t {
@@ -1328,4 +1327,22 @@ h5:hover {
 }
 .user-link {
     font-size: 1em;
+}
+
+.user-link-container .user-link {
+    display: block; 
+    max-width: 150px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.user-link-container .user-link {
+    font-size: 14px; /* Ajustez la taille de la police selon vos besoins */
+}
+
+.user-link-container .user-link {
+    word-wrap: break-word;
+}
+.user-link-container {
+    max-width: 250px; /* Ajustez selon vos besoins */
 }

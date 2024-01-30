@@ -150,7 +150,16 @@ header::before {
 
 
 
-
+/* Section Heading and Paragraph Styles */
+section h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-light);
+}
+   
+section p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--accent-color);
+}
 
     .logo-container {
         justify-content: center;
@@ -167,7 +176,13 @@ body {
     color: var(--text-light);
 }
 
-
+/* Titres et Sous-titres */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center; /* Centrage des titres */
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
 /* Style des Paragraphes */
 p {
@@ -190,6 +205,18 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    /* Ajustements pour les appareils mobiles */
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+}
+
 
 
 
@@ -366,7 +393,8 @@ h4 {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Ombre subtile */
     width: 50%; /* Réduire la largeur */
     margin: 10px auto; /* Centrer le conteneur */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       
+    
 
 }
 
@@ -379,26 +407,19 @@ h4 {
 #countdownTimer {
     animation: pulse 2s infinite;
 }
-
-.container {
-    display: flex;
-    justify-content: center;
+a img {
     align-items: center;
-    height: 80vh; /* Prend toute la hauteur de la fenêtre de visualisation */
+    text-align: center;
+    border-radius: 10px;
 }
 
-.LaunchTime {
+.boutton-Telegram {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    height: 100vh; /* Ceci prend la hauteur totale de l'écran. Ajustez selon les besoins. */
+    padding: 50px;
+    margin: 0px;
+    border-radius: 10px;
+    border:#ffffff;
 }
-
-.LaunchTime div {
-    flex-basis: 100px;
-    text-align: center;
-}
-
-.LaunchTime div p {
-    font-size: 60px;
-    margin-bottom: -14px;
-}
-
