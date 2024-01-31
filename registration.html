@@ -27,12 +27,16 @@
             <h1 class="site-title">GalaxyMining</h1>
             <img src="17.png" alt="Binance Smart Chain Logo" class="bnb-logo">
         </div>
-        <h2>Welcome to <span class="highlight-text">galaxy mining</span></h2>
+ 
+            
+        </header>
+        <div>
+
+        <h2 ><span class="highlight-text">Welcome to Galaxy Mining</span></h2>
     
             
-         
-        </div>
-    </header>
+
+  
 
     <main>
         <section class="container text-center">
@@ -46,9 +50,10 @@
                 </form>
                 
                 
-                <p>Registration requires 0.0004 BNB</p>
+                <p id="registrationFee">Registration requires 0.01 BNB</p>
+
             </div>
-            <p>If you are already registered, <a href="Home.html">click here</a> to log in.</p>
+            <p class="loginpath">If you are already registered, <a href="Home.html">click here</a> to log in.</p>
         </section>
 
         <section class="text-center">
@@ -57,6 +62,7 @@
         </section>
     </main>
 
+</body>
     <footer class="text-center">
         <p>&copy; galaxyMining</p>
     </footer>
@@ -194,6 +200,41 @@ var galaxyMining = {
     },
 
 
+    getUserEtherBalance: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return 0;
+        }
+
+        try {
+            const balanceWei = await web3.eth.getBalance(this.userAccount);
+            const balanceEther = web3.utils.fromWei(balanceWei, 'ether');
+            return parseFloat(balanceEther);
+        } catch (error) {
+            console.error("Error getting user Ether balance:", error);
+            return 0;
+        }
+    },
+
+    convertEtherToBNB: function(etherAmount) {
+        return etherAmount;
+    },
+
+    checkBalanceAndUpdateDisplay: async function() {
+        const requiredAmountBNB = 0.01; // Montant requis en BNB
+        const registrationFeeElement = document.getElementById('registrationFee');
+        const balanceEther = await this.getUserEtherBalance();
+
+        const balanceBNB = this.convertEtherToBNB(balanceEther);
+
+        if (balanceBNB >= requiredAmountBNB) {
+            registrationFeeElement.classList.add('balance-sufficient');
+            registrationFeeElement.classList.remove('balance-insufficient');
+        } else {
+            registrationFeeElement.classList.add('balance-insufficient');
+            registrationFeeElement.classList.remove('balance-sufficient');
+        }
+    },
 
 
 init: async function() {
@@ -202,6 +243,7 @@ init: async function() {
  await this.checkRegistrationStatus();
  await this.connectWallet();
  await this.updateWalletButton();
+ await this.checkBalanceAndUpdateDisplay();
 
 
 
