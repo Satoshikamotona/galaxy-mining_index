@@ -55,7 +55,7 @@ body , html{
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('Hackathon\ \(1\).svg'); /* Ajustez le chemin si nécessaire */
+    background-image: url('Hackathon\ \(15\).png'); /* Ajustez le chemin si nécessaire */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
