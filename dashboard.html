@@ -18,7 +18,7 @@
     <img src="17.png" alt="Binance Logo">
     <span class="wallet-address">0x00...000</span>
   </div>
-  
+
   <div class="dashboard-container">
     <div class="left-section">
 
@@ -33,8 +33,7 @@
                 <div class="copy-bar" onclick="copyToClipboard('.user-link')">Copy</div>
             </div>
         
-         
-            
+   
             
         </div>
   
@@ -79,7 +78,8 @@
                  </div>
         </div>
     </div>
-       
+ 
+    
         <div class="right-section">
         
         <div class="dividend-container">
@@ -97,6 +97,7 @@
             <div class="galaxy-programs">
                 <h1>Galaxy Programs</h1>
                 <div class="program-container">
+
                     <div class="program-header">
                         <div class="program-name">G56</div>
                         <div class="program-value" id="BNB">0 BNB</div>
@@ -123,14 +124,13 @@
     
         </div>
     </div>
-</div>
 
+</div>
 </div>
 
 <div class="Info-contenaire">
 
     <h1>Recent Activities</h1>
-
 
 <div class="lastInfos">
     <h1>Global Community</h1>
@@ -160,6 +160,7 @@
     </div>
 
 
+</div>
 </div>
 </div>
     <footer class="text-center">
@@ -676,18 +677,19 @@ claimDividends: async function() {
 
         const dividendAmountText = document.getElementById('dividend-amount').textContent;
         const dividendAmount = dividendAmountText.split(' ')[0];
-
         const dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
 
-        const amountToClaim = web3.utils.toBN(dividendAmountWei).sub(web3.utils.toBN('10'));
-
-        await this.contract.methods.Claim_DIV(amountToClaim.toString()).send({ from: this.userAccount });
-
-        console.log("Dividends successfully claimed");
+        const contractAddress = this.contract.options.address;
+        const contractBalanceWei = await web3.eth.getBalance(contractAddress);
         
-          alert ( "dividendes claimed successfully, Check your Wallet and Enjoy life 😎");
-          window.location.reload();
-          
+        if (BigInt(contractBalanceWei) >= BigInt(dividendAmountWei)) {
+            await this.contract.methods.Claim_DIV(dividendAmountWei).send({ from: this.userAccount });
+            console.log("Dividends successfully claimed");
+            alert("Dividends claimed successfully, Check your Wallet and Enjoy life 😎");
+            window.location.reload();
+        } else {
+            alert("Your Pool Is Currently Inactive. Please Move To The Next Level To Keep Claiming.");
+        }
     } catch (error) {
         console.error("Error claiming dividends:", error);
     }
@@ -866,7 +868,9 @@ function copyToClipboard(selector) {
             .then(() => console.log("Lien copié!"))
             .catch(err => console.error("Erreur lors de la copie: ", err));
     }};
-
+    function goBack() {
+    window.history.back();
+}
 </script>
 </body>
 </html>
