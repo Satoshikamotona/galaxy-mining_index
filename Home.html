@@ -23,8 +23,7 @@
     </header>
     <main>
         <section class="container text-center">
-            <h1 class="page-title">WELCOME TO GALAXY MINING</h1>
-
+            <h1 id="info-paragraph">WELCOME TO  <span class="page-title">GALAXY</span>MINING </h1>
             <div class="login-container">
                 <h4>Login with your connected wallet</h4>
                 <button id="loginButton" class="connect-btn">Login Automatic</button>
@@ -194,6 +193,29 @@ $(document).ready(async () => {
 });
     
 
+document.addEventListener('DOMContentLoaded', function() {
+    const galaxyText = document.querySelector('.page-title');
+
+    if (galaxyText) {
+        setInterval(() => {
+            galaxyText.textContent = galaxyText.textContent === "GAXALY" ? "XYGALA" : "GALAXY";
+        }, 1000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galaxyText = document.querySelector('.page-title');
+
+    if (galaxyText) {
+        setInterval(() => {
+            galaxyText.classList.add('fade-trace'); // Ajouter l'animation
+            setTimeout(() => {
+                galaxyText.textContent = galaxyText.textContent === "GAXALY" ? "XYGALA" : "GAXALY";
+            }, 500); // Changer le texte au milieu de l'animation
+            setTimeout(() => galaxyText.classList.remove('fade-trace'), 1000); // Enlever l'animation après 1s
+        }, 2000);
+    }
+});
     </script>
 </body>
 </html>

@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="homepage.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C56 Preview</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+</head>
+
+<body>
+
+  <div class="dashboard-header">
+    <img src="17.png" alt="Binance Logo">
+
+    <span class="wallet-address">0x00...000</span>
+      </div>
+
+
+      <div class="container">
+        <div class="left-section">
+            <img src="17.png" alt="3D Blockchain" class="blockchain-image">
+        <h2> Smart Contract </h2>
+        </div>
+        <div class="right-section">
+            <h1>Welcome to Our <span class="gold-text">Galaxy</span> WORLD</h1>
+            <p id="info-paragraph">Join us and explore the innovative world of cryptocurrencies on the <span class="gold-text">Binance Smart Chain</span> </p>
+ 
+            <div class="buttons">
+                <button onclick="location.href='registration.html';" class="register-button">Register</button>
+                <button onclick="location.href='Home.html';" class="login-button">Login</button>
+            </div>
+        </div>
+        
+        </div>
+
+            </div>
+
+
+
+
+
+        
+        
+    </div> 
+  <div>
+        </div>
+            </body>
+<footer class="text-center">
+    <p>&copy; galaxyMining</p>
+</footer>
+
+
+<script>
+
+ var galaxyMining = {
+    account: null,
+    contract: null,
+    userAccount: null,
+
+    connectContract: async function() {
+       const ABI =[{"inputs":[{"internalType":"address","name":"admin","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"A","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"Admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevel","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevelByOwner","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToCheck","type":"address"}],"name":"CheckUserLastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claim_DIV","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"G56Matrix","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"USER","type":"address"}],"name":"GetDivPerSec","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFunds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFundsbyAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"LastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Level10Income","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NumberOfUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"SetRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"TotalIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserTo","type":"address"}],"name":"UpdateLastUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UplineEarnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Users","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"userAddress","type":"address"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualDownline","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualParent","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"availableDiv","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"calculateDiv","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"checkUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncomefrom10","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directPartnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"divPerSecInEther","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"freeIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDirectPartners","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastRegistration","outputs":[{"internalType":"uint256","name":"userID","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalVirtualTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"level","type":"uint256"}],"name":"hasLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"},{"internalType":"uint256","name":"_requiredLevel","type":"uint256"}],"name":"hasRequiredLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"idToAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isAdmin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isRegistered","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"l","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"randomUser","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUser","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUserByOwner","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAdmin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newfees","type":"uint256"}],"name":"setholdingFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalInevest","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalLevels","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"USERTO","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"updateDivPerSecByOWner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userVirtualPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"virtualReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
+
+          const Address = "0xB0AeD1e975d26F84c98ebb770573228EdB893281";
+
+        try {
+            window.web3 = new Web3(window.ethereum);
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            this.account = (await web3.eth.getAccounts())[0];
+            this.contract = new web3.eth.Contract(ABI, Address);
+            console.log("Connected to smart contract");
+        } catch (error) {
+            console.error("Error connecting to contract: ", error);
+        }
+    },
+
+
+
+
+
+    getUserWalletAddress: async function() {
+        if (window.ethereum) {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                this.userAccount = accounts[0];
+                const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
+                $('.wallet-address').text(truncatedAddress);
+            } catch (error) {
+                console.error("An error occurred connecting to Ethereum:", error);
+            }
+        } else {
+            console.error("Ethereum object not found. You need to install MetaMask!");
+        }
+    },
+  
+    getUserIdByAddress: async function(userAddress) {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+        console.log("Nombre total d'utilisateurs:", numberOfUsers);
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            try {
+                const address = await this.contract.methods.idToAddress(userId).call();
+                console.log("Vérification de l'adresse pour l'ID", userId, ":", address);
+                if (address.toLowerCase() === userAddress.toLowerCase()) {
+                    console.log("ID trouvé:", userId);
+                    return userId;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+            }
+        }
+
+        console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+        return null;
+    },
+ 
+
+    checkIfUserIsRegistered: async function() {
+    try {
+        if (!this.userAccount) {
+            console.error("User account is not defined.");
+            throw new Error("User account is not defined.");
+        }
+
+        const isRegistered = await this.contract.methods.isRegistered(this.userAccount).call();
+        this.updateUIBasedOnRegistration(isRegistered);
+    } catch (error) {
+        console.error("Error checking if user is registered:", error);
+        // Gérer les erreurs de manière appropriée, par exemple, afficher un message d'erreur à l'utilisateur
+    }
+},
+
+updateUIBasedOnRegistration: function(isRegistered) {
+    const infoParagraph = document.getElementById('info-paragraph');
+    const loginButton = document.querySelector('.login-button');
+
+    if (!infoParagraph || !loginButton) {
+        console.error("UI elements not found.");
+        return;
+    }
+
+    if (isRegistered) {
+        infoParagraph.textContent = "You are already a member of our community. You can log in by clicking on the Login button.";
+        loginButton.classList.add('highlight-button');
+        // Ajouter une animation ou une transition pour attirer l'attention sur le bouton
+        loginButton.style.animation = "pulse 2s infinite";
+    } else {
+        infoParagraph.textContent = "Join us and explore the innovative world of cryptocurrencies on the Binance Smart Chain.";
+        loginButton.classList.remove('highlight-button');
+        loginButton.style.animation = "none";
+    }
+},
+
+
+
+
+
+ 
+     init: async function() {
+
+          await this.connectContract();
+          await this.getUserWalletAddress(); 
+          await this.checkIfUserIsRegistered();
+
+         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+         if (accounts.length === 0) {
+             console.error("No Ethereum accounts found.");
+             return;
+         }
+ 
+         this.userAccount = accounts[0];
+         const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
+         $('.wallet-address').text(truncatedAddress);
+ 
+         const buttons = document.querySelectorAll('.buy-level-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => this.buyLevel(event));
+        });
+    }
+};
+     
+         $(document).ready(async () => {
+    try {
+        await galaxyMining.init();
+    } catch (error) {
+        console.error("Error in Ethereum interaction:", error);
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galaxyText = document.querySelector('.gold-text');
+
+    if (galaxyText) {
+        setInterval(() => {
+            galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "XYGALA" : "Galaxy";
+        }, 1000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galaxyText = document.querySelector('.gold-text');
+
+    if (galaxyText) {
+        setInterval(() => {
+            galaxyText.classList.add('fade-trace'); // Ajouter l'animation
+            setTimeout(() => {
+                galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "XYGALA" : "Galaxy";
+            }, 500); // Changer le texte au milieu de l'animation
+            setTimeout(() => galaxyText.classList.remove('fade-trace'), 1000); // Enlever l'animation après 1s
+        }, 2000);
+    }
+});
+
+ </script>
+</html>
+

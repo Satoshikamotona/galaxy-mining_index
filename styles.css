@@ -160,7 +160,7 @@ input[type="submit"] {
     color: var(--primary-color); /* Contraste élevé pour la lisibilité */
     padding: 15px 30px; /* Padding confortable */
     border: none; /* Pas de bordure pour un look épuré */
-    border-radius: 5px; /* Coins arrondis pour un design moderne */
+    border-radius: 15px; /* Coins arrondis pour un design moderne */
     font-size: 1em; /* Taille de police appropriée */
     font-family: 'Montserrat', sans-serif; /* Police moderne et élégante */
     font-weight: bold; /* Gras pour attirer l'attention */
@@ -472,3 +472,11 @@ a:hover {
     transform: translateY(-20px);
     margin-top: -20x;
 }
+
+.balance-sufficient {
+    color:#F0B90B; 
+}
+.balance-insufficient {
+    color: red; 
+}
+

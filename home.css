@@ -340,86 +340,120 @@ h4 {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
-
-/* Exemple d'animation */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-#countdownTimer:hover {
-    animation: pulse 2s infinite;
-}
 #countdownTimer {
-    background-color: #000000; /* Fond noir */
-    color: #ffd700; /* Texte en or */
-    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a; /* Fond sombre */
+    color:  #F0B90B; /* Couleur verte, évoquant la croissance en crypto */
+    font-family: 'Roboto Mono', monospace; /* Police à espacement fixe pour un look tech */
     font-size: 2em;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Ombre dorée */
-    margin: 20px;
- 
+    box-shadow: 0 0 20px #F0B90B; /* Ombre verte */
+    margin: 20px auto; /* Centrer le timer */
+    width: fit-content;
+    border: 2px solid #F0B90B; /* Bordure verte */
 }
 
-@keyframes pulse {
-    0% {
+@keyframes technoPulse {
+    0%, 100% {
         transform: scale(1);
-        opacity: 1;
+        box-shadow: 0 0 20px #F0B90B;
     }
     50% {
-        transform: scale(1.05);
-        opacity: 0.8;
+        transform: scale(1.1);
+        box-shadow: 0 0 30px  #F0B90B;
     }
-    100% {
+}
+
+#countdownTimer:hover {
+    animation: technoPulse 2s infinite;
+}
+#countdownTimer {
+    background-color: #1a1a1a; /* Fond noir */
+    font-family: 'Roboto Mono', monospace; /* Police à espacement fixe pour un look technologique */
+    font-size: 2em;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #F0B90B; /* Ombre jaune doré */
+    margin: 20px auto; /* Centrer le timer */
+    width: fit-content;
+    border: 2px solid #F0B90B; /* Bordure jaune doré */
+    position: relative; /* Position relative pour le mouvement */
+}
+
+@keyframes technoPulse {
+    0%, 100% {
         transform: scale(1);
-        opacity: 1;
+        box-shadow: 0 0 20px #F0B90B;
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px #F0B90B;
     }
 }
 
-#countdownTimer {
-    animation: pulse 2s infinite;
-}
-#countdownTimer {
-    background-color: #1a1a1a; /* Couleur de fond sombre */
-    color: #e9ec37; /* Couleur du texte en turquoise, évoquant le digital */
-    font-family: 'Roboto', sans-serif; /* Police moderne */
-    font-size: 1.5em; /* Taille de la police ajustée */
-    text-align: center;
-    padding: 15px;
-    border-radius: 15px; /* Bordures arrondies */
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Ombre subtile */
-    width: 50%; /* Réduire la largeur */
-    margin: 10px auto; /* Centrer le conteneur */
-       
-    
-
+#countdownTimer:hover {
+    animation: technoPulse 2s infinite;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 1; }
+/* Animation pour déplacer le conteneur */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
+/* Appliquer l'animation de flottement */
 #countdownTimer {
-    animation: pulse 2s infinite;
-}
-a img {
+    animation: floating 6s ease-in-out infinite;
+}.boutton-Telegram {
+    display: flex; /* Flexbox pour aligner l'image au centre */
+    border-radius: 20px; /* Coins arrondis */
     align-items: center;
-    text-align: center;
-    border-radius: 10px;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(240, 187, 10, 0.2); /* Ombre pour donner de la profondeur */
+    cursor: pointer; /* Change le curseur pour indiquer la cliquabilité */
+    transition: all 0.3s ease; /* Transition pour les effets au survol */
 }
 
+.boutton-Telegram img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease; /* Transition pour l'effet au survol */
+}
+
+.boutton-Telegram:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée au survol */
+    background-color: #F0B90B; /* Changement de couleur au survol */
+}
+
+.boutton-Telegram:hover img {
+    transform: scale(1.1); /* Agrandit légèrement l'image au survol */
+}
+/* Styles pour le conteneur du bouton Telegram */
 .boutton-Telegram {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh; /* Ceci prend la hauteur totale de l'écran. Ajustez selon les besoins. */
-    padding: 50px;
-    margin: 0px;
-    border-radius: 10px;
-    border:#ffffff;
+    display: flex; /* Flexbox pour aligner l'image au centre */
+    justify-content: center; /* Centrer horizontalement l'image dans le bouton */
+    align-items: center; /* Centrer verticalement l'image dans le bouton */
+    background-color: #F0B90B;
+    border-radius: 20px; /* Coins arrondis */
+
+    cursor: pointer; /* Change le curseur pour indiquer la cliquabilité */
+    transition: all 0.3s ease; /* Transition pour les effets au survol */
+    margin: 0 auto; /* Centrer le bouton dans la page */
+    margin-top: 70px;
+}
+
+/* Styles pour l'image à l'intérieur du bouton Telegram */
+.boutton-Telegram img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease; /* Transition pour l'effet au survol */
+}
+
+/* Effet de survol pour le bouton Telegram */
+.boutton-Telegram:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }

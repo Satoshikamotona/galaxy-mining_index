@@ -1,0 +1,532 @@
+/* BNB Smart Chain Color Scheme */
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
+:root {
+    --primary-color: #0f0e0e; /* Black for backgrounds */
+    --accent-color: #F0B90B; /* Binance yellow for highlights */
+    --secondary-color: #FFFFFF; /* White for secondary elements */
+    --text-light: #FFFFFF; /* White for text */
+    --text-dark: #000000; /* Black for text on light backgrounds */
+    --accent-colorS: #f0bb0ba0; /* Binance yellow for highlights */
+}
+
+.dashboard-header img {
+    width: 50px;
+    vertical-align: middle;
+  }
+  
+
+  
+  .dashboard-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+.dashboard-header {
+    background: var(--primary-color);
+    padding: 0px;
+    text-align: center;
+
+    position: fixed; 
+    width: 100%; /* S'étend sur toute la largeur de la page */
+    top: 0; /* Positionné en haut de la page */
+    left: 0; /* Positionné à gauche de la page */
+    z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
+  }
+  
+/* Modern Binance-Inspired Site Background */
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 30s infinite alternate;
+}
+
+
+
+  .container {
+    max-width: 460px; /* Adjust the width as needed */
+    margin: auto;
+  }
+
+  
+/* Footer Styles */
+footer {
+ 
+   
+    text-align: center;
+    padding: 1em;
+}
+body {
+ 
+    padding-top: 50px; /* Ajustez cette valeur pour changer l'espacement avec l'en-tête */
+    height: 100vh;
+
+    background-position: center;
+    background-attachment: fixed;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    background-color: var(--primary-color);
+    background-image: url('Hackathon\ \(1\).svg'); /* Chemin vers votre image de fond */
+    background-size: cover; /* L'image couvre tout l'espace disponible */
+    background-repeat: no-repeat; /* L'image ne se répète pas */
+    background-attachment: fixed; /* L'image de fond est fixe lors du défilement */
+    background-position: center center; /* L'image est centrée verticalement et horizontalement */
+    height: 100vh; /* Hauteur totale de la fenêtre de visualisation */
+    margin: 0; /* Suppression des marges par défaut */
+    padding: 0; /* Suppression des paddings par défaut */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ... Reste de votre CSS ... */
+
+/* Vous pouvez supprimer les propriétés de background redondantes dans les autres sélecteurs body si elles sont présentes. */
+
+
+
+/* Modern Binance-Inspired Site Background */
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 120s infinite alternate;
+}
+
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+
+
+/* Main Section Styles */
+main {
+    padding: 20px;
+}
+
+
+
+
+.header {
+    background-color: var(--accent-color);
+    text-align: center;
+    padding: 0px;
+    color: var(--primary-color);
+    position: fixed; /* Fixe l'en-tête en haut de la page */
+    width: 100%; /* S'étend sur toute la largeur de la page */
+    top: 0; /* Positionné en haut de la page */
+    left: 0; /* Positionné à gauche de la page */
+    z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
+}
+
+/* Ajoutez un padding en haut du body pour éviter que le contenu soit caché sous le header */
+body {
+    padding-top: 50px;
+
+}
+
+
+
+
+.badge-container {
+    display: flex; /* Utilisation de Flexbox */
+    flex-direction: column; /* Alignement vertical des éléments */
+    justify-content: flex-start; /* Aligner les éléments en haut */
+    align-items: center; /* Centrer les éléments horizontalement */
+    width: 150px; /* Taille du conteneur (carré) */
+    height: 150px; /* Hauteur égale à la largeur pour un carré */
+    margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
+    backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+
+
+}
+.badge-container h4 {
+    margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
+    margin-bottom: 0px; /* Espace entre le titre 'Lvl' et les badges */
+}
+
+.card {
+
+  
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+
+    flex-direction: column;
+    justify-content: space-between; /* Espace égal entre les éléments */
+}
+
+
+
+
+
+h3 {
+    font-size: 1.2rem; /* Taille de police réduite */
+}
+
+h4 {
+    font-size: 1.2rem; /* Taille de police réduite */
+    padding: 0px;
+}
+
+
+
+.card:hover {
+    transform: scale(1.05); /* Agrandit légèrement la carte au survol */
+}
+
+
+
+
+
+h3 {
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Ajoute un espacement entre les éléments flex enfants */
+    /* autres styles de .main-container */
+
+}
+.card {
+    margin-bottom: 5px; /* Ajoute de l'espace en bas de chaque carte */
+    /* autres styles de .card */
+
+}
+
+.card {
+    padding: 20px; /* Ajoute de l'espace autour du contenu à l'intérieur de la carte */
+    /* autres styles de .card */
+}
+
+
+
+
+.card {
+    margin-bottom: 20px; /* Espacement entre les cartes */
+    /* autres styles pour .card */
+}
+
+
+.card {
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+
+
+
+
+h4 {
+    font-size: 1.2rem;
+    margin-top: 0; /* Optionnel, en fonction de l'espacement souhaité */
+}
+
+
+h4, h5 {
+   
+
+    margin: 10px 0; /* Espacement au-dessus et en dessous de h4 et h5 */
+}
+
+ h5 {
+    font-size: 1rem; /* Taille de police pour h4, ajustez pour h5 si nécessaire */
+
+
+ }
+
+h5 {
+    font-family: 'Gabriela', serif;
+        font-size: 0.8rem; /* Taille de police */
+    color: #FFD700; /* Couleur jaune doré */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+    margin: 5px 0; /* Ajuster l'espacement autour du texte */
+    transition: transform 0.3s ease; /* Animation lors du survol */
+}
+
+h5:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+
+h4 {
+    font-family: 'Gabriela', serif;
+        color: white ; /* Couleur jaune doré */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+
+    transition: transform 0.3s ease; /* Animation lors du survol */
+}
+
+h4:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+
+    .dashboard-header .wallet-address {
+   
+        padding: 5px 20px;
+        margin-top: 20px; /* Espace au-dessus du bouton */
+        border: none;
+        border-radius: 25px; /* Bouton avec des bords arrondis */
+        background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+        color: #ffffff; /* Texte blanc */
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase; /* Texte en majuscules */
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+    }/* Importation des Polices */
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
+
+/* Variables de Couleurs */
+:root {
+    --primary-color: #0f0e0e; /* Noir pour les fonds */
+    --accent-color: #F0B90B; /* Jaune Binance pour les éléments en surbrillance */
+    --secondary-color: #FFFFFF; /* Blanc pour les éléments secondaires */
+    --text-light: #FFFFFF; /* Blanc pour le texte */
+    --text-dark: #000000; /* Noir pour le texte sur fond clair */
+    --accent-colorS: #f0bb0ba0; /* Jaune Binance transparent pour les éléments en surbrillance */
+}
+
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Conteneur Principal */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* Sections Gauche et Droite */
+.left-section, .right-section {
+    flex-basis: 50%;
+}
+
+/* Styles pour l'En-Tête */
+.header {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    position: fixed;
+    z-index: 1000;
+    text-align: center;
+}
+
+
+/* Styles des Boutons */
+.buttons {
+    justify-content: center;
+    gap: 20px; /* Espace entre les boutons */
+}
+
+.register-button, .login-button {
+    background-color: var(--accent-color); /* Couleur jaune Binance */
+    color: var(--primary-color); /* Texte noir */
+    border: none;
+    border-radius: 16px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile pour un effet 3D */
+    text-align: center;
+    align-items: center;
+}
+
+
+
+.register-button:hover, .login-button:hover {
+    background-color: var(--primary-color); /* Couleur de fond au survol */
+    color: var(--accent-color); /* Couleur de texte au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée au survol */
+}
+
+/* Media Queries pour petits écrans */
+@media (max-width: 768px) {
+    .buttons {
+        flex-direction: column;
+    }
+
+    .register-button, .login-button {
+        width: 80%; /* Pleine largeur pour les petits écrans */
+        height: 50px;
+        margin-bottom: 0px; /* Espace entre les boutons */
+        text-align: center;
+    }
+}
+
+/* Styles pour les Textes H1, H3, H4, H5 */
+h1, h3, h4, h5 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+}
+
+h1:hover, h3:hover, h4:hover, h5:hover {
+    transform: scale(1.1);
+}
+
+/* Media Queries pour Responsivité */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .login-button {
+        margin-top: -3px;
+    }
+    
+    .left-section, .right-section {
+        flex-basis: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+footer {
+
+position: absolute;
+bottom: 0;
+}
+
+.blockchain-image {
+    width: 50px;
+    height: 50px;
+}
+
+h2 {
+    position: relative;
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+
+} 
+
+.left-section {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+}
+
+.blockchain-container {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    align-items: center; /* Centrer verticalement */
+}
+
+.blockchain-image {
+    /* Vos styles d'image, par exemple : */
+    max-width: 100px; /* Largeur maximale de l'image */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    margin-right: 10px; /* Espacement à droite de l'image */
+}
+
+h2 {
+    /* Vos styles pour le titre h2, par exemple : */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+.gold-text {
+    color: gold; /* Couleur jaune dorée pour le texte "Galaxy" */
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  
+    text-align: center; /* Centrer le contenu du footer horizontalement */
+    padding: 10px 0; /* Espacement intérieur du footer */
+    z-index: 100; /* Si nécessaire, assurez-vous qu'il est au-dessus des autres éléments fixes */
+}
+
+.container {
+    /* Vos styles existants pour .container... */
+    transform: translateY(-65px); /* Ajustez cette valeur selon vos besoins */
+}
+
+.buttons {
+    display: flex; /* Utiliser Flexbox pour le positionnement */
+    justify-content: center; /* Centrer les éléments horizontalement */
+    align-items: center; /* Centrer les éléments verticalement */
+    gap: 20px; /* Espace entre les boutons */
+}
+
+.register-button, .login-button {
+    padding: 10px 20px; /* Ajustez la taille des boutons */
+    /* Autres styles de bouton */
+}
+.gold-text {
+    display: inline-block; /* Permet la transformation */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition douce */
+}
+
+@keyframes fadeAndTrace {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(1.5);
+        filter: blur(2px);
+    }
+}
+
+.gold-text.fade-trace {
+    animation: fadeAndTrace 1s ease infinite;
+}

@@ -17,7 +17,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('Hackathon\ \(14\).png'); /* Chemin vers votre image de fond */
+    background-image: url('Hackathon\ \(15\).png'); /* Chemin vers votre image de fond */
     background-size: cover; /* L'image couvre tout l'espace disponible */
     background-repeat: no-repeat; /* L'image ne se répète pas */
     background-position: center; /* L'image est centrée */
@@ -398,11 +398,21 @@ a:hover {
 .page-title {
     text-align: center;
     font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
-    font-size: 1.5em; /* Taille de la police */
+    font-size: 1em; /* Taille de la police */
     color: white; /* Couleur d'accentuation */
     margin-top: 20px; /* Espace au-dessus du titre */
     margin-bottom: 40px; /* Espace en dessous du titre */
 }
+h1 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
+    font-size: 1.4em; /* Taille de la police */
+    color: white; /* Couleur d'accentuation */
+    margin-top: 20px; /* Espace au-dessus du titre */
+    margin-bottom: 40px; /* Espace en dessous du titre */
+
+}
+
 
 /* Style pour l'invitation à s'inscrire */
 .register-invite {
@@ -442,4 +452,36 @@ h4 {
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+}
+
+.page-title {
+    color:  #f0b90b; /* Couleur jaune dorée pour le texte "Galaxy" */
+    margin-right: 10px;
+}
+
+
+@keyframes fadeAndTrace {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(1.5);
+        filter: blur(2px);
+    }
+}
+
+.page-title.fade-trace {
+    animation: fadeAndTrace 1s ease infinite;
+}
+.page-title {
+    display: inline-block; /* Permet la transformation */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition douce */
+}
+
+.login-container {
+
+    margin-top: -50px;
 }
