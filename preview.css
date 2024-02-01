@@ -80,7 +80,7 @@ body {
     color: var(--text-light);
     background-color: var(--primary-color);
         background: blur(5px);
-    background-image: url('Hackathon\ \(14\).png'); /* Chemin vers votre image de fond */
+    background-image: url('Hackathon\ \(1\).svg'); /* Chemin vers votre image de fond */
     background-size: cover; /* L'image couvre tout l'espace disponible */
     background-repeat: no-repeat; /* L'image ne se répète pas */
     background-position: center; /* L'image est centrée */
@@ -370,3 +370,27 @@ h4:hover {
    background-color:  #F0B90B ; /* ou la couleur dorée souhaitée */
     }
     
+.draggable-button {
+    position: absolute; 
+    top: 50px; 
+    left: 50px;
+    cursor: move;
+    z-index: 1000;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.233);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px; /* Augmenter la taille de la police pour la flèche */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px; /* Ajuster pour centrer verticalement la flèche */
+}
+
+.draggable-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+}
