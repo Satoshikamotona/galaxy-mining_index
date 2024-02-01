@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="homepage.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C56 Preview</title>
+<title>Home Page</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
 </head>
@@ -37,17 +37,16 @@
         </div>
         
         </div>
-
+        
+        <!-- Carrousel d'images juste en dessous du conteneur principal -->
+        <div class="image-slider-container">
+            <div class="image-slider">
+                <img src="37.png" alt="Info 1">
+                <img src="36.png" alt="Info 2">
+                <img src="38.png" alt="Info 3">
+                <img src="39.png" alt="Info 4">
+                <!-- Ajoutez autant d'images que nécessaire -->
             </div>
-
-
-
-
-
-        
-        
-    </div> 
-  <div>
         </div>
             </body>
 <footer class="text-center">
@@ -198,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (galaxyText) {
         setInterval(() => {
-            galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "XYGALA" : "Galaxy";
+            galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "SUCCESS" : "Galaxy";
         }, 1000);
     }
 });
@@ -210,11 +209,75 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(() => {
             galaxyText.classList.add('fade-trace'); // Ajouter l'animation
             setTimeout(() => {
-                galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "XYGALA" : "Galaxy";
+                galaxyText.textContent = galaxyText.textContent === "Galaxy" ? "SUCCESS" : "Galaxy";
             }, 500); // Changer le texte au milieu de l'animation
             setTimeout(() => galaxyText.classList.remove('fade-trace'), 1000); // Enlever l'animation après 1s
         }, 2000);
     }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector(".image-slider");
+    let scrollInterval;
+
+    function startAutoScroll() {
+        scrollInterval = setInterval(() => {
+            slider.scrollLeft += 2; // Adjust the scrolling speed as needed
+        }, 20); // Adjust the interval as needed (milliseconds)
+    }
+
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    // Start auto-scrolling when the page loads
+    startAutoScroll();
+
+    // Pause auto-scrolling when the user interacts with the slider
+    slider.addEventListener('mousedown', () => {
+        stopAutoScroll();
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        startAutoScroll();
+    });
+
+    slider.addEventListener('mouseup', () => {
+        startAutoScroll();
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector(".image-slider");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 3; //facteur de défilement
+        slider.scrollLeft = scrollLeft - walk;
+    });
 });
 
  </script>

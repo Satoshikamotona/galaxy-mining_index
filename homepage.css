@@ -37,17 +37,6 @@
     left: 0; /* Positionné à gauche de la page */
     z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
   }
-  
-/* Modern Binance-Inspired Site Background */
-body {
-   
-    background-size: cover, auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: BackgroundAnimation 30s infinite alternate;
-}
-
-
 
   .container {
     max-width: 460px; /* Adjust the width as needed */
@@ -62,50 +51,30 @@ footer {
     text-align: center;
     padding: 1em;
 }
-body {
- 
-    padding-top: 50px; /* Ajustez cette valeur pour changer l'espacement avec l'en-tête */
-    height: 100vh;
-
-    background-position: center;
-    background-attachment: fixed;
-
-    justify-content: center;
-    align-items: center;
-
-}
-
-body {
+body , html{
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('Hackathon\ \(1\).svg'); /* Chemin vers votre image de fond */
-    background-size: cover; /* L'image couvre tout l'espace disponible */
-    background-repeat: no-repeat; /* L'image ne se répète pas */
-    background-attachment: fixed; /* L'image de fond est fixe lors du défilement */
-    background-position: center center; /* L'image est centrée verticalement et horizontalement */
-    height: 100vh; /* Hauteur totale de la fenêtre de visualisation */
-    margin: 0; /* Suppression des marges par défaut */
-    padding: 0; /* Suppression des paddings par défaut */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ... Reste de votre CSS ... */
-
-/* Vous pouvez supprimer les propriétés de background redondantes dans les autres sélecteurs body si elles sont présentes. */
-
-
-
-/* Modern Binance-Inspired Site Background */
-body {
-   
-    background-size: cover, auto;
-    background-position: center;
+    background-image: url('Hackathon\ \(1\).svg'); /* Ajustez le chemin si nécessaire */
+    background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    margin: 0;
+    padding-top: 50px; /* Espace pour l'en-tête */
+    flex-direction: column; /* Organise les enfants en colonne */
+    align-items: center; /* Centre horizontalement */
+    justify-content: flex-start; /* Débute les enfants en haut du conteneur */
     animation: BackgroundAnimation 120s infinite alternate;
 }
+
+
+/* Ajustement de l'animation de fond */
+@keyframes BackgroundAnimation {
+    0%, 100% { background-position: top center; }
+    50% { background-position: bottom center; }
+}
+
 
 @keyframes BackgroundAnimation {
     0% { background-position: top left; }
@@ -144,26 +113,7 @@ body {
 
 
 
-.badge-container {
-    display: flex; /* Utilisation de Flexbox */
-    flex-direction: column; /* Alignement vertical des éléments */
-    justify-content: flex-start; /* Aligner les éléments en haut */
-    align-items: center; /* Centrer les éléments horizontalement */
-    width: 150px; /* Taille du conteneur (carré) */
-    height: 150px; /* Hauteur égale à la largeur pour un carré */
-    margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
-    border-radius: 20px; /* Coins arrondis */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
-    backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
-    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
 
-
-}
-.badge-container h4 {
-    margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
-    margin-bottom: 0px; /* Espace entre le titre 'Lvl' et les badges */
-}
 
 .card {
 
@@ -193,12 +143,6 @@ h4 {
 
 
 
-.card:hover {
-    transform: scale(1.05); /* Agrandit légèrement la carte au survol */
-}
-
-
-
 
 
 h3 {
@@ -209,38 +153,6 @@ h3 {
 
 
 
-
-.main-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Ajoute un espacement entre les éléments flex enfants */
-    /* autres styles de .main-container */
-
-}
-.card {
-    margin-bottom: 5px; /* Ajoute de l'espace en bas de chaque carte */
-    /* autres styles de .card */
-
-}
-
-.card {
-    padding: 20px; /* Ajoute de l'espace autour du contenu à l'intérieur de la carte */
-    /* autres styles de .card */
-}
-
-
-
-
-.card {
-    margin-bottom: 20px; /* Espacement entre les cartes */
-    /* autres styles pour .card */
-}
-
-
-.card {
-    margin-bottom: 0px;
-    padding: 0px;
-}
 
 
 
@@ -335,11 +247,9 @@ body, html {
 .container {
     width: 80%;
     max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: 40px auto; /* Ajustez l'espace autour du conteneur */
+    padding: 20px; /* Espace à l'intérieur du conteneur */
     background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
@@ -437,12 +347,6 @@ h1:hover, h3:hover, h4:hover, h5:hover {
     }
 }
 
-footer {
-
-position: absolute;
-bottom: 0;
-}
-
 .blockchain-image {
     width: 50px;
     height: 50px;
@@ -484,8 +388,7 @@ h2 {
 }
 footer {
     position: fixed;
-    bottom: 0;
-    left: 0;
+  
     width: 100%;
   
     text-align: center; /* Centrer le contenu du footer horizontalement */
@@ -511,7 +414,7 @@ footer {
 }
 .gold-text {
     display: inline-block; /* Permet la transformation */
-    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition douce */
+    transition: transform 15s ease, opacity 15s ease; /* Transition douce */
 }
 
 @keyframes fadeAndTrace {
@@ -528,5 +431,36 @@ footer {
 }
 
 .gold-text.fade-trace {
-    animation: fadeAndTrace 1s ease infinite;
+    animation: fadeAndTrace 3s ease infinite;
+}
+
+.image-slider-container {
+    overflow: hidden;
+    width: 75%;
+    margin: 40px auto; /* Ajustez l'espace autour du carrousel */
+    box-shadow: 0 0 10px #F0B90B;
+    border-left: 5px solid #F0B90B;
+    border-right: 5px solid #F0B90B;
+    margin: 40px auto 60px; /* 40px de marge en haut et en bas, centré horizontalement */
+    padding: 20px; /* Espace à l'intérieur du conteneur */
+    margin-top: -60px;
+
+}
+
+.image-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.image-slider img {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    margin: 10px; /* Espacement entre les images */
+}
+
+.image-slider img {
+       width: 250px;
+       height: 250px;
+
 }
