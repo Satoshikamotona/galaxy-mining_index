@@ -147,8 +147,21 @@ body {
     backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
     background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
     border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Ombre portée pour un effet de profondeur */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition douce pour les effets au survol */
+    animation: shadowColorChange 3s infinite; /* 3s pour chaque couleur, donc 6s au total */
+
+}
 
 
+
+@keyframes shadowColorChange {
+    50%, 50% {
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Première couleur */
+    }
+    50%, 50% {
+        box-shadow: 0 2px 10px rgba(238, 174, 0, 0.75); /* Deuxième couleur */
+    }
 }
 .badge-container h4 {
     margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
