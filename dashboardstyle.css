@@ -309,7 +309,7 @@ section {
 
 
 /* Section Heading and Paragraph Styles */
-section h1, h2 {
+section  h2 {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-light);
 }
@@ -336,9 +336,15 @@ body {
 }
 
 /* Titres et Sous-titres */
-h1, h2, h3, h4, h5, h6 {
+ h2, h3, h4, h5, h6 {
     text-align: center; /* Centrage des titres */
     font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h1{
+    text-align: center; /* Centrage des titres */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    margin-top: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -368,20 +374,20 @@ a:hover {
 /* Responsive Design */
 @media only screen and (max-width: 768px) {
     /* Ajustements pour les appareils mobiles */
-    h1 {
-        font-size: 1.5em;
+ .galaxy-programs h1{
+        font-size: 1.2em;
     }
     h2 {
-        font-size: 1.3em;
+        font-size: 1em;
     }
+}
+
+.Info-contenaire h1 {
+    font-size: 1.2em;
 }
 
 
 
-
-    h2 {
-        font-size: 1.3em;
-    }
 
 
    
@@ -1330,7 +1336,6 @@ h5:hover {
 }
 .Info-contenaire > h1 {
     text-align: center; /* Centrer le titre */
-    font-size: 1.5em; /* Taille de police plus grande */
     margin-bottom: 30px; /* Ajouter de l'espace sous le titre */
     /* Autres styles esthétiques si nécessaire */
 
@@ -1467,4 +1472,7 @@ h5:hover {
 .draggable-button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
     transform: scale(1.05);
+}
+.Info-contenaire {
+    margin-top: -80px;
 }
