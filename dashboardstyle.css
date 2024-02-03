@@ -1497,3 +1497,19 @@ body::before {
     100% { background-position: top left; }
     }
 
+/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
+.profit-card {
+    overflow: hidden;
+}
+
+/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
+.profit-card .balance {
+    height: 0;
+    overflow: hidden;
+    transition: height 1s ease-in-out;
+}
+
+/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
+.profit-card.show-balance .balance {
+    height: 100%;
+}
