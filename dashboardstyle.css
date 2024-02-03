@@ -1301,7 +1301,8 @@ h5:hover {
     place-items: center;
     width: 200px;
     height: 100px;
-
+    border: 5px;
+     border: white;
 
 }
 
@@ -1316,9 +1317,10 @@ h5:hover {
         display: flex;
         flex-direction: column;
         align-items: center; /* Centrer les éléments horizontalement */
-
+        
         /* Réduire la taille de la police si nécessaire */
         font-size: 0.8em; /* Ajustez selon vos besoins */
+        
     }
 }
 @media (min-width: 768px) { /* Ajustez cette valeur selon vos besoins */
