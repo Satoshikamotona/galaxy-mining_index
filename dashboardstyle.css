@@ -1132,7 +1132,7 @@ a:hover {
         box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Première couleur */
     }
     50%, 50% {
-        box-shadow: 0 2px 10px rgba(238, 174, 0, 0.75); /* Deuxième couleur */
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5) /*Deuxième couleur */
     }
 }
 .profile-section:hover {
@@ -1473,43 +1473,29 @@ h5:hover {
 .Info-contenaire {
     margin-top: -80px;
 }
-
 body::before {
     content: "";
-    position: fixed;
+    position: fixed; /* Changez de absolute à fixed */
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url('Hackathon (17).png');
+    background-image: url('Hackathon\ \(14\).png');
     background-size: cover;
-    background-size: auto; /* Allow the image to resize */
-    background-position: top center;
+    background-position: center;
     background-repeat: no-repeat;
-    filter: blur(25px);
-    z-index: -1;
-    animation: BackgroundAnimation 60s infinite alternate;
+    filter: blur(20px); /* Exemple de filtre, ajustez selon vos besoins */
+    z-index: -1; /* Placez l'élément en dessous du contenu de la page */
+    animation: moveLeftToRight 60s linear infinite; /* 20s pour la durée totale, ajustez selon vos besoins */
+
 }
 
-@keyframes BackgroundAnimation {
-    0% { background-position: top left; }
-    50% { background-position: bottom right; }
-    100% { background-position: top left; }
+/* Définition de l'animation */
+@keyframes moveLeftToRight {
+    0%, 100% {
+        transform: translateX(-100%); /* Commence et termine à gauche de la fenêtre */
     }
-
-/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
-.profit-card {
-    overflow: hidden;
-}
-
-/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
-.profit-card .balance {
-    height: 0;
-    overflow: hidden;
-    transition: height 1s ease-in-out;
-}
-
-/* Ajoutez la classe profit-animation à toutes les cartes contenant des chiffres */
-.profit-card.show-balance .balance {
-    height: 100%;
+    50% {
+        transform: translateX(100%); /* Au milieu, déplace l'image complètement à droite */
+    }
 }
