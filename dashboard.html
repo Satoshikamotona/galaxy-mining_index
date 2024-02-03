@@ -23,6 +23,7 @@
     <div class="left-section">
 
     <div class="profile-section">
+       
         <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
         <div class="profile-info">
             <p class="profile-id">ID: 0</p>
@@ -40,6 +41,8 @@
     </div>
     
         <div class="profits-row">
+               <div class="card profit-card">
+
             <div class="card">
                 <h3>Team Profit </h3>
                 <h5 id="teamProfit">0 BNB</h5> <!-- Identifiant ajouté ici -->
@@ -51,6 +54,8 @@
         </div>
     
         <div class="profits-row">
+               <div class="card profit-card">
+
             <div class="card">
                 <h3>Div Claimed </h3>
                 <h5 id="divclaimed">0 BNB</h5> <!-- Identifiant ajouté ici -->
@@ -63,6 +68,8 @@
         </div>
 
         <div class="profits-row">
+               <div class="card profit-card">
+
             <div class="card">
                 <h3 class="team-title">Partners</h3>
                 <div class="number-box">
@@ -82,7 +89,8 @@
     
         <div class="right-section">
         
-        <div class="dividend-container">
+        <div class="dividend-container card profit-card">
+
             <p>Dividendes Available</p>
             <div class="dividend-info">
                 <img src="17.png" alt="Binance Smart Chain Logo" class="binance-logo">
@@ -132,7 +140,8 @@
 
     <h1>Recent Activities</h1>
 
-<div class="lastInfos">
+<div class="lastInfos card profit-card">
+">
     <h1>Global Community</h1>
     <div class="Second">
         <span id="theCurrentNumber">0 </span>
@@ -871,6 +880,28 @@ function copyToClipboard(selector) {
     function goBack() {
     window.history.back();
 }
+document.addEventListener('DOMContentLoaded', function () {
+    // Ajoutez la classe 'show-balance' après un court délai pour déclencher l'animation
+    const profitCards = document.querySelectorAll('.profit-card');
+    
+    profitCards.forEach(card => {
+        const balanceElement = card.querySelector('.balance');
+        const delay = 500; // 500 millisecondes de délai (ajustez selon vos besoins)
+        
+        // Ajoutez la classe 'show-balance' après le délai pour déclencher l'animation
+        setTimeout(() => {
+            card.classList.add('show-balance');
+        }, delay);
+
+        // Replacez cette valeur par le solde actuel de l'utilisateur
+        const currentBalance = 500; // Exemple : 500, ajustez selon vos besoins
+        
+        // Définissez le contenu texte sur le solde actuel
+        balanceElement.textContent = `$${currentBalance.toFixed(2)}`;
+    });
+});
+
+   
 </script>
 </body>
 </html>
