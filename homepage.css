@@ -55,7 +55,7 @@ body , html{
     font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     background-color: var(--primary-color);
-    background-image: url('Hackathon\ \(15\).png'); /* Ajustez le chemin si nécessaire */
+    background-image: url('Hackathon\ \(1\).svg'); /* Ajustez le chemin si nécessaire */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -458,6 +458,62 @@ footer {
     scroll-snap-align: start;
     margin: 10px; /* Espacement entre les images */
 }
+
+
+
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+
+.dashboard-header.hide-items p {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-icon {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .dashboard-header.show {
+    top: 0;
+  }
+
+  .dashboard-header.show p {
+    display: block;
+  }
+}
+.menu-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.menu-item, .menu-link {
+    margin-bottom: 20px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover, .menu-link:hover {
+    background-color: #555;
+  } 
 
 .image-slider img {
        width: 250px;
