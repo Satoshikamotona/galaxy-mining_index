@@ -1570,8 +1570,7 @@ body::before {
     background-color: #333;
     color: white;
   }
-
-  /* Style du tableau */
+/* Style du tableau */
 #partnersTable {
     width: 100%;
     border-collapse: collapse;
@@ -1583,17 +1582,28 @@ body::before {
     background-color: #f2f2f2;
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 6px;
+    font-size: 14px; /* Réduire la taille de la police */
 }
 
 /* Style des cellules du tableau */
 #partnersTable tbody td {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 6px;
+    font-size: 12px; /* Réduire la taille de la police */
+    max-width: 100px; /* Tronquer les adresses et définir une largeur maximale */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Tronquer les adresses avec des points de suspension (...) */
 }
 
 /* Style des lignes impaires du tableau */
 #partnersTable tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
+}
+
+/* Ajuster le tableau en dessous de l'espace de la page */
+#partnersTable {
+    margin-bottom: 20px;
 }
