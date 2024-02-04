@@ -1579,7 +1579,6 @@ body::before {
 
 /* Style de l'en-tête du tableau */
 #partnersTable thead th {
-    background-color: #f2f2f2;
     border: 1px solid #dddddd;
     text-align: left;
     padding: 6px;
@@ -1600,7 +1599,6 @@ body::before {
 
 /* Style des lignes impaires du tableau */
 #partnersTable tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
 }
 
 /* Ajuster le tableau en dessous de l'espace de la page */
