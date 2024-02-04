@@ -115,9 +115,10 @@ getPartnersData: async function () {
     }
 },
 
-// Fonction d'update pour mettre à jour l'interface utilisateur avec les données des partenaires
 updatePartnersTable: async function () {
     try {
+        console.log('Start updatePartnersTable');
+
         const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
         tableBody.innerHTML = '';
 
@@ -131,9 +132,11 @@ updatePartnersTable: async function () {
 
         cellUser.innerHTML = partnersData.userAddress;
         cellPartners.innerHTML = `${partnersData.directPartnersCount} (${partnersData.userPartners.join(', ')})`;
+
+        console.log('End updatePartnersTable');
     } catch (error) {
         console.error("Erreur lors de la mise à jour de l'interface utilisateur :", error);
-        // Gérer l'erreur spécifique à la mise à jour de l'interface utilisateur si nécessaire
+        console.log("Blockchain response:", error.response); // Affichez la réponse de la blockchain
     }
 },
 
