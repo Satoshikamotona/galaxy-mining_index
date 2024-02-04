@@ -98,7 +98,16 @@ getUserIdByAddress: async function(userAddress) {
             return await this.contract.methods.directPartnersCount(userAddress).call();
         } catch (error) {
             console.error("Erreur lors de la récupération du nombre de partenaires directs :", error);
-            throw error; 
+            throw error; // Propager l'erreur pour une gestion ultérieure si nécessaire
+        }
+    },
+
+    getUserPartners: async function (userAddress, index) {
+        try {
+            return await this.contract.methods.userPartners(userAddress, index).call();
+        } catch (error) {
+            console.error("Erreur lors de la récupération des partenaires directs :", error);
+            throw error; // Propager l'erreur pour une gestion ultérieure si nécessaire
         }
     },
 
@@ -112,13 +121,22 @@ getUserIdByAddress: async function(userAddress) {
             // Obtenir le nombre de partenaires directs en utilisant le getter
             const directPartnersCount = await this.getDirectPartnersCount(this.userAccount);
 
-            // Créer une ligne pour afficher le nombre de partenaires directs
-            const row = tableBody.insertRow();
-            const cellUser = row.insertCell(0);
-            const cellPartners = row.insertCell(1);
+            // Obtenir le tableau d'adresses des partenaires directs
+            const partnersAddresses = [];
+            for (let i = 0; i < directPartnersCount; i++) {
+                const partnerAddress = await this.getUserPartners(this.userAccount, i);
+                partnersAddresses.push(partnerAddress);
+            }
 
-            cellUser.innerHTML = this.userAccount;
-            cellPartners.innerHTML = directPartnersCount;
+            // Afficher les adresses des partenaires dans le tableau HTML
+            partnersAddresses.forEach((partnerAddress, index) => {
+                const row = tableBody.insertRow();
+                const cellIndex = row.insertCell(0);
+                const cellAddress = row.insertCell(1);
+
+                cellIndex.innerHTML = index + 1;
+                cellAddress.innerHTML = partnerAddress;
+            });
 
             console.log('End updatePartnersTable');
         } catch (error) {
@@ -126,6 +144,8 @@ getUserIdByAddress: async function(userAddress) {
             console.log("Blockchain response:", error.response); // Affichez la réponse de la blockchain
         }
     },
+
+
 
 
 
