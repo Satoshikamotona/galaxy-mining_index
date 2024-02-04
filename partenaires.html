@@ -24,7 +24,7 @@
         <span class="wallet-address">0x00...000</span>
     </div>
 
-    
+
     <table id="partnersTable">
         <thead>
           <tr>
@@ -163,21 +163,6 @@ init: async function() {
     await this.updatePartnersTable();
     }
 };
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const claimButton = document.getElementById('claimDividendButton');
-    if (claimButton) {
-        claimButton.addEventListener('click', function() {
-            if (galaxyMining && typeof galaxyMining.claimDividends === "function") {
-                galaxyMining.claimDividends();
-            } else {
-                console.error("claimDividends function not found");
-            }
-        });
-    } else {
-        console.error("Claim button not found");
-    }
-});
 
 
 
