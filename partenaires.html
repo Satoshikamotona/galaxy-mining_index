@@ -71,6 +71,26 @@ connectContract: async function() {
     }
 },
 
+getUserIdByAddress: async function(userAddress) {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+        console.log("Nombre total d'utilisateurs:", numberOfUsers);
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            try {
+                const address = await this.contract.methods.idToAddress(userId).call();
+                console.log("Vérification de l'adresse pour l'ID", userId, ":", address);
+                if (address.toLowerCase() === userAddress.toLowerCase()) {
+                    console.log("ID trouvé:", userId);
+                    return userId;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+            }
+        }
+
+        console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+        return null;
+    },
 
    updatePartnersTable: async function () {
     const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
