@@ -114,13 +114,16 @@ getUserIdByAddress: async function(userAddress) {
         // Obtenir les partenaires directs
         const userPartners = [];
         for (let partnerIndex = 1; partnerIndex <= directPartnersCount; partnerIndex++) {
-            const partnerAddress = await this.contract.methods.userPartners(userAddress, partnerIndex).call();
+            const partnerId = await this.contract.methods.userPartners(userAddress, partnerIndex).call();
+            const partnerAddress = await this.contract.methods.idToAddress(partnerId).call();
             userPartners.push(partnerAddress);
         }
 
+        // Mettez à jour la cellule des partenaires après avoir obtenu tous les partenaires
         cellPartners.innerHTML = `${directPartnersCount} (${userPartners.join(', ')})`;
     }
 },
+
 
 
 
