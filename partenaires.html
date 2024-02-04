@@ -95,6 +95,12 @@ getUserIdByAddress: async function(userAddress) {
 
 
 getPartnersData: async function () {
+    try {
+    // Votre code ici
+} catch (error) {
+    console.error("Erreur lors de l'interaction Ethereum :", error);
+}
+
     const userAddress = this.userAccount;
 
   
@@ -116,6 +122,13 @@ getPartnersData: async function () {
 
 // Fonction d'update pour mettre à jour l'interface utilisateur avec les données des partenaires
 updatePartnersTable: async function () {
+    try {
+} catch (error) {
+    console.error("Erreur lors de l'interaction Ethereum :", error);
+}
+
+
+
     const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
