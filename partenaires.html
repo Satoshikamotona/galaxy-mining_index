@@ -13,6 +13,18 @@
 </head>
 <body>
 
+    <div class="dashboard-header hide-items ">
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <a href="#" class="menu-link"><p class="menu-item">Partners</p></a>
+        <a href="#" class="menu-link"><p class="menu-item">Documentation</p></a>
+        <a href="#" class="menu-link"><p class="menu-item">Message</p></a>
+            
+        <img src="17.png" alt="Binance Logo">
+        <span class="wallet-address">0x00...000</span>
+    </div>
+
+    
     <table id="partnersTable">
         <thead>
           <tr>
@@ -26,19 +38,8 @@
       </table>
 
   </head>
-  <body>
   
 
-<div class="dashboard-header hide-items ">
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <span class="menu-icon" onclick="toggleMenu()">☰</span>
-    <a href="#" class="menu-link"><p class="menu-item">Partners</p></a>
-    <a href="#" class="menu-link"><p class="menu-item">Documentation</p></a>
-    <a href="#" class="menu-link"><p class="menu-item">Message</p></a>
-        
-    <img src="17.png" alt="Binance Logo">
-    <span class="wallet-address">0x00...000</span>
-</div>
 <footer class="text-center">
     <p>&copy; galaxyMining</p>
 </footer>
@@ -92,7 +93,7 @@ getUserIdByAddress: async function(userAddress) {
         return null;
     },
 
-   updatePartnersTable: async function () {
+    updatePartnersTable: async function () {
     const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
@@ -101,19 +102,26 @@ getUserIdByAddress: async function(userAddress) {
 
     // Itérer sur chaque utilisateur
     for (let userId = 1; userId <= numberOfUsers; userId++) {
-      const userAddress = await this.contract.methods.idToAddress(userId).call();
-      const directPartnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
-      const userPartners = await this.contract.methods.userPartners(userAddress).call();
+        const userAddress = await this.contract.methods.idToAddress(userId).call();
+        const directPartnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
 
-      const row = tableBody.insertRow();
-      const cellUser = row.insertCell(0);
-      const cellPartners = row.insertCell(1);
+        const row = tableBody.insertRow();
+        const cellUser = row.insertCell(0);
+        const cellPartners = row.insertCell(1);
 
-      cellUser.innerHTML = userAddress;
-      cellPartners.innerHTML = `${directPartnersCount} (${userPartners.join(', ')})`;
+        cellUser.innerHTML = userAddress;
+
+        // Obtenir les partenaires directs
+        const userPartners = [];
+        for (let partnerIndex = 1; partnerIndex <= directPartnersCount; partnerIndex++) {
+            const partnerAddress = await this.contract.methods.userPartners(userAddress, partnerIndex).call();
+            userPartners.push(partnerAddress);
+        }
+
+        cellPartners.innerHTML = `${directPartnersCount} (${userPartners.join(', ')})`;
     }
+},
 
-  },
 
 
 
