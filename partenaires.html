@@ -92,58 +92,50 @@ getUserIdByAddress: async function(userAddress) {
         console.log("Aucun ID trouvé pour l'adresse:", userAddress);
         return null;
     },
-
-
+// Getter pour obtenir les données des partenaires
 getPartnersData: async function () {
     try {
-    // Votre code ici
-} catch (error) {
-    console.error("Erreur lors de l'interaction Ethereum :", error);
-}
+        const userAddress = this.userAccount;
+        const directPartnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
 
-    const userAddress = this.userAccount;
+        const userPartners = [];
+        for (let partnerIndex = 0; partnerIndex <= directPartnersCount; partnerIndex++) {
+            const partnerAddress = await this.contract.methods.userPartners(userAddress, partnerIndex).call();
+            userPartners.push(partnerAddress);
+        }
 
-  
-    const directPartnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
-
-    const userPartners = [];
-    for (let partnerIndex = 0; partnerIndex <= directPartnersCount; partnerIndex++) {
-        const partnerAddress = await this.contract.methods.userPartners(userAddress, partnerIndex).call();
-        userPartners.push(partnerAddress);
+        return {
+            userAddress,
+            directPartnersCount,
+            userPartners,
+        };
+    } catch (error) {
+        console.error("Erreur lors de l'interaction Ethereum :", error);
+        throw error; // Propager l'erreur pour une gestion ultérieure si nécessaire
     }
-
-    return {
-        userAddress,
-        directPartnersCount,
-        userPartners,
-    };
 },
-
 
 // Fonction d'update pour mettre à jour l'interface utilisateur avec les données des partenaires
 updatePartnersTable: async function () {
     try {
-} catch (error) {
-    console.error("Erreur lors de l'interaction Ethereum :", error);
-}
+        const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';
 
+        // Obtenir les données des partenaires en utilisant le getter
+        const partnersData = await this.getPartnersData();
 
+        // Créer une ligne pour afficher les partenaires
+        const row = tableBody.insertRow();
+        const cellUser = row.insertCell(0);
+        const cellPartners = row.insertCell(1);
 
-    const tableBody = document.getElementById('partnersTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = '';
-
-    // Obtenir les données des partenaires en utilisant le getter
-    const partnersData = await this.getPartnersData();
-
-    // Créer une ligne pour afficher les partenaires
-    const row = tableBody.insertRow();
-    const cellUser = row.insertCell(0);
-    const cellPartners = row.insertCell(1);
-
-    cellUser.innerHTML = partnersData.userAddress;
-    cellPartners.innerHTML = `${partnersData.directPartnersCount} (${partnersData.userPartners.join(', ')})`;
+        cellUser.innerHTML = partnersData.userAddress;
+        cellPartners.innerHTML = `${partnersData.directPartnersCount} (${partnersData.userPartners.join(', ')})`;
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour de l'interface utilisateur :", error);
+        // Gérer l'erreur spécifique à la mise à jour de l'interface utilisateur si nécessaire
+    }
 },
-
 
 
 
