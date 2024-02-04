@@ -1618,7 +1618,7 @@ body::before {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background-color: #333; /* Fond noir */
+    background-color: #ffffff; /* Fond noir */
     color: #272222; /* Couleur du texte blanc sur fond noir */
 }
 
