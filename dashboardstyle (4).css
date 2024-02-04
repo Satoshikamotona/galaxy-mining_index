@@ -1574,8 +1574,8 @@ body::before {
   
   /* Style de l'en-tête du tableau avec fond blanc */
 #partnersTable thead th {
-    background-color:#2c2c2c;
-    color: #000; /* Couleur du texte noir sur fond blanc */
+    background-color:#e98d00;
+    color: #ffffff; /* Couleur du texte noir sur fond blanc */
     border: 1px solid #dddddd;
     text-align: left;
     padding: 6px;
