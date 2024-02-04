@@ -1630,5 +1630,5 @@ body::before {
     color: #181616;
     align-items: center;
     text-align: center;
-    margin-top: 20px; /* Ajustez la valeur selon vos besoins */
+    margin-bottom: -100px; /* Ajustez la valeur selon vos besoins */
 }
