@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="dashboardstyle.css">
+<link rel="stylesheet" href="dashboardstyle (4) (1).css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
@@ -14,13 +14,22 @@
 <body>
    
 
-<div class="dashboard-header">
+<div class="dashboard-header hide-items ">
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <a href="partenaires.html" class="menu-link"><p class="menu-item">Partners</p></a>
+    <a href="pdf.html" class="menu-link"><p class="menu-item">Documentation</p></a>
+    <a href="index.html" class="menu-link"><p class="menu-item">Home</p></a>
+        
     <img src="17.png" alt="Binance Logo">
     <span class="wallet-address">0x00...000</span>
-  </div>
+</div>
+  
+
 
   <div class="dashboard-container">
-    <div class="left-section">
+    <div class="left-section hide-items">
+  
 
     <div class="profile-section">
         <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
@@ -181,7 +190,7 @@
     connectContract: async function() {
          const ABI =[{"inputs":[{"internalType":"address","name":"admin","type":"address"},{"internalType":"address","name":"ADContract","type":"address"},{"internalType":"uint256","name":"Vpercent","type":"uint256"},{"internalType":"uint256","name":"ForHold","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"A","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"Admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevel","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevelByOwner","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToCheck","type":"address"}],"name":"CheckUserLastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claim_DIV","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"G56Matrix","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"USER","type":"address"}],"name":"GetDivPerSec","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFunds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFundsbyAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"LastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Level10Income","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NumberOfUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"SetRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newpercent","type":"uint256"}],"name":"SetVirtualPercentage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"NewAddress","type":"address"}],"name":"SetWeeklyAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"TotalIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserTo","type":"address"}],"name":"UpdateLastUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UplineEarnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Users","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"userAddress","type":"address"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualDownline","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualParent","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"WeeklyContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"availableDiv","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"calculateDiv","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"checkUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncomefrom10","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directPartnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"divPerSecInEther","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"freeIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDirectPartners","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastRegistration","outputs":[{"internalType":"uint256","name":"userID","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalVirtualTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"level","type":"uint256"}],"name":"hasLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"},{"internalType":"uint256","name":"_requiredLevel","type":"uint256"}],"name":"hasRequiredLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"idToAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isAdmin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isRegistered","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"l","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"randomUser","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUser","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUserByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAdmin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newfees","type":"uint256"}],"name":"setholdingFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalInevest","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalLevels","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"USERTO","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"updateDivPerSecByOWner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userVirtualPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"virtualReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
-          const Address = "0xeFD569f381d8B0E025Bee884c1542B69346CC28c";
+          const Address = "0x597b599d2D197C49456b1C20Aae2C4BF1576396d";
 
 
         try {
@@ -414,7 +423,7 @@ console.error("Erreur lors de la récupération des niveaux actifs:", error);
           
             const profitElement = document.getElementById('divclaimed');
             if (profitElement) {
-                profitElement.textContent = `${divClaimedbnb.toFixed(4)} BNB`;
+                profitElement.textContent = `${divClaimedbnb.toFixed(6)} BNB`;
            
             } else {
                 console.error("Element 'divclaimed' not found in the DOM.");
@@ -615,14 +624,14 @@ updateDividendCounter: async function(lastUpdate) {
 
         if (currentLevel == 0) {
             // Utilisateur juste inscrit, utiliser les frais d'inscription
-            initialAmount = new web3.utils.BN(web3.utils.toWei('0.01', 'ether'));
+            initialAmount = new web3.utils.BN(web3.utils.toWei('0.02', 'ether'));
         } else {
             // Utilisateur avec niveaux actifs, utiliser le prix du niveau le plus élevé
             let highestLevelPrice = await this.contract.methods.levelPrices(currentLevel).call();
             initialAmount = new web3.utils.BN(highestLevelPrice);
         }
 
-        // Calculer les dividendes (exemple : 0.01 BNB * 10% par jour)
+        // Calculer les dividendes (exemple : 0.02 BNB * 10% par jour)
         const dailyRate = web3.utils.toBN('2'); // 10%
         const dividendsPerSecond = initialAmount.mul(dailyRate).div(web3.utils.toBN('100')).div(web3.utils.toBN('86400')); // Dividendes par seconde
         const dividends = dividendsPerSecond.mul(web3.utils.toBN(timeElapsed));
@@ -780,8 +789,38 @@ getVirtualTeam: async function() {
             }
         }
     },
+    
 
+getUserUpline: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
 
+    try {
+        // Obtenez l'ID du parrain
+        const referrerId = await this.contract.methods.referrers(this.userAccount).call();
+
+        // Convertissez l'ID en adresse
+        const referrerAddress = await this.contract.methods.idToAddress(referrerId).call();
+
+        // Mettez à jour l'élément avec l'ID 'referrerId'
+        const referrerIdElement = document.getElementById('referrerId');
+
+        if (referrerIdElement) {
+            referrerIdElement.textContent = referrerAddress;
+        } else {
+            console.error("Element 'referrerId' not found in the DOM.");
+        }
+    } catch (error) {
+        console.error("Error in fetching referrer details:", error);
+
+        // Mettez à jour l'élément avec l'ID 'referrerId' en cas d'erreur
+        if (document.getElementById('referrerId')) {
+            document.getElementById('referrerId').textContent = "0";
+        }
+    }
+},
 
 
     init: async function() {
@@ -797,13 +836,38 @@ getVirtualTeam: async function() {
         const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
         $('.wallet-address').text(truncatedAddress);
 
-        const userId = await this.getUserIdByAddress(this.userAccount);
+             
+    await this.calculateTeamProfit();
+    await this.genererEtAfficherLienParrainage();
+    await this.getPartenairesCount();
+    await this.getFreeIncome();
+    await this.getDirectTeam();
+    await this.calculateDivClaimed();
+    await this.updateProgramLevels();
+    await this.getUserLevel();
+    await this.level();
+    
+      await this.Updatelevels();
+    await this.getUserAddressAndSendToServer();
+    await this.startDividendCounter();
+    await this.updateDividendDisplay('0.000000000');
+    await this.GetglobalMembers();
+    await this.getTotalinvest() ;
+    await this.calculateTotalProfits();
+    await this.calculateTotalProfitsFor();
+    await this.getVirtualTeam();
+    
+       const userId = await this.getUserIdByAddress(this.userAccount);
+
         if (userId !== null) {
+
             $('.profile-id').text('ID: ' + userId);
         } else {
             console.error("User ID not found for the connected address");
         }
 
+
+    
         const referrerAddress = await this.contract.methods.referrers(this.userAccount).call();
         const referrerId = await this.getUserIdByAddress(referrerAddress);
         if (referrerId !== null) {
@@ -813,26 +877,8 @@ getVirtualTeam: async function() {
         }
 
 
-    await this.calculateTeamProfit();
-    await this.genererEtAfficherLienParrainage();
 
-    await this.getPartenairesCount();
-    await this.getFreeIncome();
-    await this.getDirectTeam();
-    await this.calculateDivClaimed();
-    await this.updateProgramLevels();
-    await this.getUserLevel();
-    await this.level();
-    await this.Updatelevels();
-    await this.getUserAddressAndSendToServer();
-    await this.startDividendCounter();
-    await this.updateDividendDisplay('0.000000000');
-    await this.GetglobalMembers();
-    await this.getTotalinvest() ;
-    await this.findTopPromoter();
-    await this.calculateTotalProfits();
-    await this.calculateTotalProfitsFor();
-    await this.getVirtualTeam();
+  
     }
 };
 
@@ -871,6 +917,13 @@ function copyToClipboard(selector) {
     function goBack() {
     window.history.back();
 }
+
+  function toggleMenu() {
+      const leftSection = document.querySelector('.dashboard-header');
+      leftSection.classList.toggle('show');
+      leftSection.classList.toggle('hide-items');
+    }
+
 </script>
 </body>
 </html>
