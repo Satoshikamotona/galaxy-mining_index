@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="dashboardstyle (4) (1).css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+
+
+</head>
+<body>
+   
+
+<div class="dashboard-header hide-items ">
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <a href="partenaires.html" class="menu-link"><p class="menu-item">Partners</p></a>
+    <a href="pdf.html" class="menu-link"><p class="menu-item">Documentation</p></a>
+    <a href="index.html" class="menu-link"><p class="menu-item">Home</p></a>
+        
+    <img src="17.png" alt="Binance Logo">
+    <span class="wallet-address">0x00...000</span>
+</div>
+  
+
+
+  <div class="dashboard-container">
+    <div class="left-section hide-items">
+  
+
+    <div class="profile-section">
+        <img src="20240116_111654.png" alt="User Profile" class="profile-pic">
+        <div class="profile-info">
+            <p class="profile-id">ID: 0</p>
+            <p class="profile-invited">Upline : <span id="referrerId">loading...</span></p>
+
+            <div class="user-link-container">
+                <a href="#" class="user-link">...</a>
+                <div class="copy-bar" onclick="copyToClipboard('.user-link')">Copy</div>
+            </div>
+        
+   
+            
+        </div>
+  
+    </div>
+    
+        <div class="profits-row">
+            <div class="card">
+                <h3>Team Profit </h3>
+                <h5 id="teamProfit">0 BNB</h5> <!-- Identifiant ajouté ici -->
+            </div>
+            <div class="card">
+                <h3>Free income </h3>
+                <h5 id="freeincome">0 BNB</h5> <!-- Identifiant ajouté ici -->
+            </div>
+        </div>
+    
+        <div class="profits-row">
+            <div class="card">
+                <h3>Div Claimed </h3>
+                <h5 id="divclaimed">0 BNB</h5> <!-- Identifiant ajouté ici -->
+            </div>
+            <div class="card">
+                <h3>Total Earnings</h3>
+                <h5 id="totalearnings">0 BNB</h5> <!-- Identifiant ajouté ici -->
+            </div>
+
+        </div>
+
+        <div class="profits-row">
+            <div class="card">
+                <h3 class="team-title">Partners</h3>
+                <div class="number-box">
+                    <h5 id="partner">0 </h5> <!-- Identifiant ajouté ici -->
+                </div>
+       
+            </div>
+            <div class="card">
+                <h3 class="team-title">Team</h3>
+                <div class="number-box">
+                    <span class="team-number"><h5 id="totalTeam">0</h5></span>
+            </div>
+                 </div>
+        </div>
+    </div>
+ 
+    
+        <div class="right-section">
+        
+        <div class="dividend-container">
+            <p>Dividendes Available</p>
+            <div class="dividend-info">
+                <img src="17.png" alt="Binance Smart Chain Logo" class="binance-logo">
+                <span id="dividend-amount">0.0000000000000</span> 
+          
+            </div>
+            <button class="claim-button" id="claimDividendButton">Claim</button>
+
+            </div>
+        
+
+            <div class="galaxy-programs">
+                <h1>Galaxy Programs</h1>
+                <div class="program-container">
+
+                    <div class="program-header">
+                        <div class="program-name">G56</div>
+                        <div class="program-value" id="BNB">0 BNB</div>
+                    </div>
+                
+                    <div class="grid">
+
+                <!-- Grid squares -->
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <button class="preview-button" onclick="location.href='Preview.html';">
+                Preview
+                <span class="arrow">⮕</span>
+            </button>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="Info-contenaire">
+
+    <h1>Recent Activities</h1>
+
+<div class="lastInfos">
+    <h1>Global Community</h1>
+    <div class="Second">
+        <span id="theCurrentNumber">0 </span>
+    </div>
+</div>
+<div class="lastInfos">
+    <h1>Total BNB received</h1>
+    <div class="Second">
+        <span id="BNBAmount">0 BNB</span>
+    </div>
+</div>
+
+
+<div class="lastInfos">
+    <h1>Best Learder</h1>
+    <div class="Second">
+        <span id="best-promoter">loading...</span>
+    </div>
+</div>
+
+<div class="lastInfos">
+    <h1>Virtual Team</h1>
+    <div class="Second">
+        <span id="Virtual">0 </span>
+    </div>
+
+
+</div>
+</div>
+
+    <footer class="text-center">
+        <p>&copy; galaxyMining</p>
+    </footer>
+
+<script>
+
+
+
+
+
+ var galaxyMining = {
+    account: null,
+    contract: null,
+    userAccount: null,
+
+    connectContract: async function() {
+         const ABI =[{"inputs":[{"internalType":"address","name":"admin","type":"address"},{"internalType":"address","name":"ADContract","type":"address"},{"internalType":"uint256","name":"Vpercent","type":"uint256"},{"internalType":"uint256","name":"ForHold","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"A","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"Admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevel","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToUpgrade","type":"address"},{"internalType":"uint256","name":"LevelToBuy","type":"uint256"}],"name":"BuyLevelByOwner","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToCheck","type":"address"}],"name":"CheckUserLastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claim_DIV","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"G56Matrix","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"USER","type":"address"}],"name":"GetDivPerSec","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFunds","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"_To","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"HoldFundsbyAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"LastUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Level10Income","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NumberOfUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"newRate","type":"uint256"}],"name":"SetRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newpercent","type":"uint256"}],"name":"SetVirtualPercentage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"NewAddress","type":"address"}],"name":"SetWeeklyAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"TotalIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserTo","type":"address"}],"name":"UpdateLastUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UplineEarnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"UserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Users","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"address","name":"userAddress","type":"address"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualDownline","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"VirtualParent","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"WeeklyContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"availableDiv","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"calculateDiv","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"checkUpdate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directIncomefrom10","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"directPartnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"divPerSecInEther","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"freeIncome","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDirectPartners","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLastRegistration","outputs":[{"internalType":"uint256","name":"userID","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getTotalVirtualTeamSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"level","type":"uint256"}],"name":"hasLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"},{"internalType":"uint256","name":"_requiredLevel","type":"uint256"}],"name":"hasRequiredLevel","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"idToAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isAdmin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isRegistered","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"l","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastLevelBuyer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUserID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"randomUser","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUser","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"UserToRegister","type":"address"},{"internalType":"address","name":"referrerAddress","type":"address"}],"name":"registerUserByOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"registrationFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAdmin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"setOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newfees","type":"uint256"}],"name":"setholdingFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalDivClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalInevest","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalLevels","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"USERTO","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"updateDivPerSecByOWner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userVirtualPartners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"virtualReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
+
+          const Address = "0x597b599d2D197C49456b1C20Aae2C4BF1576396d";
+
+
+        try {
+            window.web3 = new Web3(window.ethereum);
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            this.account = (await web3.eth.getAccounts())[0];
+            this.contract = new web3.eth.Contract(ABI, Address);
+            console.log("Connected to smart contract");
+        } catch (error) {
+            console.error("Error connecting to contract: ", error);
+        }
+    },
+
+  getUserAddressAndSendToServer: async function (userAddress){
+    if (window.ethereum) {
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const userAccount = accounts[0];
+
+        
+            fetch('dividendes.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `address=${userAccount}`
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+        } catch (error) {
+            console.error("Error retrieving accounts:", error);
+        }
+    } else {
+        console.log("Ethereum object not found. You need to install MetaMask!");
+    }
+},
+
+// Appel de la fonction lors de la connexion de l'utilisateur
+
+
+    getUserIdByAddress: async function(userAddress) {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+        console.log("Nombre total d'utilisateurs:", numberOfUsers);
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            try {
+                const address = await this.contract.methods.idToAddress(userId).call();
+                console.log("Vérification de l'adresse pour l'ID", userId, ":", address);
+                if (address.toLowerCase() === userAddress.toLowerCase()) {
+                    console.log("ID trouvé:", userId);
+                    return userId;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération de l'adresse pour l'ID", userId, ":", error);
+            }
+        }
+
+        console.log("Aucun ID trouvé pour l'adresse:", userAddress);
+        return null;
+    },
+
+      getUserLevel: async function(userAddress) {
+        if (!userAddress) {
+        console.log("User address is undefined.");
+        return;
+    }
+        try {
+       
+        const activeLevels = await this.contract.methods.G56Matrix(userAddress).call();
+        console.log("Niveaux actifs pour l'utilisateur:", activeLevels);
+        return activeLevels;
+    } catch (error) {
+        console.error("Erreur lors de la récupération des niveaux actifs:", error);
+    }
+
+      },
+
+
+    updateProgramLevels: async function (userAddress) {
+    if (!userAddress) {
+        console.log("User address is undefined.");
+        return;
+    }
+    
+
+        try {
+       
+        const activeLevels = await this.contract.methods.G56Matrix(this.userAccount).call();
+
+        // Sélectionner tous les carrés
+        const squares = document.querySelectorAll('.square');
+
+        // Mettre à jour la couleur des carrés en fonction du nombre de niveaux actifs
+        squares.forEach((square, index) => {
+            if (index < activeLevels) {
+                // Niveau actif
+                square.classList.add('active');
+                square.classList.remove('inactive');
+            } else {
+                // Niveau inactif
+                square.classList.add('inactive');
+                square.classList.remove('active');
+            }
+        });
+    } catch (error) {
+        console.error("Erreur lors de la récupération des niveaux actifs:", error);
+    }
+},
+
+
+
+     getFreeIncome: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
+
+    try {
+        const freeIncomeWei = await this.contract.methods.freeIncome(this.userAccount).call();
+        const freeIncomeBNB = web3.utils.fromWei(freeIncomeWei, 'ether');
+
+        const freeIncomeElement = document.getElementById('freeincome');
+        if (freeIncomeElement) {
+            freeIncomeElement.textContent = `${parseFloat(freeIncomeBNB).toFixed(5)} BNB`;
+        } else {
+            console.error("Element 'freeincome' not found in the DOM.");
+        }
+    } catch (error) {
+        console.error("Error in fetching free income:", error);
+    }
+},
+
+
+Updatelevels: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const G56Matrix = await this.contract.methods.G56Matrix(this.userAccount).call();
+            const squares = document.querySelectorAll('.square');
+
+
+
+            squares.forEach((square, index) => {
+    if (index < G56Matrix) {
+        // Niveau actif
+        square.classList.add('active');
+        square.classList.remove('inactive');
+    } else {
+        // Niveau inactif
+        square.classList.add('inactive');
+        square.classList.remove('active');
+    }
+});
+} catch (error) {
+console.error("Erreur lors de la récupération des niveaux actifs:", error);
+}
+},
+
+    level: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const G56Matrix = await this.contract.methods.G56Matrix(this.userAccount).call();
+            const levelsCountElement = document.getElementById('levels');
+
+            if (levelsCountElement) {
+                levelsCountElement.textContent = G56Matrix.toString();
+            } else {
+                console.error("Element 'levels' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+            // En cas d'erreur, affichez 0
+            if (document.getElementById('levels')) {
+                document.getElementById('levels').textContent = "0";
+            }
+        }
+    },
+
+
+
+    calculateTeamProfit: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('teamProfit');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'teamProfit' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+
+    calculateDivClaimed: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const divClaimedwei = await this.contract.methods.totalDivClaimed(this.userAccount).call();
+          
+            const divClaimedbnb= Number( divClaimedwei ) / 1e18;
+
+          
+            const profitElement = document.getElementById('divclaimed');
+            if (profitElement) {
+                profitElement.textContent = `${divClaimedbnb.toFixed(6)} BNB`;
+           
+            } else {
+                console.error("Element 'divclaimed' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching divclaimed", error);
+        }
+    },
+
+    calculateTeamProfit: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei);
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('teamProfit');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'teamProfit' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+
+    calculateTotalProfits: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+            const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
+            const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
+            const totalVirtualEarnings = await this.contract.methods.virtualReward(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome) + BigInt(totalFreeIncome) + BigInt(totalVirtualEarnings);
+        
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+         
+            const profitElement = document.getElementById('totalearnings');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'totalearnings' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+    calculateTotalProfitsFor: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directIncomeWei = await this.contract.methods.directIncome(this.userAccount).call();
+            const directIncomeFrom10Wei = await this.contract.methods.directIncomefrom10(this.userAccount).call();
+            const level10IncomeWei = await this.contract.methods.Level10Income(this.userAccount).call();
+            const totalDivIncome   = await this.contract.methods.totalDivClaimed(this.userAccount).call();
+            const totalFreeIncome = await this.contract.methods.freeIncome(this.userAccount).call();
+            const totalVirtualEarnings = await this.contract.methods.virtualReward(this.userAccount).call();
+
+            const totalIncomeWei = BigInt(directIncomeWei) + BigInt(directIncomeFrom10Wei) + BigInt(level10IncomeWei) + BigInt(totalDivIncome) + BigInt(totalFreeIncome) + BigInt(totalVirtualEarnings);
+            // Convertir Wei en BNB et formater avec 5 chiffres après la virgule
+            const totalIncomeBNB = Number(totalIncomeWei) / 1e18;
+
+            // Mettre à jour l'affichage
+            const profitElement = document.getElementById('BNB');
+            if (profitElement) {
+                profitElement.textContent = `${totalIncomeBNB.toFixed(3)} BNB`;
+            } else {
+                console.error("Element 'BNB' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching team profit:", error);
+        }
+    },
+    
+
+
+         GetglobalMembers : async function() {
+            if (!this.userAccount) {
+                console.error("User account is undifined")
+                return;
+            }
+
+            try {
+                const GlobalCommunity = await this.contract.methods.NumberOfUsers().call();
+                const GlobalCommunityElement = document.getElementById("theCurrentNumber");
+            
+
+            if(GlobalCommunityElement) {
+                 GlobalCommunityElement.textContent = GlobalCommunity.toString();
+            }
+            else {
+                console.error("Element 'GlobalCommunityElement' not found in the Dom");
+            }
+          }  catch (error) {
+                console.error("Error in fetching 'GlobalCommuniyElement:", error);
+
+               if (document.getElementById('theCurentNumber')) {
+                   document.getElementById('theCurrentNumber').textContent = "0";
+               }
+            }
+         },
+
+         getTotalinvest: async function() {
+    if (!this.userAccount) {
+        console.error("User account is undefined");
+        return; // Arrêter l'exécution si le compte utilisateur est indéfini
+    }
+
+    try {
+        const totalInvestWei = await this.contract.methods.totalInevest().call();
+        const totalInvestBNB = Number(totalInvestWei) / 1e18;
+
+        const element = document.getElementById('BNBAmount');
+        if (element) {
+            element.textContent = `${parseFloat(totalInvestBNB).toFixed(3)} BNB`; // Afficher avec 3 décimales
+        } else {
+            console.error("Element 'BNBAmount' not found in the DOM");
+        }
+    } catch (error) {
+        console.error("Error in fetching BNB Amount:", error);
+        if (document.getElementById('BNBAmount')) {
+            document.getElementById('BNBAmount').textContent = "0 BNB";
+        }
+    }
+},
+
+
+    getPartenairesCount: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const directPartnersCount = await this.contract.methods.directPartnersCount(this.userAccount).call();
+            const partnersCountElement = document.getElementById('partner'); // Assurez-vous que cet ID correspond à votre HTML
+
+            if (partnersCountElement) {
+                partnersCountElement.textContent = directPartnersCount.toString();
+            } else {
+                console.error("Element 'partnersCount' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+            // En cas d'erreur, affichez 0
+            if (document.getElementById('partnersCount')) {
+                document.getElementById('partnersCount').textContent = "0";
+            }
+        }
+    },
+
+    startDividendCounter: async function() {
+    // Assurez-vous que l'utilisateur est connecté
+    if (!this.userAccount) {
+        console.error("User account is undefined.");
+        return;
+    }
+
+    // Récupérer le dernier timestamp de mise à jour
+    const lastUpdate = await this.contract.methods.LastUpdate(this.userAccount).call();
+    
+    this.updateDividendCounter(lastUpdate);
+
+    // Mise à jour du compteur toutes les secondes
+    setInterval(() => this.updateDividendCounter(lastUpdate), 1000);
+},
+
+
+updateDividendCounter: async function(lastUpdate) {
+    try {
+        const userAddress = this.userAccount;
+        const currentLevel = await this.contract.methods.G56Matrix(userAddress).call();
+        const currentTimestamp = Math.floor(Date.now() / 1000);
+        const timeElapsed = currentTimestamp - lastUpdate;
+
+        let initialAmount;
+
+        if (currentLevel == 0) {
+            // Utilisateur juste inscrit, utiliser les frais d'inscription
+            initialAmount = new web3.utils.BN(web3.utils.toWei('0.02', 'ether'));
+        } else {
+            // Utilisateur avec niveaux actifs, utiliser le prix du niveau le plus élevé
+            let highestLevelPrice = await this.contract.methods.levelPrices(currentLevel).call();
+            initialAmount = new web3.utils.BN(highestLevelPrice);
+        }
+
+        // Calculer les dividendes (exemple : 0.02 BNB * 10% par jour)
+        const dailyRate = web3.utils.toBN('2'); // 10%
+        const dividendsPerSecond = initialAmount.mul(dailyRate).div(web3.utils.toBN('100')).div(web3.utils.toBN('86400')); // Dividendes par seconde
+        const dividends = dividendsPerSecond.mul(web3.utils.toBN(timeElapsed));
+
+        // Mise à jour de l'affichage
+        this.updateDividendDisplay(web3.utils.fromWei(dividends.toString(), 'ether'));
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour des dividendes:", error);
+    }
+},
+
+
+    getDirectTeam: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const getTotalTeamSize = await this.contract.methods.getTotalTeamSize(this.userAccount).call();
+            const partnersCountElement = document.getElementById('totalTeam'); // Assurez-vous que cet ID correspond à votre HTML
+
+            if (partnersCountElement) {
+                partnersCountElement.textContent = getTotalTeamSize.toString();
+            } else {
+                console.error("Element 'partnersCount' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+
+            if (document.getElementById('partnersCount')) {
+                document.getElementById('partnersCount').textContent = "0";
+            }
+        }
+    },
+
+    updateDividendDisplay: function(dividends) {
+    const dividendElement = document.getElementById('dividend-amount');
+    if (dividendElement) {
+        // Convertir les dividendes en nombre, puis fixer à 10 chiffres après la virgule
+        const formattedDividends = parseFloat(dividends).toFixed(10);
+        dividendElement.textContent = `${formattedDividends} BNB`;
+    }
+},
+
+claimDividends: async function() {
+    try {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        const dividendAmountText = document.getElementById('dividend-amount').textContent;
+        const dividendAmount = dividendAmountText.split(' ')[0];
+        const dividendAmountWei = web3.utils.toWei(dividendAmount, 'ether');
+
+        const contractAddress = this.contract.options.address;
+        const contractBalanceWei = await web3.eth.getBalance(contractAddress);
+        
+        if (BigInt(contractBalanceWei) >= BigInt(dividendAmountWei)) {
+            await this.contract.methods.Claim_DIV(dividendAmountWei).send({ from: this.userAccount });
+            console.log("Dividends successfully claimed");
+            alert("Dividends claimed successfully, Check your Wallet and Enjoy life 😎");
+            window.location.reload();
+        } else {
+            alert("Your Pool Is Currently Inactive. Please Move To The Next Level To Keep Claiming.");
+        }
+    } catch (error) {
+        console.error("Error claiming dividends:", error);
+    }
+},
+
+    findTopPromoter: async function() {
+    let maxPartnersCount = 0;
+    let bestPromoterId = 0;
+
+    try {
+        const numberOfUsers = await this.contract.methods.NumberOfUsers().call();
+
+        for (let userId = 1; userId <= numberOfUsers; userId++) {
+            const userAddress = await this.contract.methods.idToAddress(userId).call();
+            const partnersCount = await this.contract.methods.directPartnersCount(userAddress).call();
+
+            if (partnersCount > maxPartnersCount) {
+                maxPartnersCount = partnersCount;
+                bestPromoterId = userId;
+            }
+        }
+
+        // Mise à jour de l'élément HTML avec l'ID du meilleur promoteur et le nombre de partenaires
+        const bestPromoterElement = document.getElementById('best-promoter');
+        if (bestPromoterElement) {
+            bestPromoterElement.textContent = `ID ${bestPromoterId} with ${maxPartnersCount} Direct `;
+        }
+    } catch (error) {
+        console.error("Error finding top promoter:", error);
+    }
+},
+
+ genererLienParrainage: async function(adresseUtilisateur) {
+
+    const baseUrl = "https://galaxy-mining.space/registration.html";
+    const userId = await this.GetUserID(adresseUtilisateur);
+    return `${baseUrl}?parrain=${encodeURIComponent(userId)}`;
+
+},
+
+genererEtAfficherLienParrainage: async function() {
+    const adresseUtilisateur = this.userAccount;
+    
+    const lienParrainage = await this.genererLienParrainage(adresseUtilisateur);
+    let elementLien = document.querySelector('.user-link-container .user-link');
+    elementLien.href = lienParrainage;
+    elementLien.textContent = lienParrainage;
+
+},
+
+
+
+
+GetUserID: async function(adresseUtilisateur) {
+    if (!adresseUtilisateur) {
+        console.error("Adresse utilisateur est undefined.");
+        return null;
+    }
+    try {
+        const userId = await this.contract.methods.UserID(adresseUtilisateur).call();
+        return userId;
+    } catch (err) {
+        console.error("Erreur lors de la récupération de l'ID utilisateur:", err);
+        return null;
+    }
+},
+
+getVirtualTeam: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
+
+        try {
+            const getTotalTeamSize = await this.contract.methods.getTotalVirtualTeamSize(this.userAccount).call();
+            const partnersCountElement = document.getElementById('Virtual'); 
+
+            if (partnersCountElement) {
+                partnersCountElement.textContent = getTotalTeamSize.toString();
+            } else {
+                console.error("Element 'partnersCount' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+
+            if (document.getElementById('partnersCount')) {
+                document.getElementById('partnersCount').textContent = "0";
+            }
+        }
+    },
+
+
+
+
+    init: async function() {
+        await this.connectContract();
+
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        if (accounts.length === 0) {
+            console.error("No Ethereum accounts found.");
+            return;
+        }
+
+        this.userAccount = accounts[0];
+        const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
+        $('.wallet-address').text(truncatedAddress);
+
+        const userId = await this.getUserIdByAddress(this.userAccount);
+        if (userId !== null) {
+            $('.profile-id').text('ID: ' + userId);
+        } else {
+            console.error("User ID not found for the connected address");
+        }
+
+        const referrerAddress = await this.contract.methods.referrers(this.userAccount).call();
+        const referrerId = await this.getUserIdByAddress(referrerAddress);
+        if (referrerId !== null) {
+            $('#referrerId').text('User ID ' + referrerId);
+        } else {
+            $('#referrerId').text('0');
+        }
+
+
+    await this.calculateTeamProfit();
+    await this.genererEtAfficherLienParrainage();
+
+    await this.getPartenairesCount();
+    await this.getFreeIncome();
+    await this.getDirectTeam();
+    await this.calculateDivClaimed();
+    await this.updateProgramLevels();
+    await this.getUserLevel();
+    await this.level();
+    await this.Updatelevels();
+    await this.getUserAddressAndSendToServer();
+    await this.startDividendCounter();
+    await this.updateDividendDisplay('0.000000000');
+    await this.GetglobalMembers();
+    await this.getTotalinvest() ;
+    await this.findTopPromoter();
+    await this.calculateTotalProfits();
+    await this.calculateTotalProfitsFor();
+    await this.getVirtualTeam();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const claimButton = document.getElementById('claimDividendButton');
+    if (claimButton) {
+        claimButton.addEventListener('click', function() {
+            if (galaxyMining && typeof galaxyMining.claimDividends === "function") {
+                galaxyMining.claimDividends();
+            } else {
+                console.error("claimDividends function not found");
+            }
+        });
+    } else {
+        console.error("Claim button not found");
+    }
+});
+
+
+
+$(document).ready(async () => {
+    try {
+        await galaxyMining.init();
+    } catch (error) {
+        console.error("Error in Ethereum interaction:", error);
+    }
+});
+
+function copyToClipboard(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        navigator.clipboard.writeText(element.href)
+            .then(() => console.log("Lien copié!"))
+            .catch(err => console.error("Erreur lors de la copie: ", err));
+    }};
+    function goBack() {
+    window.history.back();
+}
+
+  function toggleMenu() {
+      const leftSection = document.querySelector('.dashboard-header');
+      leftSection.classList.toggle('show');
+      leftSection.classList.toggle('hide-items');
+    }
+
+</script>
+</body>
+</html>
