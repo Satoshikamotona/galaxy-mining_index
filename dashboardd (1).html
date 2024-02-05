@@ -642,7 +642,29 @@ updateDividendCounter: async function(lastUpdate) {
         console.error("Erreur lors de la mise à jour des dividendes:", error);
     }
 },
+  getUserUpline: async function() {
+        if (!this.userAccount) {
+            console.error("User account is undefined.");
+            return;
+        }
 
+        try {
+            const getTotalTeamSize = await this.contract.methods.referrers(this.userAccount).call();
+            const partnersCountElement = document.getElementById('referrerId'); // Assurez-vous que cet ID correspond à votre HTML
+
+            if (partnersCountElement) {
+                partnersCountElement.textContent = getTotalTeamSize.toString();
+            } else {
+                console.error("Element 'getUserUpline' not found in the DOM.");
+            }
+        } catch (error) {
+            console.error("Error in fetching partners count:", error);
+
+            if (document.getElementById('partnersCount')) {
+                document.getElementById('partnersCount').textContent = "0";
+            }
+        }
+    },
 
     getDirectTeam: async function() {
         if (!this.userAccount) {
