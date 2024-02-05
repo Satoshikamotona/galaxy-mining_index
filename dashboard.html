@@ -798,29 +798,27 @@ getUserUpline: async function() {
     }
 
     try {
-        // Obtenez l'ID du parrain
-        const referrerId = await this.contract.methods.referrers(this.userAccount).call();
+        // Get the referrer's address
+        const referrerAddress = await this.contract.methods.referrers(this.userAccount).call();
 
-        // Convertissez l'ID en adresse
-        const referrerAddress = await this.contract.methods.idToAddress(referrerId).call();
+        // Get the referrer's ID using the referrer's address
+        const referrerId = await this.getUserIdByAddress(referrerAddress); // Assuming this function exists and works correctly
 
-        // Mettez à jour l'élément avec l'ID 'referrerId'
+        // Update the UI element with the referrer's ID
         const referrerIdElement = document.getElementById('referrerId');
-
         if (referrerIdElement) {
-            referrerIdElement.textContent = referrerAddress;
+            referrerIdElement.textContent = referrerId ? `ID: ${referrerId}` : "No referrer";
         } else {
             console.error("Element 'referrerId' not found in the DOM.");
         }
     } catch (error) {
         console.error("Error in fetching referrer details:", error);
-
-        // Mettez à jour l'élément avec l'ID 'referrerId' en cas d'erreur
         if (document.getElementById('referrerId')) {
-            document.getElementById('referrerId').textContent = "0";
+            document.getElementById('referrerId').textContent = "Error";
         }
     }
 },
+
 
 
     init: async function() {
@@ -836,7 +834,7 @@ getUserUpline: async function() {
         const truncatedAddress = this.userAccount.substring(0, 6) + '...' + this.userAccount.substring(this.userAccount.length - 4);
         $('.wallet-address').text(truncatedAddress);
 
-             
+    await this.getUserUpline();
     await this.calculateTeamProfit();
     await this.genererEtAfficherLienParrainage();
     await this.getPartenairesCount();
