@@ -1,0 +1,1634 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Merienda:wght@600&family=Trykker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
+:root {
+    --primary-color: #000000; /* Black for backgrounds */
+    --accent-color: #F0B90B; /* Binance yellow for highlights */
+    --secondary-color: #FFFFFF; /* White for secondary elements */
+    --text-light: #FFFFFF; /* White for text */
+    --text-dark: #000000; /* Black for text on light backgrounds */
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.galaxy-programs {
+    /* vos autres styles */
+    margin-bottom: 10px; /* Réduire la marge inférieure */
+}
+
+
+
+.program-container {
+    position: relative; /* Nécessaire pour positionner le pseudo-élément */
+}
+
+.program-container:before {
+    content: ''; /* Nécessaire pour générer le pseudo-élément */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('gold-blur.png'); /* Chemin de votre image */
+    background-size: cover; /* ou 'contain' selon vos besoins */
+    opacity: 0.3; /* Ajustez pour la transparence */
+    z-index: -1; /* Place l'image en arrière-plan du contenu */
+    border-radius: 15px;
+}
+
+
+
+
+
+body {
+    background-color: #121212;
+    background-attachment: fixed;
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: 80% 100%; /* Ou toute autre propriété adaptée aux écrans plus petits */
+    }
+}
+
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+.dividend-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.dividend-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.binance-logo {
+    width: 50px; /* ou la taille que vous souhaitez pour le logo */
+    margin-right: 10px;
+}
+
+#dividend-amount {
+    font-weight: bold;
+    /* Ajoutez d'autres styles pour la taille du texte, la police, etc. */
+}
+
+
+.card h3 {
+    font-size: 1em; /* Ajustez cette valeur pour augmenter ou diminuer la taille du texte */
+    font-weight: bold; /* Pour un texte en gras */
+    color: #F0B90B; /* Utilisez la couleur désirée pour le texte */
+    text-align: center; /* Pour centrer le texte dans la carte */
+    margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous du h3 */
+ 
+}
+
+.user-id,
+.user-invited-by,
+.user-link  {
+    font-family: 'Arial', sans-serif; /* Ajoutez votre police préférée ici */
+    /* ... autres propriétés ... */
+}
+
+/* Styles par défaut pour mobiles */
+.card p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin: 10px 0;
+}
+/* Styles par défaut pour mobiles */
+.cardt p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin: 10px 0;
+}
+.profits-row {
+    display: flex;
+    gap: 20px;
+}
+
+
+
+/* Requête média pour les écrans d'ordinateur */
+@media (min-width: 768px) {
+    .card p {
+        font-size: 1.5em; /* Taille de police plus grande pour ordinateur */
+        /* Autres styles spécifiques pour ordinateur */
+    }
+
+    .profits-row {
+        gap: 40px; /* Plus d'espace entre les cartes sur un grand écran */
+    }
+
+  
+}
+
+
+/* Requête média pour les écrans d'ordinateur */
+@media (min-width: 768px) {
+    .card p {
+        font-size: 1.5em;
+    }
+
+    .profits-t {
+        gap: 40px; /* Plus d'espace entre les cartes sur un grand écran */
+    }
+
+    .cardt {
+        /* Vous pouvez ajuster la largeur et la hauteur pour les grands écrans */
+        width: calc(25% - 40px); /* Par exemple, pour quatre cartes par ligne */
+        /* Ajoutez d'autres propriétés de mise en page spécifiques aux ordinateurs si nécessaire */
+    }
+}
+
+.profits-row {
+    justify-content: space-around;
+    background-image: "20240115_110655.png";
+}
+
+
+
+.cards {
+    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+    margin: 0 10px; /* Ajoute un espacement horizontal entre les cartes */
+}
+
+
+.card {
+    /* Définit la largeur et la hauteur des cartes */
+    width: 200px; /* Remplacez par la largeur souhaitée */
+    height: 100px; /* Remplacez par la hauteur souhaitée */
+
+}
+
+.cardt {
+    /* Définit la largeur et la hauteur des cartes */
+    width: 200px; /* Remplacez par la largeur souhaitée */
+    height: 100px; /* Remplacez par la hauteur souhaitée */
+
+}
+
+
+.card {
+  
+
+        flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+        margin: 0 5px; /* Espacement entre chaque carte */
+        margin-right: 10px; /* Espacement à droite de chaque carte */
+
+    
+}
+
+.cardt {
+  
+
+    flex: 1; /* Permet aux cartes de prendre un espace égal dans la ligne */
+    margin: 0 5px; /* Espacement entre chaque carte */
+    margin-right: 10px; /* Espacement à droite de chaque carte */
+
+
+}
+
+
+
+
+.card {
+    position: relative; /* Important pour positionner l'image correctement */
+    background-color: #1a1a1a; /* Votre couleur de fond actuelle */
+  }
+  
+  .card::before {
+   
+    background-image: url('20240115_110655.png'); /* Chemin de votre image */
+    background-size: cover; /* ou 'contain' selon vos besoins */
+    opacity: 0.5; /* Ajustez pour la transparence */
+
+  }
+  
+
+body {
+   
+    background-size: cover, auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: BackgroundAnimation 120s infinite alternate;
+}
+
+@keyframes BackgroundAnimation {
+    0% { background-position: top left; }
+    50% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+/* ... le reste de votre CSS ... */
+
+/* Header Styles */
+header {
+    color: var(--text-light);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    background-size: cover;
+
+}
+
+
+header::before {
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Main Section Styles */
+main {
+    padding: 20px;
+    flex: 1; /* Permet à main de prendre tout l'espace disponible */
+
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+.login-container:hover {
+    box-shadow: 0px 0px 25px rgba(240, 185, 11, 0.8); /* Ombre plus prononcée au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+
+
+
+/* Section Heading and Paragraph Styles */
+section  h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-light);
+}
+
+section p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--secondary-color);
+}
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .site-title {
+        margin: 10px 0;
+    }
+
+/* Style Général du Texte */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    padding-top: 70px;
+}
+
+/* Titres et Sous-titres */
+ h2, h3, h4, h5, h6 {
+    text-align: center; /* Centrage des titres */
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h1{
+    text-align: center; /* Centrage des titres */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    margin-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style des Paragraphes */
+p {
+    text-align: center; /* Centrage des paragraphes */
+    margin-bottom: 1em;
+}
+
+/* Alignement et Style des Sections */
+section {
+    text-align: center; /* Centrage du contenu des sections */
+    padding: 20px;
+}
+
+/* Style des Liens */
+a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    /* Ajustements pour les appareils mobiles */
+ .galaxy-programs h1{
+        font-size: 1.2em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+}
+
+.Info-contenaire h1 {
+    font-size: 1.2em;
+}
+
+
+
+
+
+   
+        
+.page-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Utilisez une police moderne de votre choix */
+    font-size: 1.5em; /* Taille de la police */
+    color: white; /* Couleur d'accentuation */
+    margin-top: 20px; /* Espace au-dessus du titre */
+    margin-bottom: 40px; /* Espace en dessous du titre */
+}
+
+
+  
+ 
+  
+  .dashboard-header {
+    background: none;
+    padding: 0px;
+    text-align: center;
+
+    position: fixed; 
+    width: 100%; /* S'étend sur toute la largeur de la page */
+    top: 0; /* Positionné en haut de la page */
+    left: 0; /* Positionné à gauche de la page */
+    z-index: 1000; /* S'assure que l'en-tête reste au-dessus des autres éléments */
+  }
+  
+  .dashboard-header img {
+    width: 50px;
+    vertical-align: middle;
+  }
+  
+  .dashboard-header .wallet-address {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .dashboard-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .card {
+    background: #1a1a1a;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card.highlight {
+    border-color: var(--accent-color);
+    background: linear-gradient(45deg, #333333, #1a1a1a);
+  }
+  
+  .card h3 {
+    color: var(--accent-color);
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  .card a {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .card a:hover {
+    text-decoration: underline;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardt.highlight {
+    border-color: var(--accent-color);
+    background: linear-gradient(45deg, #333333, #1a1a1a);
+  }
+  
+  .cardt h3 {
+    color: var(--accent-color);
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .cardt p {
+    margin: 5px 0;
+  }
+  
+  .cardt a {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .cardt a:hover {
+    text-decoration: underline;
+  }
+  .user-profile-container {
+    display: flex;
+    align-items: center;
+    background-color: #000; /* Your desired dark color */
+    padding: 20px;
+    color: #f0b90b; /* Binance golden color */
+  }
+  
+  .user-image-container {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0b90b; /* Golden color */
+    padding: 5px; /* Adjust for the glowing effect size */
+    margin-right: 20px; /* Spacing between image and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-image {
+    border-radius: 50%;
+    width: 100%; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-id,
+  .user-invited-by,
+  .user-link {
+    margin: 5px 0; /* Spacing between text elements */
+    font-size: 1rem; /* Adjust as needed */
+    color: #fff; /* White text */
+  }
+  
+  /* If you want to make the link clickable */
+  .user-link {
+    color: #f0b90b; /* Golden color */
+    text-decoration: none; /* Removes underline */
+  }
+  
+  .user-link:hover {
+    text-decoration: underline; /* Adds underline on hover */
+  }
+ 
+
+  :root {
+    --primary-color: #121212; /* Couleur de fond principale */
+    --secondary-color: #232323; /* Couleur de fond secondaire */
+    --accent-color: #f0b90b; /* Couleur d'accentuation */
+    --text-color: #ffffff; /* Couleur du texte */
+    --info-color: #f0f0f0; /* Couleur d'informations secondaires */
+  }
+  
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace; /* Police technologique */
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 80px;
+
+  
+  }
+
+  .profile-section {
+    /* Styles existants */
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1a1a1a; /* Couleur de fond */
+    color: #f0b90b; /* Couleur de texte */
+}
+
+.profile-section:hover {
+    box-shadow: 0 0 20px var(--accent-color); /* Ombre plus grande au survol */
+}
+
+/* Animation pour le contour lumineux */
+@keyframes glowingBorder {
+    0% { box-shadow: 0 0 10px var(--accent-color); }
+    50% { box-shadow: 0 0 20px var(--accent-color); }
+    100% { box-shadow: 0 0 10px var(--accent-color); }
+}
+
+
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin: 10px;
+  }
+  
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    margin-right: 15px;
+  }
+  
+  .profile-info {
+    color: var(--text-color);
+  }
+  
+  .profile-id {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+  
+  .profile-invited {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: var(--info-color);
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+  }
+  
+  .profile-link {
+    color: var(--accent-color);
+    font-size: 0.5rem;
+  }
+  
+  .profile-link:hover {
+    text-decoration: underline;
+  }
+  .user-link-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Alignement vertical */
+    align-items: flex-start; /* Alignement à gauche */
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.user-link {
+    margin-bottom: 5px; /* Espace entre le lien et la barre de copie */
+    font-size: 0.8rem;
+
+}
+
+.copy-bar {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    align-self: stretch; /* Étendre pour occuper toute la largeur */
+}
+
+.copy-bar:hover {
+    background-color: #e6b873; /* Teinte plus claire de la couleur dorée */
+}
+
+
+.dividend-container {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px; /* Bords arrondis pour un look moderne */
+    background: rgba(255, 255, 255, 0.1); /* Transparence pour un effet de superposition */
+    backdrop-filter: blur(10px); /* Flou de l'arrière-plan pour un effet de verre */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Bordure subtile */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre portée pour un effet de profondeur */
+    transform: translateZ(0); /* Prépare l'élément pour les animations 3D */
+    transition: transform 0.3s ease-out; /* Animation douce pour les effets au survol */
+
+}
+
+.dividend-container:hover {
+    transform: scale(1.05) translateZ(50px); /* Effet de zoom et de soulèvement au survol */
+}
+
+.dividend-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Espace au-dessus de la section d'information */
+}
+
+.binance-logo {
+    width: 50px; /* Taille du logo Binance */
+    margin-right: 10px;
+    transition: transform 0.3s ease-out; /* Animation douce pour l'effet au survol */
+}
+
+.binance-logo:hover {
+    transform: rotateY(360deg); /* Rotation du logo au survol */
+}
+
+#dividend-amount {
+    font-family: 'Gabriela', serif;
+
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #f0b90b; /* Couleur jaune de Binance */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur au texte */
+}
+
+.claim-button {
+    padding: 10px 20px;
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    border: none;
+    border-radius: 25px; /* Bouton avec des bords arrondis */
+    background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+    color: #ffffff; /* Texte blanc */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+}
+
+.claim-button:hover {
+    transform: translateY(-3px); /* Soulève légèrement le bouton au survol */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Ombre plus grande pour l'effet au survol */
+}
+
+.claim-button:active {
+    transform: translateY(-1px); /* Donne l'impression que le bouton est enfoncé lors du clic */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Ombre plus petite pour l'effet au clic */
+}
+
+  /* Ajoutez des requêtes multimédia et d'autres ajustements responsifs au besoin */
+  .card {
+    background: #1a1a1a; /* fond noir avec une légère opacité */
+    border-radius: 20px;
+    padding: 20px;
+    color: #ffffff;
+    max-width: 660px; /* ajustez selon votre mise en page */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* pour l'effet de profondeur */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.cards-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.program-title {
+    color: #F0B90B; /* couleur jaune doré */
+}
+
+.info-button, .info-text {
+    background: #F0B90B; /* couleur jaune doré */
+    border-radius: 50%; /* pour le bouton ? */
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* espace entre l'en-tête et le contenu */
+}
+.cards-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* espace entre l'en-tête et le contenu */
+}
+
+.program-name {
+    font-size: 1.5em;
+}
+
+.program-value {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+
+.block {
+    display: inline-block;
+    width: 20px; /* taille du bloc */
+    height: 20px;
+    background: #F0B90B; /* couleur jaune doré */
+    margin: 2px;
+}
+
+.preview-button {
+    background: #F0B90B; /* couleur jaune doré */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.preview-button:hover {
+    background-color: #e6b873; /* une teinte plus claire au survol */
+}
+
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-header h1 {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.cardt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--primary-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cardt-header h1 {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.info-circle {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.info {
+    display: none; /* Caché par défaut, à afficher au survol si nécessaire */
+}
+
+.card-body {
+    padding: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.program-name {
+    font-size: 2em;
+    color: var(--text-light);
+    margin-bottom: 0.5em;
+}
+
+.program-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1em;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1em;
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background-color: grey;
+    border-radius: 4px;
+}
+
+.preview-button {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.preview-button:hover {
+    background-color: #e6b873; /* Couleur plus claire pour l'effet de survol */
+}
+
+.arrow {
+    /* Assurez-vous que la flèche est alignée avec le texte */
+    display: inline-block;
+}
+/* ... autres styles ... */
+
+.card {
+    min-width: 130px; /* Minimum width, can grow if needed */
+    max-width: 500px; /* Maximum width */
+    width: 100%; /* Use a percentage width for flexibility */
+    overflow: hidden; /* Hide overflow */
+}
+.cardt {
+    min-width: 150px; /* Minimum width, can grow if needed */
+    max-width: 500px; /* Maximum width */
+    width: 100%; /* Use a percentage width for flexibility */
+    overflow: hidden; /* Hide overflow */
+}
+
+
+.card-body {
+    padding: 10px;
+    overflow: auto; /* Scroll inside if content is too big */
+}
+.cardt-body {
+    padding: 10px;
+    overflow: auto; /* Scroll inside if content is too big */
+}
+.grid {
+    justify-content: flex-start; /* Align grid items to the start */
+    flex-wrap: wrap; /* Wrap items to the next line if not enough space */
+}
+
+/* Use media queries to adjust layout on smaller screens */
+@media (max-width: 768px) {
+    .card {
+        padding: 5px; /* Smaller padding on small screens */
+    }
+
+    .program-name, .program-value {
+        font-size: smaller; /* Smaller font size on small screens */
+    }
+
+}
+
+:root {
+    --program-container-width: 300px; /* Largeur plus étroite */
+    --program-container-height: 200px; /* Hauteur plus longue */
+}
+
+.galaxy-programs {
+    text-align: center;
+    padding: 0px;
+   
+}
+
+.galaxy-programs h1 {
+    margin-bottom: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.program-container {
+    background: rgba(33, 36, 41, 0.85); /* Fond translucide pour l'effet moderne */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px; /* Ajustez selon vos besoins */
+    align-items: center;
+    height: 200px;
+    width: 500px;
+
+}
+
+
+.program-container {
+    background: rgba(33, 36, 41, 0.85); /* Fond translucide */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 250px; /* Largeur maximale */
+    margin: 0 auto; /* Centrage additionnel si flexbox n'est pas suffisant */
+}
+
+
+.program-name {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.program-value {
+    font-size: 1.5em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.square {
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 3px;
+}
+
+/* Couleur pour les niveaux actifs */
+.square.active {
+    background-color: #F0B90B;
+}
+
+/* Couleur pour les niveaux inactifs */
+.square.inactive {
+    background-color: grey;
+}
+
+.preview-button {
+    background-color: var(--accent-color);
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.preview-button:hover {
+    background-color: #e6b873;
+}
+
+.arrow {
+    display: inline-block;
+}
+
+
+
+
+.program-header {
+    display: flex;
+    justify-content: space-between; /* Élément gauche et droit séparés */
+    align-items: center; /* Centrage vertical des éléments */
+    margin-bottom: 20px; /* Espacement sous le header */
+}
+
+.program-name, .program-value {
+    font-size: 1.5em;
+    color: var(--text-light);
+}
+
+.program-name {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Styles existants pour la grille sur les écrans plus larges */
+
+/* Réduction de l'espace entre les carrés sur les petits écrans */
+
+    /* Ajustez la taille des carrés si nécessaire */
+    .square {
+        width: 30px;
+        height: 30px;
+    }
+
+/* Styles existants pour la grille sur les écrans plus larges */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colonnes sur les grands écrans */
+    gap: 20px; /* Espace actuel entre les carrés */
+}
+
+/* Réduction de l'espace entre les carrés sur les petits écrans */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr); /* Maintenez le nombre de colonnes sur les petits écrans */
+        gap: 10px; /* Réduisez l'espace entre les carrés */
+    }
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    background-color: #181616; /* Couleur de fond foncée */
+    padding: 20px;
+    color: #f0b90b; /* Couleur dorée de Binance */
+    border-radius: 15px; /* Bords arrondis */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Ombre portée pour un effet de profondeur */
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%); /* Dégradé subtil pour un effet 3D */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition douce pour les effets au survol */
+    animation: shadowColorChange 3s infinite; /* 3s pour chaque couleur, donc 6s au total */
+
+}
+
+
+
+@keyframes shadowColorChange {
+    50%, 50% {
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); /* Première couleur */
+    }
+    50%, 50% {
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5) /*Deuxième couleur */
+    }
+}
+.profile-section:hover {
+    transform: perspective(500px) rotateX(0deg); /* Effet de redressement au survol */
+    box-shadow: 0 15px 40px rgba(238, 174, 0, 0.75); /* Ombre portée plus prononcée au survol */
+}
+.program-container {
+    align-items: center;
+    background-color: #000; /* Couleur de fond foncée */
+    padding: 20px;
+    color: #f0b90b; /* Couleur dorée de Binance */
+    border-radius: 15px; /* Bords arrondis */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombre portée pour un effet de profondeur */
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%); /* Dégradé subtil pour un effet 3D */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition douce pour les effets au survol */
+}
+
+.program-container:hover {
+    transform: perspective(500px) rotateX(0deg); /* Effet de redressement au survol */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75); /* Ombre portée plus prononcée au survol */
+
+}
+
+
+@media (min-width: 768px) {
+    .dashboard-container {
+        display:block ;
+        grid-template-columns: 1fr 3fr; /* Barre latérale et contenu principal */
+        gap: 20px;
+    }
+
+}
+@media (min-width: 768px) {
+    .card {
+
+        gap: 20px;
+    }
+
+}
+
+
+@media (min-width: 768px) {
+    .right-section {
+        display: flex;
+        justify-content: center; /* Centre les éléments */
+    }
+
+    .dividend-container, .galaxy-programs {
+        flex: 0 1 45%; /* Ajuste la flexibilité: n'autorise pas la croissance, autorise la réduction, base de 45% */
+        margin: 0 2px; /* Réduit la marge entre les éléments */
+        /* Autres styles si nécessaire */
+
+  }
+}
+
+h5{
+    font-family: 'Gabriela', serif;
+  font-size: 0.8rem; /* Taille de police */
+  
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+    font-weight: bold; /* Police en gras */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
+   
+    transition: transform 0.3s ease; /* Animation lors du survol */
+    text-align: center;
+    margin-top: 2px;
+}
+
+h5:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+.dashboard-header .wallet-address {
+   
+        padding: 5px 20px;
+        margin-top: 20px; /* Espace au-dessus du bouton */
+        border: none;
+        border-radius: 25px; /* Bouton avec des bords arrondis */
+        background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+        color: #ffffff; /* Texte blanc */
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase; /* Texte en majuscules */
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+    }
+
+.copy-bar {
+    padding: 18x 20px;
+    margin-top: 25px; /* Espace au-dessus du bouton */
+    border: none;
+    border-radius: 10px; /* Bouton avec des bords arrondis */
+    background-image: linear-gradient(45deg, #f0b90b, #fcb045); /* Gradient doré */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre pour l'effet 3D */
+    color: #ffffff; /* Texte blanc */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; /* Transition douce pour les effets au survol et au clic */
+
+}
+
+.card {
+    display: flex; /* Utilisation de Flexbox */
+    flex-direction: column; /* Alignement vertical des éléments */
+    justify-content: flex-start; /* Aligner les éléments en haut */
+    align-items: center; /* Centrer les éléments horizontalement */
+    width: 110px; /* Taille du conteneur (carré) */
+    height: 80px; /* Hauteur égale à la largeur pour un carré */
+    margin: 20px auto; /* Centrer dans la page et ajouter de l'espace autour */
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Ombre portée */
+    backdrop-filter: blur(10px); /* Effet de flou à l'arrière-plan */
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+    font-family: 'Gabriela', serif;
+
+
+}
+.badge-container h4 {
+    margin-top: 35px; /* Ajustez selon vos besoins pour le titre 'Lvl' */
+    margin-bottom: 0px; /* Espace entre le titre 'Lvl' et les badges */
+}
+.program-value {
+    font-family: 'Gabriela', serif;
+   font-size: 1.2em;
+}
+
+
+
+
+.lastInfos:hover {
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8); /* Ombre plus prononcée au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.lastInfos label {
+    margin-bottom: 10px; /* Espace augmenté sous chaque label */
+    font-size: 1em; /* Taille de police appropriée pour les labels */
+}
+
+.Second {
+
+    font-size: 1.7em;
+    text-align: center;
+}
+
+ .lastInfos {
+
+    max-width: 300px;
+    margin: 20px;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 0.6em; 
+    text-align: center; 
+    align-items: center;
+    margin: 20px auto;
+    display: grid;
+    place-items: center;
+    width: 200px;
+    height: 100px;
+
+
+}
+
+@media (min-width: 768px) {
+    .lastInfos {
+        /* Réduire la taille et ajuster la largeur */
+        max-width: 400px; /* ou une autre valeur qui convient mieux */
+        width: 200px;;
+        padding: 20px; /* Réduire le padding pour diminuer la taille globale */
+        
+        /* Alignement vertical */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrer les éléments horizontalement */
+
+        /* Réduire la taille de la police si nécessaire */
+        font-size: 0.8em; /* Ajustez selon vos besoins */
+    }
+}
+@media (min-width: 768px) { /* Ajustez cette valeur selon vos besoins */
+    .Info-contenaire > h1 {
+        display: none; /* Cela masque le titre sur les écrans d'ordinateur */
+    }
+}
+@media (min-width: 768px) { /* Ajustez cette valeur selon vos besoins */
+    .galaxy-programs > h1 {
+        display: none; /* Cela masque le titre sur les écrans d'ordinateur */
+    }
+}
+.Info-contenaire > h1 {
+    text-align: center; /* Centrer le titre */
+    margin-bottom: 30px; /* Ajouter de l'espace sous le titre */
+    /* Autres styles esthétiques si nécessaire */
+
+}
+.lastInfos > h1 {
+    text-align: center; /* Centrer le titre */
+    font-size: 1.3em; /* Taille de police plus grande */
+    /* Autres styles esthétiques si nécessaire */
+    color: #f0b90b;
+}
+
+
+@media (min-width: 768px) {
+    .Info-contenaire {
+        margin: 20px auto; /* Ajoutez une marge uniforme autour de l'élément */
+        gap: 20px;
+    }
+}
+@media (min-width: 768px) {
+    .Info-contenaire {
+        display: flex;
+        flex-direction: row; /* Aligner horizontalement */
+        justify-content: center; /* Centrer les éléments à l'horizontale */
+        align-items: center; /* Centrer les éléments à la verticale */
+        max-width: 80%; /* Ajustez selon les besoins */
+        margin: 20px auto; /* Espace autour du conteneur */
+    }
+
+    @media (min-width: 768px) {
+        .Info-contenaire {
+            display: flex;
+            flex-direction: row; /* Aligner horizontalement */
+            justify-content: center; /* Centrer les éléments à l'horizontale */
+            align-items: center; /* Centrer les éléments à la verticale */
+            flex-wrap: wrap; /* Permettre aux éléments de se mettre à la ligne */
+            max-width: 80%; /* Ajustez selon les besoins */
+            margin: 20px auto; /* Espace autour du conteneur */
+            gap: 20px; /* Espace entre les éléments */
+        }
+    
+        .Info-contenaire .lastInfos {
+            width: calc(50% - 20px); /* Prendre la moitié de l'espace disponible, en tenant compte de l'espacement */
+            margin: 10px; /* Espacement uniforme */
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .dividend-container{
+ 
+            max-width: 300px; /* Ajustez selon les besoins */
+            max-height: 250px;
+         
+        }
+    
+.lastInfos , h1 {
+    color: #f0b90b;
+}
+.lastInfos , span {
+    color: #f0f0f0;
+}
+
+
+
+
+#background-video {
+    position: fixed; /* Position fixe pour couvrir tout l'écran */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Couvre toute la largeur */
+    min-height: 100%; /* Couvre toute la hauteur */
+    width: auto; /* Maintient le rapport d'aspect */
+    height: auto; /* Maintient le rapport d'aspect */
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
+    background-size: cover; /* S'assure que la vidéo couvre tout l'écran */
+}
+#background-video {
+    /* Autres styles ici... */
+    filter: blur(25px); /* Ajoute un effet de flou */
+}
+.user-link {
+    font-size: 1em;
+}
+
+.user-link-container .user-link {
+    display: block; 
+    max-width: 150px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.user-link-container .user-link {
+    font-size: 14px; /* Ajustez la taille de la police selon vos besoins */
+}
+
+.user-link-container .user-link {
+    word-wrap: break-word;
+}
+
+.user-link-container {
+    max-width: 250px; /* Ajustez selon vos besoins */
+}
+
+    }}
+
+.user-link {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+    overflow: hidden; /* Cache le contenu débordant */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le contenu est coupé */
+    max-width: 150px; /* Limite la largeur de l'élément */
+
+}
+
+
+.draggable-button {
+    position: absolute; 
+    top: 50px; 
+    left: 50px;
+    cursor: move;
+    z-index: 1000;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.233);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px; /* Augmenter la taille de la police pour la flèche */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px; /* Ajuster pour centrer verticalement la flèche */
+}
+
+.draggable-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+}
+.Info-contenaire {
+    margin-top: -80px;
+}
+body::before {
+    content: "";
+    position: fixed; /* Changez de absolute à fixed */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('Hackathon\ \(14\).png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(20px); /* Exemple de filtre, ajustez selon vos besoins */
+    z-index: -1; /* Placez l'élément en dessous du contenu de la page */
+    animation: moveLeftToRight 60s linear infinite; /* 20s pour la durée totale, ajustez selon vos besoins */
+
+}
+
+/* Définition de l'animation */
+@keyframes moveLeftToRight {
+    0%, 100% {
+        transform: translateX(-100%); /* Commence et termine à gauche de la fenêtre */
+    }
+    50% {
+        transform: translateX(100%); /* Au milieu, déplace l'image complètement à droite */
+    }
+}    
+
+ 
+
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+
+.dashboard-header.hide-items p {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-icon {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .dashboard-header.show {
+    top: 0;
+  }
+
+  .dashboard-header.show p {
+    display: block;
+  }
+}
+.menu-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.menu-item, .menu-link {
+    margin-bottom: 20px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover, .menu-link:hover {
+    background-color: #555;
+  } 
+   table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #333;
+    color: white;
+  }
+  
+  
+  /* Style de l'en-tête du tableau avec fond blanc */
+#partnersTable thead th {
+    background-color:#e98d00;
+    color: #ffffff; /* Couleur du texte noir sur fond blanc */
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+    font-size: 14px;
+}
+
+/* Style des cellules du tableau avec fond blanc */
+#partnersTable tbody td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+    font-size: 12px;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #ffffff; /* Fond blanc */
+    color: #000; /* Couleur du texte noir sur fond blanc */
+}
+
+/* Style des lignes impaires du tableau avec fond blanc */
+#partnersTable tbody tr:nth-child(odd) {
+    background-color:#2c2c2c;
+}
+
+/* Style de l'en-tête du tableau avec fond noir */
+#partnersTable.dark thead th {
+    background-color: #333; /* Fond noir */
+    color:#2c2c2c; /* Couleur du texte blanc sur fond noir */
+    border: 1px solid #555; /* Bordure pour contraste */
+}
+
+/* Style des cellules du tableau avec fond noir */
+#partnersTable.dark tbody td {
+    border: 1px solid #555;
+    text-align: left;
+    padding: 6px;
+    font-size: 12px;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #ffffff; /* Fond noir */
+    color: #272222; /* Couleur du texte blanc sur fond noir */
+}
+
+/* Style des lignes impaires du tableau avec fond noir */
+#partnersTable.dark tbody tr:nth-child(odd) {
+    background-color: #2c2c2c;
+}
+.tbody {
+    margin-top: 50px!important;
+    color: white;
+}
+.dashboard-header {
+    background: none!important;
+}
